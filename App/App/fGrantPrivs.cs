@@ -80,10 +80,10 @@ namespace App
         private void grantBtn_Click(object sender, EventArgs e)
         {
             // Lấy tên các bảng/view được chọn
-            var selectedObject = objectList.CheckedItems;
+            var selectedObjects = objectList.CheckedItems;
 
             // Gọi thủ tục cho từng bảng/view
-            foreach (var objectName in selectedObject)
+            foreach (var objectName in selectedObjects)
             {
                 string procQuery = buildGrantQuery(objectName.ToString());
                 MessageBox.Show(procQuery);

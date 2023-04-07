@@ -31,19 +31,20 @@
             roleList = new CheckedListBox();
             roleLabel = new Label();
             granteeLabel = new Label();
-            textBox1 = new TextBox();
-            dataGridView1 = new DataGridView();
+            granteeTextBox = new TextBox();
+            privileges = new DataGridView();
             grantRole = new Button();
             checkBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)privileges).BeginInit();
             SuspendLayout();
             // 
             // roleList
             // 
+            roleList.CheckOnClick = true;
             roleList.FormattingEnabled = true;
             roleList.Location = new Point(12, 37);
             roleList.Name = "roleList";
-            roleList.Size = new Size(330, 94);
+            roleList.Size = new Size(290, 94);
             roleList.TabIndex = 0;
             // 
             // roleLabel
@@ -64,40 +65,41 @@
             granteeLabel.TabIndex = 3;
             granteeLabel.Text = "Nhập tên người dùng";
             // 
-            // textBox1
+            // granteeTextBox
             // 
-            textBox1.Location = new Point(12, 172);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(330, 23);
-            textBox1.TabIndex = 4;
+            granteeTextBox.Location = new Point(12, 172);
+            granteeTextBox.Name = "granteeTextBox";
+            granteeTextBox.Size = new Size(290, 23);
+            granteeTextBox.TabIndex = 4;
             // 
-            // dataGridView1
+            // privileges
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(369, 37);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(419, 356);
-            dataGridView1.TabIndex = 5;
+            privileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            privileges.Location = new Point(308, 37);
+            privileges.Name = "privileges";
+            privileges.RowTemplate.Height = 25;
+            privileges.Size = new Size(480, 323);
+            privileges.TabIndex = 5;
             // 
             // grantRole
             // 
-            grantRole.Location = new Point(12, 201);
+            grantRole.Location = new Point(162, 201);
             grantRole.Name = "grantRole";
-            grantRole.Size = new Size(160, 23);
+            grantRole.Size = new Size(140, 23);
             grantRole.TabIndex = 6;
             grantRole.Text = "Cấp vai trò";
             grantRole.UseVisualStyleBackColor = true;
-            grantRole.Click += button1_Click;
+            grantRole.Click += grantRole_Click;
             // 
             // checkBtn
             // 
-            checkBtn.Location = new Point(182, 201);
+            checkBtn.Location = new Point(12, 201);
             checkBtn.Name = "checkBtn";
-            checkBtn.Size = new Size(160, 23);
+            checkBtn.Size = new Size(140, 23);
             checkBtn.TabIndex = 7;
             checkBtn.Text = "Kiểm tra";
             checkBtn.UseVisualStyleBackColor = true;
+            checkBtn.Click += checkBtn_Click;
             // 
             // fGrantRole
             // 
@@ -106,14 +108,14 @@
             ClientSize = new Size(800, 450);
             Controls.Add(checkBtn);
             Controls.Add(grantRole);
-            Controls.Add(dataGridView1);
-            Controls.Add(textBox1);
+            Controls.Add(privileges);
+            Controls.Add(granteeTextBox);
             Controls.Add(granteeLabel);
             Controls.Add(roleLabel);
             Controls.Add(roleList);
             Name = "fGrantRole";
             Text = "fGrantRole";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)privileges).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,8 +125,8 @@
         private CheckedListBox roleList;
         private Label roleLabel;
         private Label granteeLabel;
-        private TextBox textBox1;
-        private DataGridView dataGridView1;
+        private TextBox granteeTextBox;
+        private DataGridView privileges;
         private Button grantRole;
         private Button checkBtn;
     }
