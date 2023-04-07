@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            checkBtn = new Button();
-            privileges = new DataGridView();
-            granteeTxtBox = new TextBox();
+            checkPrivsBtn = new Button();
+            queriedPrivileges = new DataGridView();
+            granteeTextBox = new TextBox();
             granteeLabel = new Label();
-            objectLabel = new Label();
-            grantBtn = new Button();
-            objectList = new CheckedListBox();
+            targetLabel = new Label();
+            grantPrivsBtn = new Button();
+            targetList = new CheckedListBox();
             grantColPrivsBtn = new Button();
-            privListBox = new CheckedListBox();
+            privList = new CheckedListBox();
             privsLabel = new Label();
-            ((System.ComponentModel.ISupportInitialize)privileges).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)queriedPrivileges).BeginInit();
             SuspendLayout();
             // 
             // checkBtn
             // 
-            checkBtn.Location = new Point(355, 63);
-            checkBtn.Name = "checkBtn";
-            checkBtn.Size = new Size(110, 30);
-            checkBtn.TabIndex = 3;
-            checkBtn.Text = "Kiểm tra";
-            checkBtn.UseVisualStyleBackColor = true;
-            checkBtn.Click += checkButton_Click;
+            checkPrivsBtn.Location = new Point(355, 63);
+            checkPrivsBtn.Name = "checkBtn";
+            checkPrivsBtn.Size = new Size(110, 30);
+            checkPrivsBtn.TabIndex = 3;
+            checkPrivsBtn.Text = "Kiểm tra";
+            checkPrivsBtn.UseVisualStyleBackColor = true;
+            checkPrivsBtn.Click += CheckPrivsButton_Click;
             // 
             // privileges
             // 
-            privileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            privileges.Location = new Point(12, 128);
-            privileges.Name = "privileges";
-            privileges.RowTemplate.Height = 25;
-            privileges.Size = new Size(776, 243);
-            privileges.TabIndex = 4;
+            queriedPrivileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            queriedPrivileges.Location = new Point(12, 128);
+            queriedPrivileges.Name = "privileges";
+            queriedPrivileges.RowTemplate.Height = 25;
+            queriedPrivileges.Size = new Size(776, 243);
+            queriedPrivileges.TabIndex = 4;
             // 
             // granteeTxtBox
             // 
-            granteeTxtBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            granteeTxtBox.Location = new Point(355, 28);
-            granteeTxtBox.Name = "granteeTxtBox";
-            granteeTxtBox.Size = new Size(240, 29);
-            granteeTxtBox.TabIndex = 5;
+            granteeTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            granteeTextBox.Location = new Point(355, 28);
+            granteeTextBox.Name = "granteeTxtBox";
+            granteeTextBox.Size = new Size(240, 29);
+            granteeTextBox.TabIndex = 5;
             // 
             // granteeLabel
             // 
@@ -79,31 +79,31 @@
             // 
             // objectLabel
             // 
-            objectLabel.AutoSize = true;
-            objectLabel.Location = new Point(12, 9);
-            objectLabel.Name = "objectLabel";
-            objectLabel.Size = new Size(94, 15);
-            objectLabel.TabIndex = 13;
-            objectLabel.Text = "Chọn table/view";
+            targetLabel.AutoSize = true;
+            targetLabel.Location = new Point(12, 9);
+            targetLabel.Name = "objectLabel";
+            targetLabel.Size = new Size(94, 15);
+            targetLabel.TabIndex = 13;
+            targetLabel.Text = "Chọn table/view";
             // 
             // grantBtn
             // 
-            grantBtn.Location = new Point(485, 63);
-            grantBtn.Name = "grantBtn";
-            grantBtn.Size = new Size(110, 30);
-            grantBtn.TabIndex = 16;
-            grantBtn.Text = "Cấp quyền";
-            grantBtn.UseVisualStyleBackColor = true;
-            grantBtn.Click += grantBtn_Click;
+            grantPrivsBtn.Location = new Point(485, 63);
+            grantPrivsBtn.Name = "grantBtn";
+            grantPrivsBtn.Size = new Size(110, 30);
+            grantPrivsBtn.TabIndex = 16;
+            grantPrivsBtn.Text = "Cấp quyền";
+            grantPrivsBtn.UseVisualStyleBackColor = true;
+            grantPrivsBtn.Click += GrantPrivsButton_Click;
             // 
             // objectList
             // 
-            objectList.CheckOnClick = true;
-            objectList.FormattingEnabled = true;
-            objectList.Location = new Point(12, 28);
-            objectList.Name = "objectList";
-            objectList.Size = new Size(337, 94);
-            objectList.TabIndex = 17;
+            targetList.CheckOnClick = true;
+            targetList.FormattingEnabled = true;
+            targetList.Location = new Point(12, 28);
+            targetList.Name = "objectList";
+            targetList.Size = new Size(337, 94);
+            targetList.TabIndex = 17;
             // 
             // grantColPrivsBtn
             // 
@@ -113,16 +113,16 @@
             grantColPrivsBtn.TabIndex = 18;
             grantColPrivsBtn.Text = "Cấp quyền cho từng cột";
             grantColPrivsBtn.UseVisualStyleBackColor = true;
-            grantColPrivsBtn.Click += grantColPrivsBtn_Click;
+            grantColPrivsBtn.Click += GrantColPrivsButton_Click;
             // 
             // privListBox
             // 
-            privListBox.CheckOnClick = true;
-            privListBox.FormattingEnabled = true;
-            privListBox.Location = new Point(601, 28);
-            privListBox.Name = "privListBox";
-            privListBox.Size = new Size(187, 94);
-            privListBox.TabIndex = 19;
+            privList.CheckOnClick = true;
+            privList.FormattingEnabled = true;
+            privList.Location = new Point(601, 28);
+            privList.Name = "privListBox";
+            privList.Size = new Size(187, 94);
+            privList.TabIndex = 19;
             // 
             // privsLabel
             // 
@@ -139,33 +139,36 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(privsLabel);
-            Controls.Add(privListBox);
+            Controls.Add(privList);
             Controls.Add(grantColPrivsBtn);
-            Controls.Add(objectList);
-            Controls.Add(grantBtn);
-            Controls.Add(objectLabel);
+            Controls.Add(targetList);
+            Controls.Add(grantPrivsBtn);
+            Controls.Add(targetLabel);
             Controls.Add(granteeLabel);
-            Controls.Add(granteeTxtBox);
-            Controls.Add(privileges);
-            Controls.Add(checkBtn);
+            Controls.Add(granteeTextBox);
+            Controls.Add(queriedPrivileges);
+            Controls.Add(checkPrivsBtn);
             Name = "fGrantPrivs";
             Text = "fGrantPrivs";
-            ((System.ComponentModel.ISupportInitialize)privileges).EndInit();
+            ((System.ComponentModel.ISupportInitialize)queriedPrivileges).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button checkBtn;
-        private Button grantBtn;
-        private DataGridView privileges;
-        private TextBox granteeTxtBox;
-        private Label granteeLabel;
-        private Label objectLabel;
-        private CheckedListBox objectList;
-        private Button grantColPrivsBtn;
-        private CheckedListBox privListBox;
         private Label privsLabel;
+        private CheckedListBox privList;
+
+        private Label targetLabel;
+        private CheckedListBox targetList;
+
+        private Label granteeLabel;
+        private TextBox granteeTextBox;
+        
+        private Button grantPrivsBtn;
+        private Button checkPrivsBtn;
+        private Button grantColPrivsBtn;
+        private DataGridView queriedPrivileges;
     }
 }

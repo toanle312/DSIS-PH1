@@ -4,107 +4,74 @@ namespace App
 {
     public partial class fGrantPrivs : Form
     {
-        private bool _columnSelectionMode = false;
+        private bool _grantColumnPrivsMode = false;
         private string _selectedObject = "";
 
         public fGrantPrivs()
         {
             InitializeComponent();
 
-            initDefaultData();
+            InitDefaultData();
         }
 
-        private void initDefaultData()
+        private void InitDefaultData()
         {
-            // Thiết lập dữ liệu ban đầu cho danh sách các bảng/view
-            objectList.Items.Clear();
-            objectList.Items.AddRange(getObjectNames().ToArray());
-            objectList.SelectedIndex = 0;
+            // Thiết lập các biến toàn cục
+            _grantColumnPrivsMode = false;
+            _selectedObject = "";
+
+            // Thiết lập dữ liệu ban đầu cho danh sách bảng/view
+            targetList.Items.Clear();
+            targetList.Items.AddRange(getObjectNames().ToArray());
+            targetList.SelectedIndex = 0;
 
             // Thiết lập các quyền
             string[] privs = { "SELECT", "INSERT", "UPDATE", "DELETE", "WITH GRANT OPTION" };
-            privListBox.Items.Clear();
-            privListBox.Items.AddRange(privs);
+            privList.Items.Clear();
+            privList.Items.AddRange(privs);
         }
 
-        private void checkButton_Click(object sender, EventArgs e)
-        {
-            string granteeName = granteeTxtBox.Text;
-            string table = _columnSelectionMode ? "DBA_COL_PRIVS" : "DBA_TAB_PRIVS";
-            string query = $"SELECT * FROM {table} WHERE GRANTEE='{granteeName.ToUpper()}'";
-            var queryData = DataProvider.Instance.ExcuteQuery(query);
-            privileges.DataSource = queryData;
-        }
-
-        private List<string> getObjectNames()
+        private string[] getObjectNames()
         {
             var tables = DataProvider.Instance.ExcuteQuery("SELECT * FROM USER_TABLES");
             var views = DataProvider.Instance.ExcuteQuery("SELECT * FROM USER_VIEWS");
 
-            List<string> objectNames = new List<string>();
+            List<string> objectNames = new();
 
             foreach (DataRow row in tables.Rows)
             {
-                objectNames.Add(row["TABLE_NAME"].ToString());
+                objectNames.Add(row["TABLE_NAME"].ToString() ?? "");
             }
             foreach (DataRow row in views.Rows)
             {
-                objectNames.Add(row["VIEW_NAME"].ToString());
+                objectNames.Add(row["VIEW_NAME"].ToString() ?? "");
             }
 
-            return objectNames;
+            return objectNames.ToArray();
         }
 
-        private string buildGrantQuery(string objectName)
+        private void CheckPrivsButton_Click(object sender, EventArgs e)
         {
-            // Tạo chuỗi các quyền
-            string privQuery = "";
-            foreach (var priv in privListBox.CheckedItems)
-            {
-                if (priv.ToString() != "WITH GRANT OPTION")
-                {
-                    privQuery += $"{priv},";
-                }
-            }
-            if (privQuery.Length > 0)
-                privQuery = privQuery.Remove(privQuery.Length - 1, 1);
+            string grantee = GetGrantee();
+            string table = _grantColumnPrivsMode ? "DBA_COL_PRIVS" : "DBA_TAB_PRIVS";
 
-            // Lấy tên schema hiện tại
-            string schemaQuery = "SELECT USER FROM DUAL";
-            string currentSchema = DataProvider.Instance.ExcuteQuery(schemaQuery).Rows[0]["USER"].ToString();
+            string query = $"SELECT * FROM {table} WHERE GRANTEE='{grantee}'";
+            var queryData = DataProvider.Instance.ExcuteQuery(query);
 
-            // Lấy tên của user/role
-            string grantee = granteeTxtBox.Text.ToUpper();
-
-            // Tạo query để gọi thủ tục
-            bool withGrantOption = privListBox.CheckedItems.Contains("WITH GRANT OPTION");
-            string procQuery = $"BEGIN\n\tusp_GrantObjPrivs('{privQuery}', '{currentSchema}', '{objectName}', '{grantee}', {withGrantOption});\nEND;";
-
-            return procQuery;
+            queriedPrivileges.DataSource = queryData;
         }
 
-        private void grantBtn_Click(object sender, EventArgs e)
+        private string GetGrantee()
         {
-            var procQueries = new List<string>();
-            if (_columnSelectionMode == false)
-            {
-                // Lấy tên các bảng/view được chọn
-                var selectedObjects = objectList.CheckedItems;
+            return granteeTextBox.Text.ToUpper();
+        }
 
-                // Gọi thủ tục cho từng bảng/view
-                foreach (var objectName in selectedObjects)
-                {
-                    procQueries.Add(buildGrantQuery(objectName.ToString()));
-                }
-            }
-            else
-            {
-                procQueries = buildGrantColumnQuery(_selectedObject);
-            }
-
+        private void GrantPrivsButton_Click(object sender, EventArgs e)
+        {
+            var queries = BuildQueries();
             try
             {
-                foreach (var query in procQueries)
+                foreach (var query in queries)
                 {
                     DataProvider.Instance.ExcuteQuery(query);
                     MessageBox.Show(query);
@@ -116,126 +83,198 @@ namespace App
             }
         }
 
-        private void grantColPrivsBtn_Click(object sender, EventArgs e)
+        private List<string> BuildQueries()
         {
-            if (_columnSelectionMode == false)
+            var queries = new List<string>();
+
+            if (_grantColumnPrivsMode == false)
             {
-                if (objectList.CheckedItems.Count == 0)
+                // Lấy tên các bảng/view được chọn
+                var selectedObjects = targetList.CheckedItems;
+
+                // Tạo chuỗi thực thi thủ tục cho từng bảng/view
+                foreach (var obj in selectedObjects)
                 {
-                    MessageBox.Show("Vui lòng chọn một bảng hoặc view để cấp quyền trên cột!");
-                }
-                else if (objectList.CheckedItems.Count > 1)
-                {
-                    MessageBox.Show("Chỉ được chọn 1 bảng hoặc view để cấp quyền trên cột!");
-                }
-                else if (privListBox.CheckedItems.Count == 0)
-                {
-                    MessageBox.Show("Vui lòng chọn quyền cần cấp!");
-                }
-                else if (privListBox.CheckedItems.Contains("INSERT") || privListBox.CheckedItems.Contains("DELETE"))
-                {
-                    MessageBox.Show("Không thể cấp quyền INSERT hoặc DELETE trên cột!");
-                }
-                else if (objectList.CheckedItems.Count > 0)
-                {
-                    _columnSelectionMode = true;
-
-                    // Thay đổi nhãn của các controls
-                    objectLabel.Text = "Chọn cột";
-                    grantColPrivsBtn.Text = "Thoát khỏi chế độ cấp quyền cho cột";
-
-                    // Disable các controls không được phép
-                    privListBox.Enabled = false;
-
-                    // Thay đổi danh sách các bảng/view thành danh sách các cột
-                    _selectedObject = objectList.CheckedItems[0].ToString();
-
-                    List<string> columns = new(getColumns(_selectedObject));
-
-                    // Reset danh sách
-                    objectList.Items.Clear();
-                    foreach (var col in columns.GroupBy(i => i))
-                    {
-                        objectList.Items.Add(col.Key);
-
-                        // Giải quyết trường hợp cột bị trùng
-                        if (col.Count() > 1)
-                        {
-                            var colIndex = objectList.Items.IndexOf(col.Key);
-
-                            objectList.SetItemChecked(colIndex, true);
-                        }
-                    }
+                    string objectName = obj.ToString() ?? "";
+                    queries.Add(BuildGrantPrivsQuery(objectName));
                 }
             }
             else
             {
-                _columnSelectionMode = false;
-                _selectedObject = "";
-
-                objectLabel.Text = "Chọn table/view";
-                grantColPrivsBtn.Text = "Cấp quyền cho từng cột";
-                privListBox.Enabled = true;
-
-                initDefaultData();
+                // Tạo các chuỗi thực thi thủ tục cho các cột
+                queries.AddRange(BuildGrantColumnPrivsQueries(_selectedObject));
             }
+
+            return queries;
         }
 
-        private List<string> getColumns(string objectName)
+        private string BuildGrantPrivsQuery(string objectName)
         {
-            string query = $"SELECT * FROM ALL_TAB_COLUMNS WHERE TABLE_NAME='{objectName}'";
-            var cols = DataProvider.Instance.ExcuteQuery(query);
-
-            List<string> colNames = new List<string>();
-
-            foreach (DataRow row in cols.Rows)
-            {
-                colNames.Add(row["COLUMN_NAME"].ToString());
-            }
-
-            return colNames;
-        }
-
-        private List<string> buildGrantColumnQuery(string objectName)
-        {
-            // Kiểm tra các quyền được chọn
-            bool selectPriv = false;
-            bool updatePriv = false;
-            foreach (var priv in privListBox.CheckedItems)
-            {
-                if (priv == "SELECT")
-                    selectPriv = true;
-                if (priv == "UPDATE")
-                    updatePriv = true;
-            }
-            // Tạo chuỗi các cột
-            string colQuery = "";
-            foreach (var col in objectList.CheckedItems)
-            {
-                colQuery += $"{col},";
-            }
-            if (colQuery.Length > 0)
-                colQuery = colQuery.Remove(colQuery.Length - 1, 1);
+            // Tạo chuỗi các quyền
+            string privs = BuildPrivsString();
 
             // Lấy tên schema hiện tại
-            string schemaQuery = "SELECT USER FROM DUAL";
-            string currentSchema = DataProvider.Instance.ExcuteQuery(schemaQuery).Rows[0]["USER"].ToString();
+            string schema = GetCurrentSchema();
 
             // Lấy tên của user/role
-            string grantee = granteeTxtBox.Text.ToUpper();
+            string grantee = GetGrantee();
 
-            // Tạo query để gọi thủ tục
-            var procQueries = new List<string>();
-            bool withGrantOption = privListBox.CheckedItems.Contains("WITH GRANT OPTION");
+            // Kiểm tra with grant option
+            bool withGrantOption = privList.CheckedItems.Contains("WITH GRANT OPTION");
+
+            // Tạo chuỗi thực thi
+            string query = $"BEGIN\n\tusp_GrantObjPrivs('{privs}', '{schema}', '{objectName}', '{grantee}', {withGrantOption});\nEND;";
+
+            return query;
+        }
+
+        private string BuildPrivsString()
+        {
+            string privs = "";
+
+            foreach (var priv in privList.CheckedItems)
+            {
+                if (priv.ToString() != "WITH GRANT OPTION")
+                {
+                    privs += $"{priv},";
+                }
+            }
+            if (privs.Length > 0)
+                privs = privs.Remove(privs.Length - 1, 1);
+
+            return privs;
+        }
+
+        private string GetCurrentSchema()
+        {
+            string query = "SELECT USER FROM DUAL";
+            var user = DataProvider.Instance.ExcuteQuery(query);
+            string currentSchema = user.Rows[0]["USER"].ToString() ?? "";
+
+            return currentSchema;
+        }
+
+        private void GrantColPrivsButton_Click(object sender, EventArgs e)
+        {
+            if (_grantColumnPrivsMode == false)
+            {
+                if (targetList.CheckedItems.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một bảng hoặc view để cấp quyền trên cột!");
+                }
+                else if (targetList.CheckedItems.Count > 1)
+                {
+                    MessageBox.Show("Chỉ được chọn 1 bảng hoặc view để cấp quyền trên cột!");
+                }
+                else if (privList.CheckedItems.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn quyền cần cấp!");
+                }
+                else if (privList.CheckedItems.Contains("INSERT") || privList.CheckedItems.Contains("DELETE"))
+                {
+                    MessageBox.Show("Không thể cấp quyền INSERT hoặc DELETE trên cột!");
+                }
+                else
+                {
+                    ChangeToGrantColumnPrivsMode();
+                }
+            }
+            else
+            {
+                ChangeToGrantObjectPrivsMode();
+            }
+        }
+
+        private void ChangeToGrantColumnPrivsMode()
+        {
+            _grantColumnPrivsMode = true;
+
+            // Thay đổi nhãn của các controls
+            targetLabel.Text = "Chọn cột";
+            grantColPrivsBtn.Text = "Thoát khỏi chế độ cấp quyền cho cột";
+
+            // Disable các controls không được phép chọn
+            privList.Enabled = false;
+
+            // Lưu lại object được chọn để cấp quyền trên cột
+            _selectedObject = targetList.CheckedItems[0]?.ToString() ?? "";
+
+            // Đổi danh sách object trước đó thành danh sách các cột
+            targetList.Items.Clear();
+            targetList.Items.AddRange(GetColumns(_selectedObject));
+        }
+
+        private string[] GetColumns(string objectName)
+        {
+            string query = $"SELECT DISTINCT(COLUMN_NAME) FROM ALL_TAB_COLUMNS WHERE TABLE_NAME='{objectName}'";
+            var columns = DataProvider.Instance.ExcuteQuery(query);
+
+            List<string> columnNames = new();
+
+            foreach (DataRow row in columns.Rows)
+            {
+                columnNames.Add(row["COLUMN_NAME"].ToString() ?? "");
+            }
+
+            return columnNames.ToArray();
+        }
+
+        private void ChangeToGrantObjectPrivsMode()
+        {
+            // Thay đổi nhãn của các controls
+            targetLabel.Text = "Chọn table/view";
+            grantColPrivsBtn.Text = "Cấp quyền cho từng cột";
+
+            // Enable các controls được phép chọn
+            privList.Enabled = true;
+
+            // Reset về dữ liệu mặc định
+            InitDefaultData();
+        }
+
+        private List<string> BuildGrantColumnPrivsQueries(string objectName)
+        {
+            // Kiểm tra các quyền được chọn
+            bool selectPriv = privList.CheckedItems.Contains("SELECT");
+            bool updatePriv = privList.CheckedItems.Contains("UPDATE");
+            bool withGrantOption = privList.CheckedItems.Contains("WITH GRANT OPTION");
+
+            // Tạo chuỗi các cột
+            string columns = BuildColsString();
+
+            // Lấy tên schema hiện tại
+            string schema = GetCurrentSchema();
+
+            // Lấy tên của user/role
+            string grantee = GetGrantee();
+
+            // Tạo các chuỗi thực thi
+            var queries = new List<string>();
+
             if (selectPriv)
             {
-                procQueries.Add($"BEGIN\n\tusp_GrantSelectOnCol('{currentSchema}', '{objectName}', '{colQuery}','{grantee}', {withGrantOption});\nEND;");
+                queries.Add($"BEGIN\n\tusp_GrantSelectOnCol('{schema}', '{objectName}', '{columns}','{grantee}', {withGrantOption});\nEND;");
             }
             if (updatePriv)
             {
-                procQueries.Add($"BEGIN\n\tusp_GrantUpdateOnCol('{objectName}', '{colQuery}','{grantee}', {withGrantOption});\nEND;");
+                queries.Add($"BEGIN\n\tusp_GrantUpdateOnCol('{objectName}', '{columns}','{grantee}', {withGrantOption});\nEND;");
             }
-            return procQueries;
+
+            return queries;
+        }
+
+        private string BuildColsString()
+        {
+            string columns = "";
+
+            foreach (var col in targetList.CheckedItems)
+            {
+                columns += $"{col},";
+            }
+            if (columns.Length > 0)
+                columns = columns.Remove(columns.Length - 1, 1);
+
+            return columns;
         }
     }
 }
