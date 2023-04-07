@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static App.Program;
 
 namespace App
 {
@@ -16,6 +17,8 @@ namespace App
         public Login()
         {
             InitializeComponent();
+            username_textbox.Text = "U_AD";
+            password_textbox.Text = "123";
         }
 
         private void connect_btn_Click(object sender, EventArgs e)
