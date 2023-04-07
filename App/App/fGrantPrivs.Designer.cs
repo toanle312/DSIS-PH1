@@ -31,15 +31,13 @@
             checkBtn = new Button();
             privileges = new DataGridView();
             granteeTxtBox = new TextBox();
-            selectPrivCheckBox = new CheckBox();
-            insertPrivCheckBox = new CheckBox();
-            updatePrivCheckBox = new CheckBox();
-            deletePrivCheckBox = new CheckBox();
-            withGrantCheckBox = new CheckBox();
             granteeLabel = new Label();
             objectLabel = new Label();
             grantBtn = new Button();
             objectList = new CheckedListBox();
+            grantColPrivsBtn = new Button();
+            privListBox = new CheckedListBox();
+            privsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)privileges).BeginInit();
             SuspendLayout();
             // 
@@ -69,56 +67,6 @@
             granteeTxtBox.Name = "granteeTxtBox";
             granteeTxtBox.Size = new Size(240, 29);
             granteeTxtBox.TabIndex = 5;
-            // 
-            // selectPrivCheckBox
-            // 
-            selectPrivCheckBox.AutoSize = true;
-            selectPrivCheckBox.Location = new Point(601, 28);
-            selectPrivCheckBox.Name = "selectPrivCheckBox";
-            selectPrivCheckBox.Size = new Size(64, 19);
-            selectPrivCheckBox.TabIndex = 6;
-            selectPrivCheckBox.Text = "SELECT";
-            selectPrivCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // insertPrivCheckBox
-            // 
-            insertPrivCheckBox.AutoSize = true;
-            insertPrivCheckBox.Location = new Point(601, 53);
-            insertPrivCheckBox.Name = "insertPrivCheckBox";
-            insertPrivCheckBox.Size = new Size(62, 19);
-            insertPrivCheckBox.TabIndex = 7;
-            insertPrivCheckBox.Text = "INSERT";
-            insertPrivCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // updatePrivCheckBox
-            // 
-            updatePrivCheckBox.AutoSize = true;
-            updatePrivCheckBox.Location = new Point(671, 53);
-            updatePrivCheckBox.Name = "updatePrivCheckBox";
-            updatePrivCheckBox.Size = new Size(68, 19);
-            updatePrivCheckBox.TabIndex = 8;
-            updatePrivCheckBox.Text = "UPDATE";
-            updatePrivCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // deletePrivCheckBox
-            // 
-            deletePrivCheckBox.AutoSize = true;
-            deletePrivCheckBox.Location = new Point(671, 28);
-            deletePrivCheckBox.Name = "deletePrivCheckBox";
-            deletePrivCheckBox.Size = new Size(64, 19);
-            deletePrivCheckBox.TabIndex = 9;
-            deletePrivCheckBox.Text = "DELETE";
-            deletePrivCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // withGrantCheckBox
-            // 
-            withGrantCheckBox.AutoSize = true;
-            withGrantCheckBox.Location = new Point(601, 74);
-            withGrantCheckBox.Name = "withGrantCheckBox";
-            withGrantCheckBox.Size = new Size(142, 19);
-            withGrantCheckBox.TabIndex = 10;
-            withGrantCheckBox.Text = "WITH GRANT OPTION";
-            withGrantCheckBox.UseVisualStyleBackColor = true;
             // 
             // granteeLabel
             // 
@@ -157,20 +105,46 @@
             objectList.Size = new Size(337, 94);
             objectList.TabIndex = 17;
             // 
+            // grantColPrivsBtn
+            // 
+            grantColPrivsBtn.Location = new Point(355, 99);
+            grantColPrivsBtn.Name = "grantColPrivsBtn";
+            grantColPrivsBtn.Size = new Size(240, 23);
+            grantColPrivsBtn.TabIndex = 18;
+            grantColPrivsBtn.Text = "Cấp quyền cho từng cột";
+            grantColPrivsBtn.UseVisualStyleBackColor = true;
+            grantColPrivsBtn.Click += grantColPrivsBtn_Click;
+            // 
+            // privListBox
+            // 
+            privListBox.CheckOnClick = true;
+            privListBox.FormattingEnabled = true;
+            privListBox.Location = new Point(601, 28);
+            privListBox.Name = "privListBox";
+            privListBox.Size = new Size(187, 94);
+            privListBox.TabIndex = 19;
+            // 
+            // privsLabel
+            // 
+            privsLabel.AutoSize = true;
+            privsLabel.Location = new Point(601, 9);
+            privsLabel.Name = "privsLabel";
+            privsLabel.Size = new Size(72, 15);
+            privsLabel.TabIndex = 20;
+            privsLabel.Text = "Chọn quyền";
+            // 
             // fGrantPrivs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(privsLabel);
+            Controls.Add(privListBox);
+            Controls.Add(grantColPrivsBtn);
             Controls.Add(objectList);
             Controls.Add(grantBtn);
             Controls.Add(objectLabel);
             Controls.Add(granteeLabel);
-            Controls.Add(withGrantCheckBox);
-            Controls.Add(deletePrivCheckBox);
-            Controls.Add(updatePrivCheckBox);
-            Controls.Add(insertPrivCheckBox);
-            Controls.Add(selectPrivCheckBox);
             Controls.Add(granteeTxtBox);
             Controls.Add(privileges);
             Controls.Add(checkBtn);
@@ -187,13 +161,11 @@
         private Button grantBtn;
         private DataGridView privileges;
         private TextBox granteeTxtBox;
-        private CheckBox selectPrivCheckBox;
-        private CheckBox insertPrivCheckBox;
-        private CheckBox updatePrivCheckBox;
-        private CheckBox deletePrivCheckBox;
-        private CheckBox withGrantCheckBox;
         private Label granteeLabel;
         private Label objectLabel;
         private CheckedListBox objectList;
+        private Button grantColPrivsBtn;
+        private CheckedListBox privListBox;
+        private Label privsLabel;
     }
 }
