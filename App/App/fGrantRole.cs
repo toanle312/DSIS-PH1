@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace App
 {
@@ -16,54 +7,61 @@ namespace App
         public fGrantRole()
         {
             InitializeComponent();
-            roleList.Items.AddRange(getRoles().ToArray());
+
+            InitDefaultData();
         }
 
-        private void checkBtn_Click(object sender, EventArgs e)
+        private void InitDefaultData()
         {
-            string granteeName = granteeTextBox.Text;
-            string query = $"SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE='{granteeName.ToUpper()}'";
+            roleList.Items.AddRange(GetRoles().ToArray());
+            roleList.SelectedIndex = 0;
+        }
+
+        private void CheckRoleButton_Click(object sender, EventArgs e)
+        {
+            string grantee = GetGrantee();
+            string query = $"SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE='{grantee.ToUpper()}'";
+
             var queryData = DataProvider.Instance.ExcuteQuery(query);
-            privileges.DataSource = queryData;
+            grantedRoles.DataSource = queryData;
         }
 
-        private List<string> getRoles()
+        private string GetGrantee()
         {
-            var roles = DataProvider.Instance.ExcuteQuery("SELECT * FROM DBA_ROLES");
+            return granteeTextBox.Text.ToUpper();
+        }
 
-            List<string> roleNames = new List<string>();
+        private string[] GetRoles()
+        {
+            string query = "SELECT * FROM DBA_ROLES";
+            var roles = DataProvider.Instance.ExcuteQuery(query);
+
+            List<string> roleNames = new();
 
             foreach (DataRow row in roles.Rows)
             {
-                roleNames.Add(row["ROLE"].ToString());
+                roleNames.Add(row["ROLE"].ToString() ?? "");
             }
 
-            return roleNames;
+            return roleNames.ToArray();
         }
 
-        private string buildGrantQuery(string role)
+        private void GrantRoleButton_Click(object sender, EventArgs e)
         {
-            // Lấy tên của user/role
-            string grantee = granteeTextBox.Text.ToUpper();
+            // Lấy grantee cần cấp role
+            string grantee = GetGrantee();
 
-            // Tạo query để gọi thủ tục
-            string procQuery = $"BEGIN\n\tusp_GrantRole('{role}', '{grantee}');\nEND;";
-
-            return procQuery;
-        }
-
-        private void grantRole_Click(object sender, EventArgs e)
-        {
-            // Lấy tên các bảng/view được chọn
+            // Lấy tên vai trò được chọn
             var selectedRoles = roleList.CheckedItems;
+
             foreach (var role in selectedRoles)
             {
-                string procQuery = buildGrantQuery(role.ToString());
-                MessageBox.Show(procQuery);
+                string query = $"BEGIN\n\tusp_GrantRole('{role}', '{grantee}');\nEND;";
+                MessageBox.Show(query);
 
                 try
                 {
-                    DataProvider.Instance.ExcuteQuery(procQuery);
+                    DataProvider.Instance.ExcuteQuery(query);
                 }
                 catch (Exception ex)
                 {

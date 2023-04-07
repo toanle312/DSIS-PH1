@@ -32,10 +32,10 @@
             roleLabel = new Label();
             granteeLabel = new Label();
             granteeTextBox = new TextBox();
-            privileges = new DataGridView();
-            grantRole = new Button();
-            checkBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)privileges).BeginInit();
+            grantedRoles = new DataGridView();
+            grantRoleButton = new Button();
+            checkRoleButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)grantedRoles).BeginInit();
             SuspendLayout();
             // 
             // roleList
@@ -74,60 +74,62 @@
             // 
             // privileges
             // 
-            privileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            privileges.Location = new Point(308, 37);
-            privileges.Name = "privileges";
-            privileges.RowTemplate.Height = 25;
-            privileges.Size = new Size(480, 323);
-            privileges.TabIndex = 5;
+            grantedRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grantedRoles.Location = new Point(308, 37);
+            grantedRoles.Name = "privileges";
+            grantedRoles.RowTemplate.Height = 25;
+            grantedRoles.Size = new Size(480, 323);
+            grantedRoles.TabIndex = 5;
             // 
             // grantRole
             // 
-            grantRole.Location = new Point(162, 201);
-            grantRole.Name = "grantRole";
-            grantRole.Size = new Size(140, 23);
-            grantRole.TabIndex = 6;
-            grantRole.Text = "Cấp vai trò";
-            grantRole.UseVisualStyleBackColor = true;
-            grantRole.Click += grantRole_Click;
+            grantRoleButton.Location = new Point(162, 201);
+            grantRoleButton.Name = "grantRole";
+            grantRoleButton.Size = new Size(140, 23);
+            grantRoleButton.TabIndex = 6;
+            grantRoleButton.Text = "Cấp vai trò";
+            grantRoleButton.UseVisualStyleBackColor = true;
+            grantRoleButton.Click += GrantRoleButton_Click;
             // 
             // checkBtn
             // 
-            checkBtn.Location = new Point(12, 201);
-            checkBtn.Name = "checkBtn";
-            checkBtn.Size = new Size(140, 23);
-            checkBtn.TabIndex = 7;
-            checkBtn.Text = "Kiểm tra";
-            checkBtn.UseVisualStyleBackColor = true;
-            checkBtn.Click += checkBtn_Click;
+            checkRoleButton.Location = new Point(12, 201);
+            checkRoleButton.Name = "checkBtn";
+            checkRoleButton.Size = new Size(140, 23);
+            checkRoleButton.TabIndex = 7;
+            checkRoleButton.Text = "Kiểm tra";
+            checkRoleButton.UseVisualStyleBackColor = true;
+            checkRoleButton.Click += CheckRoleButton_Click;
             // 
             // fGrantRole
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(checkBtn);
-            Controls.Add(grantRole);
-            Controls.Add(privileges);
+            Controls.Add(checkRoleButton);
+            Controls.Add(grantRoleButton);
+            Controls.Add(grantedRoles);
             Controls.Add(granteeTextBox);
             Controls.Add(granteeLabel);
             Controls.Add(roleLabel);
             Controls.Add(roleList);
             Name = "fGrantRole";
             Text = "fGrantRole";
-            ((System.ComponentModel.ISupportInitialize)privileges).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grantedRoles).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private CheckedListBox roleList;
         private Label roleLabel;
+        private CheckedListBox roleList;
+
         private Label granteeLabel;
         private TextBox granteeTextBox;
-        private DataGridView privileges;
-        private Button grantRole;
-        private Button checkBtn;
+
+        private Button grantRoleButton;
+        private Button checkRoleButton;
+        private DataGridView grantedRoles;
     }
 }

@@ -58,7 +58,7 @@ namespace App
             string query = $"SELECT * FROM {table} WHERE GRANTEE='{grantee}'";
             var queryData = DataProvider.Instance.ExcuteQuery(query);
 
-            queriedPrivileges.DataSource = queryData;
+            grantedPrivileges.DataSource = queryData;
         }
 
         private string GetGrantee()

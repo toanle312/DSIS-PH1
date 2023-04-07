@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             checkPrivsBtn = new Button();
-            queriedPrivileges = new DataGridView();
+            grantedPrivileges = new DataGridView();
             granteeTextBox = new TextBox();
             granteeLabel = new Label();
             targetLabel = new Label();
@@ -38,7 +38,7 @@
             grantColPrivsBtn = new Button();
             privList = new CheckedListBox();
             privsLabel = new Label();
-            ((System.ComponentModel.ISupportInitialize)queriedPrivileges).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grantedPrivileges).BeginInit();
             SuspendLayout();
             // 
             // checkBtn
@@ -53,12 +53,12 @@
             // 
             // privileges
             // 
-            queriedPrivileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            queriedPrivileges.Location = new Point(12, 128);
-            queriedPrivileges.Name = "privileges";
-            queriedPrivileges.RowTemplate.Height = 25;
-            queriedPrivileges.Size = new Size(776, 243);
-            queriedPrivileges.TabIndex = 4;
+            grantedPrivileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grantedPrivileges.Location = new Point(12, 128);
+            grantedPrivileges.Name = "privileges";
+            grantedPrivileges.RowTemplate.Height = 25;
+            grantedPrivileges.Size = new Size(776, 243);
+            grantedPrivileges.TabIndex = 4;
             // 
             // granteeTxtBox
             // 
@@ -146,11 +146,11 @@
             Controls.Add(targetLabel);
             Controls.Add(granteeLabel);
             Controls.Add(granteeTextBox);
-            Controls.Add(queriedPrivileges);
+            Controls.Add(grantedPrivileges);
             Controls.Add(checkPrivsBtn);
             Name = "fGrantPrivs";
             Text = "fGrantPrivs";
-            ((System.ComponentModel.ISupportInitialize)queriedPrivileges).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grantedPrivileges).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -169,6 +169,6 @@
         private Button grantPrivsBtn;
         private Button checkPrivsBtn;
         private Button grantColPrivsBtn;
-        private DataGridView queriedPrivileges;
+        private DataGridView grantedPrivileges;
     }
 }
