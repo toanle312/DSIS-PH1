@@ -15,11 +15,13 @@ namespace App
         public fUsersList()
         {
             InitializeComponent();
+            string query = "SELECT username, user_id, account_status, created FROM DBA_USERS where account_status = 'OPEN' ORDER BY CREATED DESC";
+            user_list_view.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
 
-        private void view_btn_Click(object sender, EventArgs e)
+        private void refresh_btn_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM DBA_USERS";
+            string query = "SELECT username, user_id, account_status, created FROM DBA_USERS where account_status = 'OPEN' ORDER BY CREATED DESC";
             user_list_view.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
     }

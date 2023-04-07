@@ -37,10 +37,30 @@ namespace App
             f.Show();
         }
 
+        private bool check_dba(string usr)
+        {
+            string query = "SELECT* FROM USER_ROLE_PRIVS WHERE USERNAME = '{0}' AND GRANTED_ROLE = 'DBA'";
+            query = String.Format(query, usr);
+            var dataTable = DataProvider.Instance.ExcuteQuery(query);
+            if (dataTable.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void user_list_btn_Click(object sender, EventArgs e)
         {
-            var f = new fUsersList();
-            active_form(f);
+            if(check_dba(username_label.Text))
+            {     
+                var f = new fUsersList();
+                active_form(f);
+            }
+            else
+            {
+                MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void check_privs_btn_Click(object sender, EventArgs e)
