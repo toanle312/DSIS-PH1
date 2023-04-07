@@ -10,7 +10,7 @@ namespace App
             InitializeComponent();
 
             // Thiết lập dữ liệu ban đầu cho danh sách các bảng/view
-            objectList.Items.AddRange(getObjectNames());
+            objectList.Items.AddRange(getObjectNames().ToArray());
             objectList.SelectedIndex = 0;
         }
 
@@ -22,16 +22,20 @@ namespace App
             privileges.DataSource = queryData;
         }
 
-        private string[] getObjectNames()
+        private List<string> getObjectNames()
         {
-            string query = $"SELECT * FROM USER_TABLES";
-            var queryData = DataProvider.Instance.ExcuteQuery(query);
+            var tables = DataProvider.Instance.ExcuteQuery("SELECT * FROM USER_TABLES");
+            var views = DataProvider.Instance.ExcuteQuery("SELECT * FROM USER_VIEWS");
 
-            string[] objectNames = new string[queryData.Rows.Count];
+            List<string> objectNames = new List<string>();
 
-            for (int i = 0; i < queryData.Rows.Count; i++)
+            foreach (DataRow row in tables.Rows)
             {
-                objectNames[i] = queryData.Rows[i]["TABLE_NAME"].ToString();
+                objectNames.Add(row["TABLE_NAME"].ToString());
+            }
+            foreach (DataRow row in views.Rows)
+            {
+                objectNames.Add(row["VIEW_NAME"].ToString());
             }
 
             return objectNames;
@@ -55,11 +59,10 @@ namespace App
                 string priv = privs[i];
                 if (priv != "")
                 {
-                    privQuery += $"{priv}";
-                    if (i != privs.Length - 1)
-                        privQuery += ",";
+                    privQuery += $"{priv},";
                 }
             }
+            privQuery = privQuery.Remove(privQuery.Length - 1, 1);
 
             // Lấy tên schema hiện tại
             string schemaQuery = "SELECT USER FROM DUAL";
