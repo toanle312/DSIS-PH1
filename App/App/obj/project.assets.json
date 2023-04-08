@@ -751,11 +751,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FIT_HCMUS-HK2-2023\\DSIS\\Project 1\\Github\\App\\App\\App.csproj",
+      "projectUniqueName": "D:\\New folder\\DSIS-PH1\\App\\App\\App.csproj",
       "projectName": "App",
-      "projectPath": "D:\\FIT_HCMUS-HK2-2023\\DSIS\\Project 1\\Github\\App\\App\\App.csproj",
+      "projectPath": "D:\\New folder\\DSIS-PH1\\App\\App\\App.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\FIT_HCMUS-HK2-2023\\DSIS\\Project 1\\Github\\App\\App\\obj\\",
+      "outputPath": "D:\\New folder\\DSIS-PH1\\App\\App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
