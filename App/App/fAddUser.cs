@@ -38,8 +38,9 @@ namespace App
                 string pattern = @"^[^\s]+$";
 
                 bool isMatch = Regex.IsMatch(username, pattern);
+                bool isMatch1 = Regex.IsMatch(password, pattern);
                 //neu password hoac username co khoang trang thi nhap lai
-                if (!isMatch)
+                if (!isMatch || !isMatch1)
                 {
                     resultLabel.Text = "Password or username is invalid!!";
                 }

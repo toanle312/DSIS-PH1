@@ -68,9 +68,9 @@
             // ResultLabel
             // 
             ResultLabel.AutoSize = true;
-            ResultLabel.Location = new Point(50, 260);
+            ResultLabel.Location = new Point(226, 185);
             ResultLabel.Name = "ResultLabel";
-            ResultLabel.Size = new Size(0, 20);
+            ResultLabel.Size = new Size(29, 20);
             ResultLabel.TabIndex = 10;
             // 
             // label2
