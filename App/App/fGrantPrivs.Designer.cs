@@ -38,7 +38,7 @@
             grantColPrivsBtn = new Button();
             privList = new CheckedListBox();
             privsLabel = new Label();
-            label4 = new Label();
+            tabTitle = new Label();
             ((System.ComponentModel.ISupportInitialize)grantedPrivileges).BeginInit();
             SuspendLayout();
             // 
@@ -152,23 +152,23 @@
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.BackColor = SystemColors.ButtonFace;
-            label4.Font = new Font("Segoe Script", 21.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = Color.Coral;
-            label4.Location = new Point(239, -11);
-            label4.Name = "label4";
-            label4.Size = new Size(421, 60);
-            label4.TabIndex = 21;
-            label4.Text = "GRANT PRIVILEGES";
-            label4.Click += label4_Click;
+            tabTitle.AutoSize = true;
+            tabTitle.BackColor = SystemColors.ButtonFace;
+            tabTitle.Font = new Font("Segoe Script", 21.2F, FontStyle.Bold, GraphicsUnit.Point);
+            tabTitle.ForeColor = Color.Coral;
+            tabTitle.Location = new Point(239, -11);
+            tabTitle.Name = "label4";
+            tabTitle.Size = new Size(421, 60);
+            tabTitle.TabIndex = 21;
+            tabTitle.Text = "GRANT PRIVILEGES";
+            tabTitle.Click += label4_Click;
             // 
             // fGrantPrivs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
-            Controls.Add(label4);
+            Controls.Add(tabTitle);
             Controls.Add(privsLabel);
             Controls.Add(privList);
             Controls.Add(grantColPrivsBtn);
@@ -189,6 +189,8 @@
 
         #endregion
 
+        private Label tabTitle;
+
         private Label privsLabel;
         private CheckedListBox privList;
 
@@ -202,6 +204,5 @@
         private Button checkPrivsBtn;
         private Button grantColPrivsBtn;
         private DataGridView grantedPrivileges;
-        private Label label4;
     }
 }

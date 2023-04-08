@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace App
+﻿namespace App
 {
     public partial class fGrantPrivs : Form
     {
@@ -38,11 +36,11 @@ namespace App
 
             List<string> objectNames = new();
 
-            foreach (DataRow row in tables.Rows)
+            foreach (System.Data.DataRow row in tables.Rows)
             {
                 objectNames.Add(row["TABLE_NAME"].ToString() ?? "");
             }
-            foreach (DataRow row in views.Rows)
+            foreach (System.Data.DataRow row in views.Rows)
             {
                 objectNames.Add(row["VIEW_NAME"].ToString() ?? "");
             }
@@ -160,19 +158,19 @@ namespace App
             {
                 if (targetList.CheckedItems.Count == 0)
                 {
-                    MessageBox.Show("Vui lòng chọn một bảng hoặc view để cấp quyền trên cột!");
+                    MessageBox.Show("Please choose one table or view for granting privileges on column!", "Message");
                 }
                 else if (targetList.CheckedItems.Count > 1)
                 {
-                    MessageBox.Show("Chỉ được chọn 1 bảng hoặc view để cấp quyền trên cột!");
+                    MessageBox.Show("Can choose only one table or view!", "Message");
                 }
                 else if (privList.CheckedItems.Count == 0)
                 {
-                    MessageBox.Show("Vui lòng chọn quyền cần cấp!");
+                    MessageBox.Show("Please choose privilege(s) that you want to grant!", "Message");
                 }
                 else if (privList.CheckedItems.Contains("INSERT") || privList.CheckedItems.Contains("DELETE"))
                 {
-                    MessageBox.Show("Không thể cấp quyền INSERT hoặc DELETE trên cột!");
+                    MessageBox.Show("Can not grant INSERT or DELETE privilege on column!", "Message");
                 }
                 else
                 {
@@ -279,7 +277,6 @@ namespace App
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
