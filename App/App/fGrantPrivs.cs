@@ -1,4 +1,6 @@
-﻿namespace App
+﻿using System.Data;
+
+namespace App
 {
     public partial class fGrantPrivs : Form
     {
