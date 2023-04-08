@@ -21,7 +21,8 @@
             // Thiết lập dữ liệu ban đầu cho danh sách bảng/view
             targetList.Items.Clear();
             targetList.Items.AddRange(getObjectNames().ToArray());
-            targetList.SelectedIndex = 0;
+            if (targetList.Items.Count > 0)
+                targetList.SelectedIndex = 0;
 
             // Thiết lập các quyền
             string[] privs = { "SELECT", "INSERT", "UPDATE", "DELETE", "WITH GRANT OPTION" };
@@ -209,7 +210,7 @@
 
             List<string> columnNames = new();
 
-            foreach (DataRow row in columns.Rows)
+            foreach (System.Data.DataRow row in columns.Rows)
             {
                 columnNames.Add(row["COLUMN_NAME"].ToString() ?? "");
             }
