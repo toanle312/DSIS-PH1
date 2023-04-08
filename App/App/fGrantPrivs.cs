@@ -190,8 +190,8 @@ namespace App
             _grantColumnPrivsMode = true;
 
             // Thay đổi nhãn của các controls
-            targetLabel.Text = "Chọn cột";
-            grantColPrivsBtn.Text = "Thoát khỏi chế độ cấp quyền cho cột";
+            targetLabel.Text = "Choose column";
+            grantColPrivsBtn.Text = "Exit Grant Privileges For Column";
 
             // Disable các controls không được phép chọn
             privList.Enabled = false;
@@ -222,8 +222,8 @@ namespace App
         private void ChangeToGrantObjectPrivsMode()
         {
             // Thay đổi nhãn của các controls
-            targetLabel.Text = "Chọn table/view";
-            grantColPrivsBtn.Text = "Cấp quyền cho từng cột";
+            targetLabel.Text = "Choose table / view";
+            grantColPrivsBtn.Text = "Grant Privileges For Column";
 
             // Enable các controls được phép chọn
             privList.Enabled = true;

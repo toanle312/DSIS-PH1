@@ -30,15 +30,15 @@
         {
             label1 = new Label();
             rolename_textbox = new TextBox();
-            label3 = new Label();
             button1 = new Button();
             ResultLabel = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(50, 117);
+            label1.Location = new Point(226, 113);
             label1.Name = "label1";
             label1.Size = new Size(76, 20);
             label1.TabIndex = 0;
@@ -46,30 +46,19 @@
             // 
             // rolename_textbox
             // 
-            rolename_textbox.Location = new Point(50, 149);
+            rolename_textbox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            rolename_textbox.Location = new Point(308, 108);
             rolename_textbox.Name = "rolename_textbox";
-            rolename_textbox.Size = new Size(153, 27);
+            rolename_textbox.Size = new Size(153, 34);
             rolename_textbox.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.MediumAquamarine;
-            label3.Location = new Point(38, 9);
-            label3.Name = "label3";
-            label3.Size = new Size(372, 67);
-            label3.TabIndex = 7;
-            label3.Text = "Add role sreen";
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ActiveCaption;
+            button1.BackColor = Color.LightGreen;
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(50, 196);
+            button1.Location = new Point(486, 106);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(94, 41);
             button1.TabIndex = 9;
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = false;
@@ -80,17 +69,29 @@
             ResultLabel.AutoSize = true;
             ResultLabel.Location = new Point(50, 260);
             ResultLabel.Name = "ResultLabel";
-            ResultLabel.Size = new Size(10, 20);
+            ResultLabel.Size = new Size(0, 20);
             ResultLabel.TabIndex = 10;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.ButtonFace;
+            label2.Font = new Font("Segoe Script", 25.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.Coral;
+            label2.Location = new Point(267, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(289, 70);
+            label2.TabIndex = 11;
+            label2.Text = "ADD ROLE";
             // 
             // fAddRole
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(ResultLabel);
             Controls.Add(button1);
-            Controls.Add(label3);
             Controls.Add(rolename_textbox);
             Controls.Add(label1);
             Name = "fAddRole";
@@ -104,8 +105,8 @@
 
         private Label label1;
         private TextBox rolename_textbox;
-        private Label label3;
         private Button button1;
         private Label ResultLabel;
+        private Label label2;
     }
 }

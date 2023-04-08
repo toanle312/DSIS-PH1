@@ -23,12 +23,9 @@ namespace App
 
         private void connect_btn_Click(object sender, EventArgs e)
         {
-            //string username = username_textbox.Text;
-            //string password = password_textbox.Text;
+            string username = username_textbox.Text;
+            string password = password_textbox.Text;
 
-            // Tạm thời bỏ qua quá trình login
-            string username = "QLYTE";
-            string password = "123";
 
             string checkLogin = DataProvider.Instance.ConnectDB(username, password);
 

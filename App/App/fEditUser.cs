@@ -79,5 +79,10 @@ namespace App
             password_textbox.Text = "";
             conn.Close();
         }
+
+        private void fEditUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

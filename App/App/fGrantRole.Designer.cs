@@ -40,72 +40,82 @@
             // 
             // roleList
             // 
+            roleList.BackColor = SystemColors.GradientActiveCaption;
             roleList.CheckOnClick = true;
             roleList.FormattingEnabled = true;
-            roleList.Location = new Point(12, 37);
+            roleList.Location = new Point(14, 49);
+            roleList.Margin = new Padding(3, 4, 3, 4);
             roleList.Name = "roleList";
-            roleList.Size = new Size(290, 94);
+            roleList.Size = new Size(331, 114);
             roleList.TabIndex = 0;
             // 
             // roleLabel
             // 
             roleLabel.AutoSize = true;
-            roleLabel.Location = new Point(12, 19);
+            roleLabel.Location = new Point(14, 25);
             roleLabel.Name = "roleLabel";
-            roleLabel.Size = new Size(64, 15);
+            roleLabel.Size = new Size(94, 20);
             roleLabel.TabIndex = 1;
-            roleLabel.Text = "Chọn roles";
+            roleLabel.Text = "Choose roles";
             // 
             // granteeLabel
             // 
             granteeLabel.AutoSize = true;
-            granteeLabel.Location = new Point(12, 154);
+            granteeLabel.Location = new Point(14, 205);
             granteeLabel.Name = "granteeLabel";
-            granteeLabel.Size = new Size(121, 15);
+            granteeLabel.Size = new Size(111, 20);
             granteeLabel.TabIndex = 3;
-            granteeLabel.Text = "Nhập tên người dùng";
+            granteeLabel.Text = "Input username";
             // 
             // granteeTextBox
             // 
-            granteeTextBox.Location = new Point(12, 172);
+            granteeTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            granteeTextBox.Location = new Point(14, 229);
+            granteeTextBox.Margin = new Padding(3, 4, 3, 4);
             granteeTextBox.Name = "granteeTextBox";
-            granteeTextBox.Size = new Size(290, 23);
+            granteeTextBox.Size = new Size(331, 34);
             granteeTextBox.TabIndex = 4;
             // 
-            // privileges
+            // grantedRoles
             // 
             grantedRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grantedRoles.Location = new Point(308, 37);
-            grantedRoles.Name = "privileges";
+            grantedRoles.Location = new Point(352, 49);
+            grantedRoles.Margin = new Padding(3, 4, 3, 4);
+            grantedRoles.Name = "grantedRoles";
+            grantedRoles.RowHeadersWidth = 51;
             grantedRoles.RowTemplate.Height = 25;
-            grantedRoles.Size = new Size(480, 323);
+            grantedRoles.Size = new Size(549, 431);
             grantedRoles.TabIndex = 5;
             // 
-            // grantRole
+            // grantRoleButton
             // 
-            grantRoleButton.Location = new Point(162, 201);
-            grantRoleButton.Name = "grantRole";
-            grantRoleButton.Size = new Size(140, 23);
+            grantRoleButton.BackColor = Color.LightGreen;
+            grantRoleButton.Location = new Point(185, 271);
+            grantRoleButton.Margin = new Padding(3, 4, 3, 4);
+            grantRoleButton.Name = "grantRoleButton";
+            grantRoleButton.Size = new Size(160, 41);
             grantRoleButton.TabIndex = 6;
-            grantRoleButton.Text = "Cấp vai trò";
-            grantRoleButton.UseVisualStyleBackColor = true;
+            grantRoleButton.Text = "Grant Roles";
+            grantRoleButton.UseVisualStyleBackColor = false;
             grantRoleButton.Click += GrantRoleButton_Click;
             // 
-            // checkBtn
+            // checkRoleButton
             // 
-            checkRoleButton.Location = new Point(12, 201);
-            checkRoleButton.Name = "checkBtn";
-            checkRoleButton.Size = new Size(140, 23);
+            checkRoleButton.BackColor = Color.Khaki;
+            checkRoleButton.Location = new Point(14, 271);
+            checkRoleButton.Margin = new Padding(3, 4, 3, 4);
+            checkRoleButton.Name = "checkRoleButton";
+            checkRoleButton.Size = new Size(160, 41);
             checkRoleButton.TabIndex = 7;
-            checkRoleButton.Text = "Kiểm tra";
-            checkRoleButton.UseVisualStyleBackColor = true;
+            checkRoleButton.Text = "Check Roles";
+            checkRoleButton.UseVisualStyleBackColor = false;
             checkRoleButton.Click += CheckRoleButton_Click;
             // 
             // fGrantRole
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(checkRoleButton);
             Controls.Add(grantRoleButton);
             Controls.Add(grantedRoles);
@@ -113,6 +123,7 @@
             Controls.Add(granteeLabel);
             Controls.Add(roleLabel);
             Controls.Add(roleList);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "fGrantRole";
             Text = "fGrantRole";
             ((System.ComponentModel.ISupportInitialize)grantedRoles).EndInit();
