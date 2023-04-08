@@ -30,7 +30,10 @@ namespace App
             connection.Close();
             connection.Dispose();
         }
-
+        public OracleConnection getConn()
+        {
+            return connection;
+        }
         public string ConnectDB(string usr, string pwd)
         {
             String conn = @"Data Source=localhost:1521/xe; User ID=" + usr + ";Password=" + pwd + "";
