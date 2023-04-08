@@ -28,7 +28,7 @@ namespace App
             //username trong thi thong bao
             if (username == "")
             {
-                resultLabel.Text = "username can't be empty!!";
+                resultLabel.Text = "Username can't be empty!!";
             }
             else
             {
@@ -38,7 +38,7 @@ namespace App
                 //neu username co khoang trang thi nhap lai
                 if (!isMatch)
                 {
-                    resultLabel.Text = "Rolename is invalid!!";
+                    resultLabel.Text = "Username is invalid!!";
                 }
                 else
                 {
