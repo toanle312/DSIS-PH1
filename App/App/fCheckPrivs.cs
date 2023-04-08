@@ -78,5 +78,10 @@ namespace App
                 query = "SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE = '" + name + "'";
             table_priv_view.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

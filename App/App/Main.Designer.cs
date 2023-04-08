@@ -68,6 +68,7 @@
             // user_list_btn
             // 
             user_list_btn.BackColor = SystemColors.ActiveCaption;
+            user_list_btn.Cursor = Cursors.Hand;
             user_list_btn.Location = new Point(12, 57);
             user_list_btn.Name = "user_list_btn";
             user_list_btn.Size = new Size(131, 41);
@@ -79,6 +80,7 @@
             // check_privs_btn
             // 
             check_privs_btn.BackColor = SystemColors.ActiveCaption;
+            check_privs_btn.Cursor = Cursors.Hand;
             check_privs_btn.Location = new Point(149, 57);
             check_privs_btn.Name = "check_privs_btn";
             check_privs_btn.Size = new Size(131, 41);
@@ -90,6 +92,7 @@
             // add_user_btn
             // 
             add_user_btn.BackColor = SystemColors.ActiveCaption;
+            add_user_btn.Cursor = Cursors.Hand;
             add_user_btn.Location = new Point(286, 57);
             add_user_btn.Name = "add_user_btn";
             add_user_btn.Size = new Size(131, 41);
@@ -101,6 +104,7 @@
             // add_role_btn
             // 
             add_role_btn.BackColor = SystemColors.ActiveCaption;
+            add_role_btn.Cursor = Cursors.Hand;
             add_role_btn.Location = new Point(697, 57);
             add_role_btn.Name = "add_role_btn";
             add_role_btn.Size = new Size(131, 41);
@@ -112,6 +116,7 @@
             // edit_user_btn
             // 
             edit_user_btn.BackColor = SystemColors.ActiveCaption;
+            edit_user_btn.Cursor = Cursors.Hand;
             edit_user_btn.Location = new Point(560, 57);
             edit_user_btn.Name = "edit_user_btn";
             edit_user_btn.Size = new Size(131, 41);
@@ -123,6 +128,7 @@
             // del_user_btn
             // 
             del_user_btn.BackColor = SystemColors.ActiveCaption;
+            del_user_btn.Cursor = Cursors.Hand;
             del_user_btn.Location = new Point(423, 57);
             del_user_btn.Name = "del_user_btn";
             del_user_btn.Size = new Size(131, 41);
@@ -134,6 +140,7 @@
             // del_role_btn
             // 
             del_role_btn.BackColor = SystemColors.ActiveCaption;
+            del_role_btn.Cursor = Cursors.Hand;
             del_role_btn.Location = new Point(834, 57);
             del_role_btn.Name = "del_role_btn";
             del_role_btn.Size = new Size(131, 41);
@@ -145,6 +152,7 @@
             // revoke_privs_btn
             // 
             revoke_privs_btn.BackColor = SystemColors.ActiveCaption;
+            revoke_privs_btn.Cursor = Cursors.Hand;
             revoke_privs_btn.Location = new Point(305, 104);
             revoke_privs_btn.Name = "revoke_privs_btn";
             revoke_privs_btn.Size = new Size(146, 41);
@@ -156,6 +164,7 @@
             // grant_role_btn
             // 
             grant_role_btn.BackColor = SystemColors.ActiveCaption;
+            grant_role_btn.Cursor = Cursors.Hand;
             grant_role_btn.Location = new Point(149, 104);
             grant_role_btn.Name = "grant_role_btn";
             grant_role_btn.Size = new Size(150, 41);
@@ -167,6 +176,7 @@
             // grant_privs_btn
             // 
             grant_privs_btn.BackColor = SystemColors.ActiveCaption;
+            grant_privs_btn.Cursor = Cursors.Hand;
             grant_privs_btn.Location = new Point(12, 104);
             grant_privs_btn.Name = "grant_privs_btn";
             grant_privs_btn.Size = new Size(131, 41);
@@ -187,6 +197,7 @@
             // log_out_btn
             // 
             log_out_btn.BackColor = Color.LightCoral;
+            log_out_btn.Cursor = Cursors.Hand;
             log_out_btn.Location = new Point(238, 8);
             log_out_btn.Name = "log_out_btn";
             log_out_btn.Size = new Size(94, 40);

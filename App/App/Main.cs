@@ -51,8 +51,8 @@ namespace App
 
         private void user_list_btn_Click(object sender, EventArgs e)
         {
-            if(check_dba(username_label.Text))
-            {     
+            if (check_dba(username_label.Text))
+            {
                 var f = new fUsersList();
                 active_form(f);
             }
@@ -60,7 +60,7 @@ namespace App
             {
                 MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void check_privs_btn_Click(object sender, EventArgs e)

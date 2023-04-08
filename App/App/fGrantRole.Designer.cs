@@ -35,6 +35,7 @@
             grantedRoles = new DataGridView();
             grantRoleButton = new Button();
             checkRoleButton = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)grantedRoles).BeginInit();
             SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             roleList.BackColor = SystemColors.GradientActiveCaption;
             roleList.CheckOnClick = true;
             roleList.FormattingEnabled = true;
-            roleList.Location = new Point(14, 49);
+            roleList.Location = new Point(15, 69);
             roleList.Margin = new Padding(3, 4, 3, 4);
             roleList.Name = "roleList";
             roleList.Size = new Size(331, 114);
@@ -52,7 +53,7 @@
             // roleLabel
             // 
             roleLabel.AutoSize = true;
-            roleLabel.Location = new Point(14, 25);
+            roleLabel.Location = new Point(15, 45);
             roleLabel.Name = "roleLabel";
             roleLabel.Size = new Size(94, 20);
             roleLabel.TabIndex = 1;
@@ -61,7 +62,7 @@
             // granteeLabel
             // 
             granteeLabel.AutoSize = true;
-            granteeLabel.Location = new Point(14, 205);
+            granteeLabel.Location = new Point(15, 225);
             granteeLabel.Name = "granteeLabel";
             granteeLabel.Size = new Size(111, 20);
             granteeLabel.TabIndex = 3;
@@ -70,7 +71,7 @@
             // granteeTextBox
             // 
             granteeTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            granteeTextBox.Location = new Point(14, 229);
+            granteeTextBox.Location = new Point(15, 249);
             granteeTextBox.Margin = new Padding(3, 4, 3, 4);
             granteeTextBox.Name = "granteeTextBox";
             granteeTextBox.Size = new Size(331, 34);
@@ -79,18 +80,19 @@
             // grantedRoles
             // 
             grantedRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grantedRoles.Location = new Point(352, 49);
+            grantedRoles.Location = new Point(353, 69);
             grantedRoles.Margin = new Padding(3, 4, 3, 4);
             grantedRoles.Name = "grantedRoles";
             grantedRoles.RowHeadersWidth = 51;
             grantedRoles.RowTemplate.Height = 25;
-            grantedRoles.Size = new Size(549, 431);
+            grantedRoles.Size = new Size(549, 404);
             grantedRoles.TabIndex = 5;
             // 
             // grantRoleButton
             // 
             grantRoleButton.BackColor = Color.LightGreen;
-            grantRoleButton.Location = new Point(185, 271);
+            grantRoleButton.Cursor = Cursors.Hand;
+            grantRoleButton.Location = new Point(186, 291);
             grantRoleButton.Margin = new Padding(3, 4, 3, 4);
             grantRoleButton.Name = "grantRoleButton";
             grantRoleButton.Size = new Size(160, 41);
@@ -102,7 +104,8 @@
             // checkRoleButton
             // 
             checkRoleButton.BackColor = Color.Khaki;
-            checkRoleButton.Location = new Point(14, 271);
+            checkRoleButton.Cursor = Cursors.Hand;
+            checkRoleButton.Location = new Point(15, 291);
             checkRoleButton.Margin = new Padding(3, 4, 3, 4);
             checkRoleButton.Name = "checkRoleButton";
             checkRoleButton.Size = new Size(160, 41);
@@ -111,11 +114,25 @@
             checkRoleButton.UseVisualStyleBackColor = false;
             checkRoleButton.Click += CheckRoleButton_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = SystemColors.ButtonFace;
+            label4.Cursor = Cursors.Hand;
+            label4.Font = new Font("Segoe Script", 25.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.Coral;
+            label4.Location = new Point(283, -5);
+            label4.Name = "label4";
+            label4.Size = new Size(351, 70);
+            label4.TabIndex = 11;
+            label4.Text = "GRANT ROLE";
+            // 
             // fGrantRole
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(label4);
             Controls.Add(checkRoleButton);
             Controls.Add(grantRoleButton);
             Controls.Add(grantedRoles);
@@ -142,5 +159,6 @@
         private Button grantRoleButton;
         private Button checkRoleButton;
         private DataGridView grantedRoles;
+        private Label label4;
     }
 }

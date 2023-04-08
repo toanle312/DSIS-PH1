@@ -75,6 +75,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = SystemColors.ButtonFace;
+            label2.Cursor = Cursors.Hand;
             label2.Font = new Font("Segoe Script", 25.2F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Coral;
             label2.Location = new Point(208, 23);

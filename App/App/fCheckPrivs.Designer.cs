@@ -28,105 +28,136 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.c_table_priv = new System.Windows.Forms.Button();
-            this.c_column_priv = new System.Windows.Forms.Button();
-            this.c_sys_priv = new System.Windows.Forms.Button();
-            this.table_priv_view = new System.Windows.Forms.DataGridView();
-            this.name_or_role = new System.Windows.Forms.Label();
-            this.name_init = new System.Windows.Forms.TextBox();
-            this.c_role_user = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.table_priv_view)).BeginInit();
-            this.SuspendLayout();
+            c_table_priv = new Button();
+            c_column_priv = new Button();
+            c_sys_priv = new Button();
+            table_priv_view = new DataGridView();
+            name_or_role = new Label();
+            name_init = new TextBox();
+            c_role_user = new Button();
+            label2 = new Label();
+            ((System.ComponentModel.ISupportInitialize)table_priv_view).BeginInit();
+            SuspendLayout();
             // 
             // c_table_priv
             // 
-            this.c_table_priv.Location = new System.Drawing.Point(46, 52);
-            this.c_table_priv.Name = "c_table_priv";
-            this.c_table_priv.Size = new System.Drawing.Size(151, 23);
-            this.c_table_priv.TabIndex = 0;
-            this.c_table_priv.Text = "Check Table Privileges";
-            this.c_table_priv.UseVisualStyleBackColor = true;
-            this.c_table_priv.Click += new System.EventHandler(this.c_table_priv_Click);
+            c_table_priv.BackColor = Color.LightSkyBlue;
+            c_table_priv.Cursor = Cursors.Hand;
+            c_table_priv.Location = new Point(53, 144);
+            c_table_priv.Margin = new Padding(3, 4, 3, 4);
+            c_table_priv.Name = "c_table_priv";
+            c_table_priv.Size = new Size(173, 41);
+            c_table_priv.TabIndex = 0;
+            c_table_priv.Text = "Check Table Privileges";
+            c_table_priv.UseVisualStyleBackColor = false;
+            c_table_priv.Click += c_table_priv_Click;
             // 
             // c_column_priv
             // 
-            this.c_column_priv.Location = new System.Drawing.Point(225, 52);
-            this.c_column_priv.Name = "c_column_priv";
-            this.c_column_priv.Size = new System.Drawing.Size(161, 23);
-            this.c_column_priv.TabIndex = 1;
-            this.c_column_priv.Text = "Check Column Privileges";
-            this.c_column_priv.UseVisualStyleBackColor = true;
-            this.c_column_priv.Click += new System.EventHandler(this.c_column_priv_Click);
+            c_column_priv.BackColor = Color.LightSkyBlue;
+            c_column_priv.Cursor = Cursors.Hand;
+            c_column_priv.Location = new Point(244, 144);
+            c_column_priv.Margin = new Padding(3, 4, 3, 4);
+            c_column_priv.Name = "c_column_priv";
+            c_column_priv.Size = new Size(184, 41);
+            c_column_priv.TabIndex = 1;
+            c_column_priv.Text = "Check Column Privileges";
+            c_column_priv.UseVisualStyleBackColor = false;
+            c_column_priv.Click += c_column_priv_Click;
             // 
             // c_sys_priv
             // 
-            this.c_sys_priv.Location = new System.Drawing.Point(406, 52);
-            this.c_sys_priv.Name = "c_sys_priv";
-            this.c_sys_priv.Size = new System.Drawing.Size(155, 23);
-            this.c_sys_priv.TabIndex = 2;
-            this.c_sys_priv.Text = "Check System Privileges";
-            this.c_sys_priv.UseVisualStyleBackColor = true;
-            this.c_sys_priv.Click += new System.EventHandler(this.c_sys_priv_Click);
+            c_sys_priv.BackColor = Color.LightSkyBlue;
+            c_sys_priv.Cursor = Cursors.Hand;
+            c_sys_priv.Location = new Point(448, 144);
+            c_sys_priv.Margin = new Padding(3, 4, 3, 4);
+            c_sys_priv.Name = "c_sys_priv";
+            c_sys_priv.Size = new Size(177, 41);
+            c_sys_priv.TabIndex = 2;
+            c_sys_priv.Text = "Check System Privileges";
+            c_sys_priv.UseVisualStyleBackColor = false;
+            c_sys_priv.Click += c_sys_priv_Click;
             // 
             // table_priv_view
             // 
-            this.table_priv_view.AllowUserToAddRows = false;
-            this.table_priv_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_priv_view.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.table_priv_view.Location = new System.Drawing.Point(34, 94);
-            this.table_priv_view.Name = "table_priv_view";
-            this.table_priv_view.RowTemplate.Height = 25;
-            this.table_priv_view.Size = new System.Drawing.Size(702, 272);
-            this.table_priv_view.TabIndex = 3;
+            table_priv_view.AllowUserToAddRows = false;
+            table_priv_view.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            table_priv_view.EditMode = DataGridViewEditMode.EditProgrammatically;
+            table_priv_view.Location = new Point(39, 193);
+            table_priv_view.Margin = new Padding(3, 4, 3, 4);
+            table_priv_view.Name = "table_priv_view";
+            table_priv_view.RowHeadersWidth = 51;
+            table_priv_view.RowTemplate.Height = 25;
+            table_priv_view.Size = new Size(802, 295);
+            table_priv_view.TabIndex = 3;
             // 
             // name_or_role
             // 
-            this.name_or_role.AutoSize = true;
-            this.name_or_role.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.name_or_role.Location = new System.Drawing.Point(46, 21);
-            this.name_or_role.Name = "name_or_role";
-            this.name_or_role.Size = new System.Drawing.Size(105, 17);
-            this.name_or_role.TabIndex = 4;
-            this.name_or_role.Text = "User/Role Name";
+            name_or_role.AutoSize = true;
+            name_or_role.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            name_or_role.Location = new Point(53, 94);
+            name_or_role.Name = "name_or_role";
+            name_or_role.Size = new Size(135, 23);
+            name_or_role.TabIndex = 4;
+            name_or_role.Text = "User/Role Name";
             // 
             // name_init
             // 
-            this.name_init.Location = new System.Drawing.Point(166, 20);
-            this.name_init.Name = "name_init";
-            this.name_init.Size = new System.Drawing.Size(267, 23);
-            this.name_init.TabIndex = 5;
-            this.name_init.Text = "\r\n";
+            name_init.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            name_init.Location = new Point(194, 85);
+            name_init.Margin = new Padding(3, 4, 3, 4);
+            name_init.Name = "name_init";
+            name_init.Size = new Size(209, 34);
+            name_init.TabIndex = 5;
+            name_init.Text = "\r\n";
             // 
             // c_role_user
             // 
-            this.c_role_user.Location = new System.Drawing.Point(589, 52);
-            this.c_role_user.Name = "c_role_user";
-            this.c_role_user.Size = new System.Drawing.Size(135, 23);
-            this.c_role_user.TabIndex = 6;
-            this.c_role_user.Text = "Check Roles Of User";
-            this.c_role_user.UseVisualStyleBackColor = true;
-            this.c_role_user.Click += new System.EventHandler(this.c_role_user_Click);
+            c_role_user.BackColor = Color.LightSkyBlue;
+            c_role_user.Cursor = Cursors.Hand;
+            c_role_user.Location = new Point(642, 144);
+            c_role_user.Margin = new Padding(3, 4, 3, 4);
+            c_role_user.Name = "c_role_user";
+            c_role_user.Size = new Size(154, 41);
+            c_role_user.TabIndex = 6;
+            c_role_user.Text = "Check Roles Of User";
+            c_role_user.UseVisualStyleBackColor = false;
+            c_role_user.Click += c_role_user_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.ButtonFace;
+            label2.Font = new Font("Segoe Script", 25.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.Coral;
+            label2.Location = new Point(217, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(481, 70);
+            label2.TabIndex = 10;
+            label2.Text = "CHECK PRIVILEGES";
+            label2.Click += label2_Click;
             // 
             // fCheckPrivs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.c_role_user);
-            this.Controls.Add(this.name_init);
-            this.Controls.Add(this.name_or_role);
-            this.Controls.Add(this.table_priv_view);
-            this.Controls.Add(this.c_sys_priv);
-            this.Controls.Add(this.c_column_priv);
-            this.Controls.Add(this.c_table_priv);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "fCheckPrivs";
-            this.Text = "fCheckPrivs";
-            this.TransparencyKey = System.Drawing.Color.White;
-            ((System.ComponentModel.ISupportInitialize)(this.table_priv_view)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 600);
+            Controls.Add(label2);
+            Controls.Add(c_role_user);
+            Controls.Add(name_init);
+            Controls.Add(name_or_role);
+            Controls.Add(table_priv_view);
+            Controls.Add(c_sys_priv);
+            Controls.Add(c_column_priv);
+            Controls.Add(c_table_priv);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "fCheckPrivs";
+            Text = "fCheckPrivs";
+            TransparencyKey = Color.White;
+            ((System.ComponentModel.ISupportInitialize)table_priv_view).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -138,5 +169,6 @@
         private Label name_or_role;
         private TextBox name_init;
         private Button c_role_user;
+        private Label label2;
     }
 }

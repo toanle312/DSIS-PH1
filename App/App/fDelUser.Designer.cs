@@ -55,6 +55,7 @@
             // button1
             // 
             button1.BackColor = Color.Khaki;
+            button1.Cursor = Cursors.Hand;
             button1.Location = new Point(457, 120);
             button1.Name = "button1";
             button1.Size = new Size(94, 41);

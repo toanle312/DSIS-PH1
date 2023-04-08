@@ -55,6 +55,7 @@
             // button1
             // 
             button1.BackColor = Color.LightGreen;
+            button1.Cursor = Cursors.Hand;
             button1.ForeColor = SystemColors.ActiveCaptionText;
             button1.Location = new Point(486, 106);
             button1.Name = "button1";

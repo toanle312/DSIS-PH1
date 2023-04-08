@@ -38,13 +38,15 @@
             grantColPrivsBtn = new Button();
             privList = new CheckedListBox();
             privsLabel = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)grantedPrivileges).BeginInit();
             SuspendLayout();
             // 
             // checkPrivsBtn
             // 
             checkPrivsBtn.BackColor = Color.Khaki;
-            checkPrivsBtn.Location = new Point(406, 84);
+            checkPrivsBtn.Cursor = Cursors.Hand;
+            checkPrivsBtn.Location = new Point(404, 121);
             checkPrivsBtn.Margin = new Padding(3, 4, 3, 4);
             checkPrivsBtn.Name = "checkPrivsBtn";
             checkPrivsBtn.Size = new Size(126, 41);
@@ -56,18 +58,18 @@
             // grantedPrivileges
             // 
             grantedPrivileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grantedPrivileges.Location = new Point(14, 193);
+            grantedPrivileges.Location = new Point(12, 230);
             grantedPrivileges.Margin = new Padding(3, 4, 3, 4);
             grantedPrivileges.Name = "grantedPrivileges";
             grantedPrivileges.RowHeadersWidth = 51;
             grantedPrivileges.RowTemplate.Height = 25;
-            grantedPrivileges.Size = new Size(887, 302);
+            grantedPrivileges.Size = new Size(887, 266);
             grantedPrivileges.TabIndex = 4;
             // 
             // granteeTextBox
             // 
             granteeTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            granteeTextBox.Location = new Point(406, 37);
+            granteeTextBox.Location = new Point(404, 74);
             granteeTextBox.Margin = new Padding(3, 4, 3, 4);
             granteeTextBox.Name = "granteeTextBox";
             granteeTextBox.Size = new Size(274, 34);
@@ -76,7 +78,7 @@
             // granteeLabel
             // 
             granteeLabel.AutoSize = true;
-            granteeLabel.Location = new Point(406, 12);
+            granteeLabel.Location = new Point(404, 49);
             granteeLabel.Name = "granteeLabel";
             granteeLabel.Size = new Size(173, 20);
             granteeLabel.TabIndex = 11;
@@ -85,7 +87,7 @@
             // targetLabel
             // 
             targetLabel.AutoSize = true;
-            targetLabel.Location = new Point(14, 12);
+            targetLabel.Location = new Point(12, 49);
             targetLabel.Name = "targetLabel";
             targetLabel.Size = new Size(140, 20);
             targetLabel.TabIndex = 13;
@@ -94,7 +96,8 @@
             // grantPrivsBtn
             // 
             grantPrivsBtn.BackColor = Color.LightGreen;
-            grantPrivsBtn.Location = new Point(554, 84);
+            grantPrivsBtn.Cursor = Cursors.Hand;
+            grantPrivsBtn.Location = new Point(552, 121);
             grantPrivsBtn.Margin = new Padding(3, 4, 3, 4);
             grantPrivsBtn.Name = "grantPrivsBtn";
             grantPrivsBtn.Size = new Size(126, 41);
@@ -108,7 +111,7 @@
             targetList.BackColor = SystemColors.GradientActiveCaption;
             targetList.CheckOnClick = true;
             targetList.FormattingEnabled = true;
-            targetList.Location = new Point(14, 37);
+            targetList.Location = new Point(12, 74);
             targetList.Margin = new Padding(3, 4, 3, 4);
             targetList.Name = "targetList";
             targetList.Size = new Size(385, 136);
@@ -117,7 +120,8 @@
             // grantColPrivsBtn
             // 
             grantColPrivsBtn.BackColor = Color.LightSkyBlue;
-            grantColPrivsBtn.Location = new Point(406, 133);
+            grantColPrivsBtn.Cursor = Cursors.Hand;
+            grantColPrivsBtn.Location = new Point(404, 170);
             grantColPrivsBtn.Margin = new Padding(3, 4, 3, 4);
             grantColPrivsBtn.Name = "grantColPrivsBtn";
             grantColPrivsBtn.Size = new Size(274, 41);
@@ -131,7 +135,7 @@
             privList.BackColor = SystemColors.GradientActiveCaption;
             privList.CheckOnClick = true;
             privList.FormattingEnabled = true;
-            privList.Location = new Point(687, 37);
+            privList.Location = new Point(685, 74);
             privList.Margin = new Padding(3, 4, 3, 4);
             privList.Name = "privList";
             privList.Size = new Size(213, 136);
@@ -140,17 +144,31 @@
             // privsLabel
             // 
             privsLabel.AutoSize = true;
-            privsLabel.Location = new Point(687, 12);
+            privsLabel.Location = new Point(685, 49);
             privsLabel.Name = "privsLabel";
             privsLabel.Size = new Size(126, 20);
             privsLabel.TabIndex = 20;
             privsLabel.Text = "Choose privileges";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = SystemColors.ButtonFace;
+            label4.Font = new Font("Segoe Script", 21.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.Coral;
+            label4.Location = new Point(239, -11);
+            label4.Name = "label4";
+            label4.Size = new Size(421, 60);
+            label4.TabIndex = 21;
+            label4.Text = "GRANT PRIVILEGES";
+            label4.Click += label4_Click;
             // 
             // fGrantPrivs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(label4);
             Controls.Add(privsLabel);
             Controls.Add(privList);
             Controls.Add(grantColPrivsBtn);
@@ -184,5 +202,6 @@
         private Button checkPrivsBtn;
         private Button grantColPrivsBtn;
         private DataGridView grantedPrivileges;
+        private Label label4;
     }
 }

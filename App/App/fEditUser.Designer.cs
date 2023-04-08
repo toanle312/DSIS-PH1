@@ -53,6 +53,7 @@
             // button1
             // 
             button1.BackColor = Color.LightSkyBlue;
+            button1.Cursor = Cursors.Hand;
             button1.Location = new Point(355, 261);
             button1.Name = "button1";
             button1.Size = new Size(94, 41);
