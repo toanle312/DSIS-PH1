@@ -39,11 +39,11 @@ namespace App
 
             List<string> objectNames = new();
 
-            foreach (System.Data.DataRow row in tables.Rows)
+            foreach (DataRow row in tables.Rows)
             {
                 objectNames.Add(row["TABLE_NAME"].ToString() ?? "");
             }
-            foreach (System.Data.DataRow row in views.Rows)
+            foreach (DataRow row in views.Rows)
             {
                 objectNames.Add(row["VIEW_NAME"].ToString() ?? "");
             }
@@ -75,12 +75,13 @@ namespace App
                 foreach (var query in queries)
                 {
                     DataProvider.Instance.ExcuteQuery(query);
-                    MessageBox.Show(query);
+                    MessageBox.Show("Grant successfully!");
+                    //MessageBox.Show(query);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show($"Grant unsuccessfully! Error:\n\n{ex.Message}");
             }
         }
 
@@ -207,12 +208,13 @@ namespace App
 
         private string[] GetColumns(string objectName)
         {
-            string query = $"SELECT DISTINCT(COLUMN_NAME) FROM ALL_TAB_COLUMNS WHERE TABLE_NAME='{objectName}'";
+            string currentSchema = GetCurrentSchema();
+            string query = $"SELECT DISTINCT(COLUMN_NAME) FROM ALL_TAB_COLUMNS WHERE TABLE_NAME='{objectName}' AND OWNER='{currentSchema}'";
             var columns = DataProvider.Instance.ExcuteQuery(query);
 
             List<string> columnNames = new();
 
-            foreach (System.Data.DataRow row in columns.Rows)
+            foreach (DataRow row in columns.Rows)
             {
                 columnNames.Add(row["COLUMN_NAME"].ToString() ?? "");
             }

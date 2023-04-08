@@ -57,15 +57,16 @@ namespace App
             foreach (var role in selectedRoles)
             {
                 string query = $"BEGIN\n\tusp_GrantRole('{role}', '{grantee}');\nEND;";
-                MessageBox.Show(query);
+                //MessageBox.Show(query);
 
                 try
                 {
                     DataProvider.Instance.ExcuteQuery(query);
+                    MessageBox.Show("Grant successfully!");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"Grant unsuccessfully! Error:\n{ex.Message}");
                 }
             }
         }

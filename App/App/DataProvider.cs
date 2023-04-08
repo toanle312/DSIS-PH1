@@ -30,10 +30,12 @@ namespace App
             connection.Close();
             connection.Dispose();
         }
+
         public OracleConnection getConn()
         {
             return connection;
         }
+
         public string ConnectDB(string usr, string pwd)
         {
             String conn = @"Data Source=localhost:1521/xe; User ID=" + usr + ";Password=" + pwd + "";
@@ -61,11 +63,19 @@ namespace App
 
             connection.Open();
 
-            OracleCommand cmd = new OracleCommand(query, connection);
+            try
+            {
+                OracleCommand cmd = new OracleCommand(query, connection);
 
-            OracleDataAdapter adapter = new OracleDataAdapter(cmd);
+                OracleDataAdapter adapter = new OracleDataAdapter(cmd);
 
-            adapter.Fill(data);
+                adapter.Fill(data);
+            }
+            catch
+            {
+                connection.Close();
+                throw;
+            }
 
             connection.Close();
 
@@ -78,9 +88,17 @@ namespace App
 
             connection.Open();
 
-            OracleCommand cmd = new OracleCommand(query, connection);
+            try
+            {
+                OracleCommand cmd = new OracleCommand(query, connection);
 
-            data = cmd.ExecuteNonQuery();
+                data = cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                connection.Close();
+                throw;
+            }
 
             connection.Close();
 
@@ -93,9 +111,17 @@ namespace App
 
             connection.Open();
 
-            OracleCommand cmd = new OracleCommand(query, connection);
+            try
+            {
+                OracleCommand cmd = new OracleCommand(query, connection);
 
-            data = cmd.ExecuteScalar();
+                data = cmd.ExecuteScalar();
+            }
+            catch
+            {
+                connection.Close();
+                throw;
+            }
 
             connection.Close();
 
