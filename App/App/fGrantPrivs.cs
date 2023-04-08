@@ -75,9 +75,9 @@ namespace App
                 foreach (var query in queries)
                 {
                     DataProvider.Instance.ExcuteQuery(query);
-                    MessageBox.Show("Grant successfully!");
                     //MessageBox.Show(query);
                 }
+                MessageBox.Show("Grant successfully!");
             }
             catch (Exception ex)
             {
