@@ -20,7 +20,8 @@ namespace App
             private set { _instance = value; }
         }
 
-        private DataProvider() {  }
+        private DataProvider()
+        { }
 
         private OracleConnection connection;
 
@@ -54,7 +55,7 @@ namespace App
         public DataTable ExcuteQuery(string query)
         {
             DataTable data = new DataTable();
-            
+
             connection.Open();
 
             OracleCommand cmd = new OracleCommand(query, connection);
