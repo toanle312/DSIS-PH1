@@ -19,13 +19,34 @@
     <Compile Update="fEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="fGiamDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="fGrantPrivs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fGrantRole.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="fNhanSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fQLTrucTiep.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="fRevokePrivs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fTaiChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fTruongDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fTruongPhong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fUsersList.cs">
