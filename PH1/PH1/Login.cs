@@ -17,7 +17,6 @@ namespace PH1
         public Login()
         {
             InitializeComponent();
-          
         }
 
         public class Role
@@ -30,7 +29,6 @@ namespace PH1
             public static int NhanSu = 5;
             public static int TruongDA = 6;
             public static int GiamDoc = 7;
-
         }
 
         private int check_Login()
@@ -39,7 +37,7 @@ namespace PH1
 
             var data = DataProvider.Instance.ExcuteQuery("SELECT * FROM U_AD_QLNV.NHANVIEN_SESSION");
 
-            foreach (DataRow row in data.Rows) 
+            foreach (DataRow row in data.Rows)
             {
                 string vaitro = (string)row["VAITRO"];
                 if (vaitro == "Nhân viên")
@@ -79,7 +77,7 @@ namespace PH1
         {
             string username = username_textbox.Text;
             string password = password_textbox.Text;
-            
+
             var role = new Role();
 
             string checkLogin = DataProvider.Instance.ConnectDB(username, password);
@@ -88,7 +86,7 @@ namespace PH1
             {
                 var result = check_Login();
 
-                if(result == Role.Admin)
+                if (result == Role.Admin)
                 {
                     this.Hide();
 
@@ -100,7 +98,7 @@ namespace PH1
                         this.Close();
                         Application.Exit();
                     }
-                }  
+                }
                 else if (result == Role.NhanVien)
                 {
                     this.Hide();
@@ -192,7 +190,6 @@ namespace PH1
                         Application.Exit();
                     }
                 }
-
             }
             else
             {
