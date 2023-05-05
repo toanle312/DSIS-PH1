@@ -69,6 +69,7 @@
             UpdateDeptButton.TabIndex = 14;
             UpdateDeptButton.Text = "Chỉnh sửa";
             UpdateDeptButton.UseVisualStyleBackColor = true;
+            UpdateDeptButton.Click += UpdateDeptButton_Click;
             // 
             // AddDeptButton
             // 
@@ -79,6 +80,7 @@
             AddDeptButton.TabIndex = 13;
             AddDeptButton.Text = "Thêm";
             AddDeptButton.UseVisualStyleBackColor = true;
+            AddDeptButton.Click += AddDeptButton_Click;
             // 
             // DeptLeaderTextBox
             // 
@@ -123,7 +125,6 @@
             DeptIdTextBox.Name = "DeptIdTextBox";
             DeptIdTextBox.Size = new Size(146, 27);
             DeptIdTextBox.TabIndex = 7;
-            DeptIdTextBox.TextChanged += IdTextBox_TextChanged;
             // 
             // DeptIdLabel
             // 
