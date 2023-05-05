@@ -36,8 +36,8 @@
             AllowanceLabel = new Label();
             SalaryTextBox = new TextBox();
             SalaryLabel = new Label();
-            IdTextBox = new TextBox();
-            IdLabel = new Label();
+            EmpIdTextBox = new TextBox();
+            EmpIdLabel = new Label();
             DataGridView = new DataGridView();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
@@ -72,8 +72,8 @@
             GroupBox.Controls.Add(AllowanceLabel);
             GroupBox.Controls.Add(SalaryTextBox);
             GroupBox.Controls.Add(SalaryLabel);
-            GroupBox.Controls.Add(IdTextBox);
-            GroupBox.Controls.Add(IdLabel);
+            GroupBox.Controls.Add(EmpIdTextBox);
+            GroupBox.Controls.Add(EmpIdLabel);
             GroupBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBox.Location = new Point(168, 38);
             GroupBox.Name = "GroupBox";
@@ -133,21 +133,21 @@
             // 
             // IdTextBox
             // 
-            IdTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            IdTextBox.Location = new Point(12, 59);
-            IdTextBox.Name = "IdTextBox";
-            IdTextBox.Size = new Size(146, 27);
-            IdTextBox.TabIndex = 3;
+            EmpIdTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpIdTextBox.Location = new Point(12, 59);
+            EmpIdTextBox.Name = "IdTextBox";
+            EmpIdTextBox.Size = new Size(146, 27);
+            EmpIdTextBox.TabIndex = 3;
             // 
             // IdLabel
             // 
-            IdLabel.AutoSize = true;
-            IdLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            IdLabel.Location = new Point(12, 36);
-            IdLabel.Name = "IdLabel";
-            IdLabel.Size = new Size(97, 20);
-            IdLabel.TabIndex = 3;
-            IdLabel.Text = "Mã nhân viên";
+            EmpIdLabel.AutoSize = true;
+            EmpIdLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpIdLabel.Location = new Point(12, 36);
+            EmpIdLabel.Name = "IdLabel";
+            EmpIdLabel.Size = new Size(97, 20);
+            EmpIdLabel.TabIndex = 3;
+            EmpIdLabel.Text = "Mã nhân viên";
             // 
             // DataGridView
             // 
@@ -157,6 +157,7 @@
             DataGridView.RowTemplate.Height = 25;
             DataGridView.Size = new Size(776, 296);
             DataGridView.TabIndex = 3;
+            DataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // 
             // fTaiChinh
             // 
@@ -180,8 +181,8 @@
         private Button ViewEmpButton;
         private Button ViewAllocationButton;
         private GroupBox GroupBox;
-        private Label IdLabel;
-        private TextBox IdTextBox;
+        private Label EmpIdLabel;
+        private TextBox EmpIdTextBox;
         private Label SalaryLabel;
         private TextBox SalaryTextBox;
         private TextBox AllowanceTextBox;

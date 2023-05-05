@@ -53,14 +53,14 @@ namespace PH1
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             // Ensure that the user enter all the information
-            if (IdTextBox.Text == "" || SalaryTextBox.Text == "" || AllowanceTextBox.Text == "")
+            if (EmpIdTextBox.Text == "" || SalaryTextBox.Text == "" || AllowanceTextBox.Text == "")
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
             {
-                string id = IdTextBox.Text;
+                string id = EmpIdTextBox.Text;
                 string salary = SalaryTextBox.Text;
                 string allowance = AllowanceTextBox.Text;
 

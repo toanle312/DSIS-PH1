@@ -16,5 +16,10 @@ namespace PH1
         {
             InitializeComponent();
         }
+
+        private void IdTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

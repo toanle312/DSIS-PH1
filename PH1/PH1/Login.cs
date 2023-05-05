@@ -143,6 +143,7 @@ namespace PH1
                     this.Hide();
 
                     fNhanSu screen = new fNhanSu();
+                    screen.StartPosition = FormStartPosition.CenterScreen;
                     screen.ShowDialog();
 
                     if (screen.DialogResult == DialogResult.Cancel)
@@ -156,6 +157,7 @@ namespace PH1
                     this.Hide();
 
                     fTaiChinh screen = new fTaiChinh();
+                    screen.StartPosition = FormStartPosition.CenterScreen;
                     screen.ShowDialog();
 
                     if (screen.DialogResult == DialogResult.Cancel)
