@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DeptGroupBox = new GroupBox();
+            ViewDeptButton = new Button();
             UpdateDeptButton = new Button();
             AddDeptButton = new Button();
             DeptLeaderTextBox = new TextBox();
@@ -38,34 +39,35 @@
             DeptIdTextBox = new TextBox();
             DeptIdLabel = new Label();
             DataGridView = new DataGridView();
-            groupBox1 = new GroupBox();
-            BirthDatePicker = new DateTimePicker();
+            EmpGroupBox = new GroupBox();
+            EmpAddressRichTextBox = new RichTextBox();
+            EmpGenderComboBox = new ComboBox();
+            EmpBirthDatePicker = new DateTimePicker();
             UpdateEmpButton = new Button();
             ViewEmpButton = new Button();
-            DeptTextBox = new TextBox();
-            DeptLabel = new Label();
-            ManagerIdTextBox = new TextBox();
-            ManagerIdLabel = new Label();
-            RoleTextBox = new TextBox();
-            RoleLabel = new Label();
-            PhoneTextBox = new TextBox();
-            PhoneLabel = new Label();
+            EmpDeptTextBox = new TextBox();
+            EmpDeptLabel = new Label();
+            EmpManagerIdTextBox = new TextBox();
+            EmpManagerIdLabel = new Label();
+            EmpRoleTextBox = new TextBox();
+            EmpRoleLabel = new Label();
+            EmpPhoneTextBox = new TextBox();
+            EmpPhoneLabel = new Label();
             AddressLabel = new Label();
-            BirthDateLabel = new Label();
-            GenderLabel = new Label();
+            EmpBirthDateLabel = new Label();
+            EmpGenderLabel = new Label();
             EmpNameTextBox = new TextBox();
             EmpNameLabel = new Label();
             EmpIdTextBox = new TextBox();
             EmpIdLabel = new Label();
-            comboBox1 = new ComboBox();
-            richTextBox1 = new RichTextBox();
             DeptGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
-            groupBox1.SuspendLayout();
+            EmpGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // DeptGroupBox
             // 
+            DeptGroupBox.Controls.Add(ViewDeptButton);
             DeptGroupBox.Controls.Add(UpdateDeptButton);
             DeptGroupBox.Controls.Add(AddDeptButton);
             DeptGroupBox.Controls.Add(DeptLeaderTextBox);
@@ -75,17 +77,28 @@
             DeptGroupBox.Controls.Add(DeptIdTextBox);
             DeptGroupBox.Controls.Add(DeptIdLabel);
             DeptGroupBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            DeptGroupBox.Location = new Point(12, 38);
+            DeptGroupBox.Location = new Point(12, 35);
             DeptGroupBox.Name = "DeptGroupBox";
-            DeptGroupBox.Size = new Size(776, 90);
+            DeptGroupBox.Size = new Size(776, 93);
             DeptGroupBox.TabIndex = 0;
             DeptGroupBox.TabStop = false;
             DeptGroupBox.Text = "Trên quan hệ phòng ban";
             // 
+            // ViewDeptButton
+            // 
+            ViewDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            ViewDeptButton.Location = new Point(462, 17);
+            ViewDeptButton.Name = "ViewDeptButton";
+            ViewDeptButton.Size = new Size(298, 30);
+            ViewDeptButton.TabIndex = 15;
+            ViewDeptButton.Text = "Xem danh sách phòng ban";
+            ViewDeptButton.UseVisualStyleBackColor = true;
+            ViewDeptButton.Click += ViewDeptButton_Click;
+            // 
             // UpdateDeptButton
             // 
             UpdateDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            UpdateDeptButton.Location = new Point(614, 48);
+            UpdateDeptButton.Location = new Point(614, 47);
             UpdateDeptButton.Name = "UpdateDeptButton";
             UpdateDeptButton.Size = new Size(146, 30);
             UpdateDeptButton.TabIndex = 14;
@@ -168,139 +181,160 @@
             DataGridView.Size = new Size(776, 240);
             DataGridView.TabIndex = 1;
             // 
-            // groupBox1
+            // EmpGroupBox
             // 
-            groupBox1.Controls.Add(richTextBox1);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(BirthDatePicker);
-            groupBox1.Controls.Add(UpdateEmpButton);
-            groupBox1.Controls.Add(ViewEmpButton);
-            groupBox1.Controls.Add(DeptTextBox);
-            groupBox1.Controls.Add(DeptLabel);
-            groupBox1.Controls.Add(ManagerIdTextBox);
-            groupBox1.Controls.Add(ManagerIdLabel);
-            groupBox1.Controls.Add(RoleTextBox);
-            groupBox1.Controls.Add(RoleLabel);
-            groupBox1.Controls.Add(PhoneTextBox);
-            groupBox1.Controls.Add(PhoneLabel);
-            groupBox1.Controls.Add(AddressLabel);
-            groupBox1.Controls.Add(BirthDateLabel);
-            groupBox1.Controls.Add(GenderLabel);
-            groupBox1.Controls.Add(EmpNameTextBox);
-            groupBox1.Controls.Add(EmpNameLabel);
-            groupBox1.Controls.Add(EmpIdTextBox);
-            groupBox1.Controls.Add(EmpIdLabel);
-            groupBox1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(12, 134);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 175);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Trên quan hệ nhân viên";
+            EmpGroupBox.Controls.Add(EmpAddressRichTextBox);
+            EmpGroupBox.Controls.Add(EmpGenderComboBox);
+            EmpGroupBox.Controls.Add(EmpBirthDatePicker);
+            EmpGroupBox.Controls.Add(UpdateEmpButton);
+            EmpGroupBox.Controls.Add(ViewEmpButton);
+            EmpGroupBox.Controls.Add(EmpDeptTextBox);
+            EmpGroupBox.Controls.Add(EmpDeptLabel);
+            EmpGroupBox.Controls.Add(EmpManagerIdTextBox);
+            EmpGroupBox.Controls.Add(EmpManagerIdLabel);
+            EmpGroupBox.Controls.Add(EmpRoleTextBox);
+            EmpGroupBox.Controls.Add(EmpRoleLabel);
+            EmpGroupBox.Controls.Add(EmpPhoneTextBox);
+            EmpGroupBox.Controls.Add(EmpPhoneLabel);
+            EmpGroupBox.Controls.Add(AddressLabel);
+            EmpGroupBox.Controls.Add(EmpBirthDateLabel);
+            EmpGroupBox.Controls.Add(EmpGenderLabel);
+            EmpGroupBox.Controls.Add(EmpNameTextBox);
+            EmpGroupBox.Controls.Add(EmpNameLabel);
+            EmpGroupBox.Controls.Add(EmpIdTextBox);
+            EmpGroupBox.Controls.Add(EmpIdLabel);
+            EmpGroupBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpGroupBox.Location = new Point(12, 134);
+            EmpGroupBox.Name = "EmpGroupBox";
+            EmpGroupBox.Size = new Size(776, 175);
+            EmpGroupBox.TabIndex = 2;
+            EmpGroupBox.TabStop = false;
+            EmpGroupBox.Text = "Trên quan hệ nhân viên";
             // 
-            // BirthDatePicker
+            // EmpAddressRichTextBox
             // 
-            BirthDatePicker.CalendarFont = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            BirthDatePicker.CustomFormat = "dd/MM/yyyy";
-            BirthDatePicker.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            BirthDatePicker.Format = DateTimePickerFormat.Custom;
-            BirthDatePicker.Location = new Point(414, 51);
-            BirthDatePicker.Name = "BirthDatePicker";
-            BirthDatePicker.Size = new Size(130, 27);
-            BirthDatePicker.TabIndex = 34;
-            BirthDatePicker.Value = new DateTime(2023, 5, 5, 22, 41, 0, 0);
+            EmpAddressRichTextBox.Location = new Point(550, 51);
+            EmpAddressRichTextBox.Name = "EmpAddressRichTextBox";
+            EmpAddressRichTextBox.Size = new Size(210, 116);
+            EmpAddressRichTextBox.TabIndex = 3;
+            EmpAddressRichTextBox.Text = "";
+            // 
+            // EmpGenderComboBox
+            // 
+            EmpGenderComboBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpGenderComboBox.FormattingEnabled = true;
+            EmpGenderComboBox.Items.AddRange(new object[] { "Nam", "Nữ" });
+            EmpGenderComboBox.Location = new Point(278, 51);
+            EmpGenderComboBox.Name = "EmpGenderComboBox";
+            EmpGenderComboBox.Size = new Size(130, 28);
+            EmpGenderComboBox.TabIndex = 35;
+            // 
+            // EmpBirthDatePicker
+            // 
+            EmpBirthDatePicker.CalendarFont = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpBirthDatePicker.CustomFormat = "dd/MM/yyyy";
+            EmpBirthDatePicker.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpBirthDatePicker.Format = DateTimePickerFormat.Custom;
+            EmpBirthDatePicker.Location = new Point(414, 51);
+            EmpBirthDatePicker.Name = "EmpBirthDatePicker";
+            EmpBirthDatePicker.Size = new Size(130, 27);
+            EmpBirthDatePicker.TabIndex = 34;
+            EmpBirthDatePicker.Value = new DateTime(2023, 5, 5, 22, 41, 0, 0);
             // 
             // UpdateEmpButton
             // 
             UpdateEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            UpdateEmpButton.Location = new Point(6, 137);
+            UpdateEmpButton.Location = new Point(278, 139);
             UpdateEmpButton.Name = "UpdateEmpButton";
-            UpdateEmpButton.Size = new Size(130, 30);
+            UpdateEmpButton.Size = new Size(266, 30);
             UpdateEmpButton.TabIndex = 33;
-            UpdateEmpButton.Text = "Chỉnh sửa";
+            UpdateEmpButton.Text = "Chỉnh sửa nhân viên";
             UpdateEmpButton.UseVisualStyleBackColor = true;
+            UpdateEmpButton.Click += UpdateEmpButton_Click;
             // 
             // ViewEmpButton
             // 
             ViewEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            ViewEmpButton.Location = new Point(142, 137);
+            ViewEmpButton.Location = new Point(6, 137);
             ViewEmpButton.Name = "ViewEmpButton";
-            ViewEmpButton.Size = new Size(130, 30);
+            ViewEmpButton.Size = new Size(266, 30);
             ViewEmpButton.TabIndex = 31;
-            ViewEmpButton.Text = "Xem nhân viên";
+            ViewEmpButton.Text = "Xem danh sách nhân viên";
             ViewEmpButton.UseVisualStyleBackColor = true;
+            ViewEmpButton.Click += ViewEmpButton_Click;
             // 
-            // DeptTextBox
+            // EmpDeptTextBox
             // 
-            DeptTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            DeptTextBox.Location = new Point(414, 104);
-            DeptTextBox.Name = "DeptTextBox";
-            DeptTextBox.Size = new Size(130, 27);
-            DeptTextBox.TabIndex = 29;
+            EmpDeptTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpDeptTextBox.Location = new Point(414, 104);
+            EmpDeptTextBox.Name = "EmpDeptTextBox";
+            EmpDeptTextBox.Size = new Size(130, 27);
+            EmpDeptTextBox.TabIndex = 29;
             // 
-            // DeptLabel
+            // EmpDeptLabel
             // 
-            DeptLabel.AutoSize = true;
-            DeptLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            DeptLabel.Location = new Point(414, 81);
-            DeptLabel.Name = "DeptLabel";
-            DeptLabel.Size = new Size(51, 20);
-            DeptLabel.TabIndex = 30;
-            DeptLabel.Text = "Phòng";
+            EmpDeptLabel.AutoSize = true;
+            EmpDeptLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpDeptLabel.Location = new Point(414, 81);
+            EmpDeptLabel.Name = "EmpDeptLabel";
+            EmpDeptLabel.Size = new Size(51, 20);
+            EmpDeptLabel.TabIndex = 30;
+            EmpDeptLabel.Text = "Phòng";
             // 
-            // ManagerIdTextBox
+            // EmpManagerIdTextBox
             // 
-            ManagerIdTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            ManagerIdTextBox.Location = new Point(278, 104);
-            ManagerIdTextBox.Name = "ManagerIdTextBox";
-            ManagerIdTextBox.Size = new Size(130, 27);
-            ManagerIdTextBox.TabIndex = 27;
+            EmpManagerIdTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpManagerIdTextBox.Location = new Point(278, 104);
+            EmpManagerIdTextBox.Name = "EmpManagerIdTextBox";
+            EmpManagerIdTextBox.Size = new Size(130, 27);
+            EmpManagerIdTextBox.TabIndex = 27;
             // 
-            // ManagerIdLabel
+            // EmpManagerIdLabel
             // 
-            ManagerIdLabel.AutoSize = true;
-            ManagerIdLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            ManagerIdLabel.Location = new Point(278, 81);
-            ManagerIdLabel.Name = "ManagerIdLabel";
-            ManagerIdLabel.Size = new Size(125, 20);
-            ManagerIdLabel.TabIndex = 28;
-            ManagerIdLabel.Text = "Mã người quản lý";
+            EmpManagerIdLabel.AutoSize = true;
+            EmpManagerIdLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpManagerIdLabel.Location = new Point(278, 81);
+            EmpManagerIdLabel.Name = "EmpManagerIdLabel";
+            EmpManagerIdLabel.Size = new Size(125, 20);
+            EmpManagerIdLabel.TabIndex = 28;
+            EmpManagerIdLabel.Text = "Mã người quản lý";
             // 
-            // RoleTextBox
+            // EmpRoleTextBox
             // 
-            RoleTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            RoleTextBox.Location = new Point(142, 104);
-            RoleTextBox.Name = "RoleTextBox";
-            RoleTextBox.Size = new Size(130, 27);
-            RoleTextBox.TabIndex = 25;
+            EmpRoleTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpRoleTextBox.Location = new Point(142, 104);
+            EmpRoleTextBox.Name = "EmpRoleTextBox";
+            EmpRoleTextBox.Size = new Size(130, 27);
+            EmpRoleTextBox.TabIndex = 25;
             // 
-            // RoleLabel
+            // EmpRoleLabel
             // 
-            RoleLabel.AutoSize = true;
-            RoleLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            RoleLabel.Location = new Point(142, 81);
-            RoleLabel.Name = "RoleLabel";
-            RoleLabel.Size = new Size(52, 20);
-            RoleLabel.TabIndex = 26;
-            RoleLabel.Text = "Vai trò";
+            EmpRoleLabel.AutoSize = true;
+            EmpRoleLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpRoleLabel.Location = new Point(142, 81);
+            EmpRoleLabel.Name = "EmpRoleLabel";
+            EmpRoleLabel.Size = new Size(52, 20);
+            EmpRoleLabel.TabIndex = 26;
+            EmpRoleLabel.Text = "Vai trò";
             // 
-            // PhoneTextBox
+            // EmpPhoneTextBox
             // 
-            PhoneTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            PhoneTextBox.Location = new Point(6, 104);
-            PhoneTextBox.Name = "PhoneTextBox";
-            PhoneTextBox.Size = new Size(130, 27);
-            PhoneTextBox.TabIndex = 23;
+            EmpPhoneTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpPhoneTextBox.Location = new Point(6, 104);
+            EmpPhoneTextBox.Name = "EmpPhoneTextBox";
+            EmpPhoneTextBox.Size = new Size(130, 27);
+            EmpPhoneTextBox.TabIndex = 23;
+            EmpPhoneTextBox.KeyPress += EmpPhoneTextBox_KeyPress;
             // 
-            // PhoneLabel
+            // EmpPhoneLabel
             // 
-            PhoneLabel.AutoSize = true;
-            PhoneLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            PhoneLabel.Location = new Point(6, 81);
-            PhoneLabel.Name = "PhoneLabel";
-            PhoneLabel.Size = new Size(97, 20);
-            PhoneLabel.TabIndex = 24;
-            PhoneLabel.Text = "Số điện thoại";
+            EmpPhoneLabel.AutoSize = true;
+            EmpPhoneLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpPhoneLabel.Location = new Point(6, 81);
+            EmpPhoneLabel.Name = "EmpPhoneLabel";
+            EmpPhoneLabel.Size = new Size(97, 20);
+            EmpPhoneLabel.TabIndex = 24;
+            EmpPhoneLabel.Text = "Số điện thoại";
             // 
             // AddressLabel
             // 
@@ -312,25 +346,25 @@
             AddressLabel.TabIndex = 22;
             AddressLabel.Text = "Địa chỉ";
             // 
-            // BirthDateLabel
+            // EmpBirthDateLabel
             // 
-            BirthDateLabel.AutoSize = true;
-            BirthDateLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            BirthDateLabel.Location = new Point(414, 27);
-            BirthDateLabel.Name = "BirthDateLabel";
-            BirthDateLabel.Size = new Size(74, 20);
-            BirthDateLabel.TabIndex = 20;
-            BirthDateLabel.Text = "Ngày sinh";
+            EmpBirthDateLabel.AutoSize = true;
+            EmpBirthDateLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpBirthDateLabel.Location = new Point(414, 27);
+            EmpBirthDateLabel.Name = "EmpBirthDateLabel";
+            EmpBirthDateLabel.Size = new Size(74, 20);
+            EmpBirthDateLabel.TabIndex = 20;
+            EmpBirthDateLabel.Text = "Ngày sinh";
             // 
-            // GenderLabel
+            // EmpGenderLabel
             // 
-            GenderLabel.AutoSize = true;
-            GenderLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            GenderLabel.Location = new Point(278, 28);
-            GenderLabel.Name = "GenderLabel";
-            GenderLabel.Size = new Size(37, 20);
-            GenderLabel.TabIndex = 18;
-            GenderLabel.Text = "Phái";
+            EmpGenderLabel.AutoSize = true;
+            EmpGenderLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpGenderLabel.Location = new Point(278, 28);
+            EmpGenderLabel.Name = "EmpGenderLabel";
+            EmpGenderLabel.Size = new Size(37, 20);
+            EmpGenderLabel.TabIndex = 18;
+            EmpGenderLabel.Text = "Phái";
             // 
             // EmpNameTextBox
             // 
@@ -368,30 +402,12 @@
             EmpIdLabel.TabIndex = 14;
             EmpIdLabel.Text = "Mã nhân viên";
             // 
-            // comboBox1
-            // 
-            comboBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Nam", "Nữ" });
-            comboBox1.Location = new Point(278, 51);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(130, 28);
-            comboBox1.TabIndex = 35;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(550, 51);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(210, 80);
-            richTextBox1.TabIndex = 3;
-            richTextBox1.Text = "";
-            // 
             // fNhanSu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 567);
-            Controls.Add(groupBox1);
+            Controls.Add(EmpGroupBox);
             Controls.Add(DataGridView);
             Controls.Add(DeptGroupBox);
             Name = "fNhanSu";
@@ -399,10 +415,12 @@
             DeptGroupBox.ResumeLayout(false);
             DeptGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            EmpGroupBox.ResumeLayout(false);
+            EmpGroupBox.PerformLayout();
             ResumeLayout(false);
         }
+
+
 
         #endregion
 
@@ -416,26 +434,27 @@
         private Button AddDeptButton;
         private Button UpdateDeptButton;
         private DataGridView DataGridView;
-        private GroupBox groupBox1;
-        private TextBox DeptTextBox;
-        private Label DeptLabel;
-        private TextBox ManagerIdTextBox;
-        private Label ManagerIdLabel;
-        private TextBox RoleTextBox;
-        private Label RoleLabel;
-        private TextBox PhoneTextBox;
-        private Label PhoneLabel;
+        private GroupBox EmpGroupBox;
+        private TextBox EmpDeptTextBox;
+        private Label EmpDeptLabel;
+        private TextBox EmpManagerIdTextBox;
+        private Label EmpManagerIdLabel;
+        private TextBox EmpRoleTextBox;
+        private Label EmpRoleLabel;
+        private TextBox EmpPhoneTextBox;
+        private Label EmpPhoneLabel;
         private Label AddressLabel;
-        private Label BirthDateLabel;
-        private Label GenderLabel;
+        private Label EmpBirthDateLabel;
+        private Label EmpGenderLabel;
         private TextBox EmpNameTextBox;
         private Label EmpNameLabel;
         private TextBox EmpIdTextBox;
         private Label EmpIdLabel;
         private Button ViewEmpButton;
         private Button UpdateEmpButton;
-        private DateTimePicker BirthDatePicker;
-        private ComboBox comboBox1;
-        private RichTextBox richTextBox1;
+        private DateTimePicker EmpBirthDatePicker;
+        private ComboBox EmpGenderComboBox;
+        private RichTextBox EmpAddressRichTextBox;
+        private Button ViewDeptButton;
     }
 }

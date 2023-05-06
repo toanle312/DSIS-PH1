@@ -27,7 +27,7 @@ namespace PH1
             DataGridView.DataSource = data;
         }
 
-        private static void RestrictNumeric(KeyPressEventArgs e)
+        public static void RestrictNumeric(KeyPressEventArgs e)
         {
             // Only allow number to be entered
             if (char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
