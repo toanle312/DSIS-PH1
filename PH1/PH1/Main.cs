@@ -191,5 +191,18 @@ namespace PH1
             Login f = new Login();
             f.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void username_label_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void control_Paint(object sender, PaintEventArgs e)
+        {
+        }
     }
 }
