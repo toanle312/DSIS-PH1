@@ -60,7 +60,6 @@ namespace PH1
         public DataTable ExcuteQuery(string query)
         {
             DataTable data = new DataTable();
-
             connection.Open();
 
             try

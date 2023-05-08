@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,34 @@ namespace PH1
         public fQLTrucTiep()
         {
             InitializeComponent();
+            infoView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            infoView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+
+        private void personalInfoBtn_Click(object sender, EventArgs e)
+        {
+            infoView.Size = new Size(960, 100);
+
+            string query = "SELECT * from U_AD_QLNV.NHANVIEN_SESSION";
+            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            infoView.Size = new Size(960, 329);
+
+            string query = "SELECT * from U_AD_QLNV.QUANLI_THONGTIN_VIEW";
+            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            infoView.Size = new Size(330, 329);
+
+            string query = "SELECT * from U_AD_QLNV.QUANLI_PHANCONG_VIEW";
+            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+        }
+
+    
     }
 }

@@ -90,6 +90,8 @@
             username_textbox.Name = "username_textbox";
             username_textbox.Size = new Size(200, 34);
             username_textbox.TabIndex = 4;
+
+            username_textbox.Text = "NV009";
             // 
             // password_textbox
             // 
@@ -99,6 +101,8 @@
             password_textbox.Size = new Size(200, 34);
             password_textbox.TabIndex = 5;
             password_textbox.UseSystemPasswordChar = true;
+
+            password_textbox.Text = "123";
             // 
             // connect_btn
             // 
