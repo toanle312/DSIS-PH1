@@ -91,7 +91,7 @@
             username_textbox.Size = new Size(200, 34);
             username_textbox.TabIndex = 4;
 
-            username_textbox.Text = "NV009";
+            username_textbox.Text = "NV001";
             // 
             // password_textbox
             // 

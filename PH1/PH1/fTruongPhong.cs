@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -32,12 +33,23 @@ namespace PH1
             AddOkBtn.Visible = false;
             DeleteOkBtn.Visible = false;
 
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+            ngaysinh_textbox.Visible = false;
+            sdt_textbox.Visible = false;
+            diachi_textbox.Visible = false;
+            editbtn.Visible = false;
+
+            Noti_label.Text = string.Empty;
             infoView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             infoView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void personalInfoBtn_Click(object sender, EventArgs e)
         {
+            Noti_label.Text = string.Empty;
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -49,6 +61,19 @@ namespace PH1
             DeleteBtn.Visible = false;
             SubmitBtn.Visible = false;
             label4.Visible = false;
+
+            label8.Visible = true;
+            label7.Visible = true;
+            label6.Visible = true;
+            label5.Visible = true;
+            ngaysinh_textbox.Visible = true;
+            sdt_textbox.Visible = true;
+            diachi_textbox.Visible = true;
+            editbtn.Visible = true;
+
+            SubmitBtn.Visible = false;
+            AddOkBtn.Visible = false;
+            DeleteOkBtn.Visible = false;
             infoView.Size = new Size(960, 100);
 
             string query = "SELECT * from U_AD_QLNV.NHANVIEN_SESSION";
@@ -57,6 +82,7 @@ namespace PH1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Noti_label.Text=string.Empty;
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -69,6 +95,18 @@ namespace PH1
             SubmitBtn.Visible = false;
             label4.Visible = false;
 
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+            ngaysinh_textbox.Visible = false;
+            sdt_textbox.Visible = false;
+            diachi_textbox.Visible = false;
+            editbtn.Visible = false;
+
+            SubmitBtn.Visible = false;
+            AddOkBtn.Visible = false;
+            DeleteOkBtn.Visible = false;
             infoView.Size = new Size(960, 329);
 
             string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_THONGTIN_VIEW";
@@ -79,10 +117,24 @@ namespace PH1
         {
             string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_PHANCONG_VIEW";
             infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+            Noti_label.Text = string.Empty;
             UpdateBtn.Visible = true;
             AddBtn.Visible = true;
             DeleteBtn.Visible = true;
             label4.Text = "";
+
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+            ngaysinh_textbox.Visible = false;
+            sdt_textbox.Visible = false;
+            diachi_textbox.Visible = false;
+            editbtn.Visible = false;
+
+            SubmitBtn.Visible = false;
+            AddOkBtn.Visible = false;
+            DeleteOkBtn.Visible = false;
             infoView.Size = new Size(400, 329);
         }
 
@@ -206,6 +258,7 @@ namespace PH1
                 thoigianTb.Text = "";
                 conn.Close();
             }
+            button2_Click(sender, e);
         }
 
         private void AddOkBtn_Click(object sender, EventArgs e)
@@ -267,15 +320,15 @@ namespace PH1
                     //string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_PHANCONG_VIEW";
                     //infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
 
-
-                    label4.Text = $"Thêm vào thành công!!";
                 }
                 manvTb.Text = "";
                 madaTb.Text = "";
                 thoigianTb.Text = "";
                 conn.Close();
             }
+            button2_Click(sender, e);
         }
+
 
         private void DeleteOkBtn_Click(object sender, EventArgs e)
         {
@@ -329,14 +382,46 @@ namespace PH1
                     cmd.Parameters.Add("MADA_IN", OracleDbType.Varchar2).Value = MADA;
 
                     cmd.ExecuteNonQuery();
-
-
-                    label4.Text = $"Đã xóa thành công!!";
                 }
                 manvTb.Text = "";
                 madaTb.Text = "";
                 thoigianTb.Text = "";
                 conn.Close();
+            }
+            button2_Click(sender, e);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (ngaysinh_textbox.Text == String.Empty || diachi_textbox.Text == String.Empty || sdt_textbox.Text == String.Empty)
+            {
+                Noti_label.Text = "Hãy điền đầy đủ thông tin!!";
+            }
+            else
+            {
+                var date = ngaysinh_textbox.Text;
+                var dob = date.Split(' ')[0];
+                dob = dob.Replace('/', '-');
+
+                string query = @"BEGIN
+                                    UPDATE 
+                                        U_AD_QLNV.NHANVIEN 
+                                     SET
+                                        DIACHI = '{0}', 
+                                        SODT = '{1}',
+                                        NGAYSINH = TO_DATE('{2}','MM-DD-YYYY')
+                                     WHERE MANV = SYS_CONTEXT('USERENV', 'SESSION_USER');
+                                     COMMIT;
+                                 END;";
+
+                query = String.Format(query, diachi_textbox.Text, sdt_textbox.Text, dob.ToString());
+                DataProvider.Instance.ExcuteNonQuery(query);
+
+                ngaysinh_textbox.Text = string.Empty;
+                sdt_textbox.Text = string.Empty;
+                diachi_textbox.Text = string.Empty;
+
+                personalInfoBtn_Click(sender, e);
             }
         }
     }
