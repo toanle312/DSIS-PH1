@@ -16,7 +16,7 @@ namespace PH1
 {
     public partial class fTruongPhong : Form
     {
-        public fTruongPhong()
+        public fTruongPhong(string username)
         {
             InitializeComponent();
             manvTb.Visible = false;
@@ -41,6 +41,8 @@ namespace PH1
             sdt_textbox.Visible = false;
             diachi_textbox.Visible = false;
             editbtn.Visible = false;
+
+            username_label.Text = username;
 
             Noti_label.Text = string.Empty;
             infoView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
@@ -80,9 +82,9 @@ namespace PH1
             infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void employeeInfoBtn_Click(object sender, EventArgs e)
         {
-            Noti_label.Text=string.Empty;
+            Noti_label.Text = string.Empty;
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -113,10 +115,8 @@ namespace PH1
             infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void phancongbtn_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_PHANCONG_VIEW";
-            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
             Noti_label.Text = string.Empty;
             UpdateBtn.Visible = true;
             AddBtn.Visible = true;
@@ -132,10 +132,10 @@ namespace PH1
             diachi_textbox.Visible = false;
             editbtn.Visible = false;
 
-            SubmitBtn.Visible = false;
-            AddOkBtn.Visible = false;
-            DeleteOkBtn.Visible = false;
             infoView.Size = new Size(400, 329);
+
+            string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_PHANCONG_VIEW";
+            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace PH1
 
         }
 
-        private void SubmitBtn_Click(object sender, EventArgs e)
+        private void UpdateOKBtn(object sender, EventArgs e)
         {
             string MANV = manvTb.Text;
             string MADA = madaTb.Text;
@@ -198,7 +198,6 @@ namespace PH1
 
             if (MANV == "" || MADA == "" || THOIGIAN == "")
             {
-                label4.ForeColor = Color.Red;
                 label4.Text = "Xin hãy điền đầy đủ!!";
             }
 
@@ -229,7 +228,7 @@ namespace PH1
 
                 if (result == 0)
                 {
-                    label4.Text = $"Phân công không tồn tại!!";
+                    MessageBox.Show("Phân công không tồn tại!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -250,15 +249,14 @@ namespace PH1
                     //string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_PHANCONG_VIEW";
                     //infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
 
-
-                    label4.Text = $"Cập nhật thành công!!";
+                    MessageBox.Show("Cập nhật thành công!!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 manvTb.Text = "";
                 madaTb.Text = "";
                 thoigianTb.Text = "";
                 conn.Close();
             }
-            button2_Click(sender, e);
+            phancongbtn_Click(sender, e);
         }
 
         private void AddOkBtn_Click(object sender, EventArgs e)
@@ -269,7 +267,6 @@ namespace PH1
 
             if (MANV == "" || MADA == "" || THOIGIAN == "")
             {
-                label4.ForeColor = Color.Red;
                 label4.Text = "Xin hãy điền đầy đủ!!";
             }
 
@@ -316,9 +313,8 @@ namespace PH1
 
                     cmd.ExecuteNonQuery();
 
-                    //Cập nhật lại bảng phân công
-                    //string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_PHANCONG_VIEW";
-                    //infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+                    MessageBox.Show("Thêm thành công!!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 }
                 manvTb.Text = "";
@@ -326,9 +322,8 @@ namespace PH1
                 thoigianTb.Text = "";
                 conn.Close();
             }
-            button2_Click(sender, e);
+            phancongbtn_Click(sender, e);
         }
-
 
         private void DeleteOkBtn_Click(object sender, EventArgs e)
         {
@@ -368,7 +363,7 @@ namespace PH1
 
                 if (result == 0)
                 {
-                    label4.Text = $"Phân công không tồn tại!!";
+                    MessageBox.Show("Phân công không tồn tại!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -382,28 +377,38 @@ namespace PH1
                     cmd.Parameters.Add("MADA_IN", OracleDbType.Varchar2).Value = MADA;
 
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Xóa phân công thành công!!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 manvTb.Text = "";
                 madaTb.Text = "";
                 thoigianTb.Text = "";
                 conn.Close();
             }
-            button2_Click(sender, e);
+            phancongbtn_Click(sender, e);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void edtiInfoBtn_Click(object sender, EventArgs e)
         {
-            if (ngaysinh_textbox.Text == String.Empty || diachi_textbox.Text == String.Empty || sdt_textbox.Text == String.Empty)
+            string pattern = @"^[1-9]\d*$";
+            bool isMatch = Regex.IsMatch(sdt_textbox.Text, pattern);
+            if (!isMatch)
             {
-                Noti_label.Text = "Hãy điền đầy đủ thông tin!!";
+                Noti_label.Text = "Số điện thoại không hợp lệ, mời nhập lại!!";
             }
             else
             {
-                var date = ngaysinh_textbox.Text;
-                var dob = date.Split(' ')[0];
-                dob = dob.Replace('/', '-');
+                if (ngaysinh_textbox.Text == String.Empty || diachi_textbox.Text == String.Empty || sdt_textbox.Text == String.Empty)
+                {
+                    Noti_label.Text = "Hãy điền đầy đủ thông tin!!";
+                }
+                else
+                {
+                    var date = ngaysinh_textbox.Text;
+                    var dob = date.Split(' ')[0];
+                    dob = dob.Replace('/', '-');
 
-                string query = @"BEGIN
+                    string query = @"BEGIN
                                     UPDATE 
                                         U_AD_QLNV.NHANVIEN 
                                      SET
@@ -414,15 +419,128 @@ namespace PH1
                                      COMMIT;
                                  END;";
 
-                query = String.Format(query, diachi_textbox.Text, sdt_textbox.Text, dob.ToString());
-                DataProvider.Instance.ExcuteNonQuery(query);
+                    query = String.Format(query, diachi_textbox.Text, sdt_textbox.Text, dob.ToString());
+                    DataProvider.Instance.ExcuteNonQuery(query);
 
-                ngaysinh_textbox.Text = string.Empty;
-                sdt_textbox.Text = string.Empty;
-                diachi_textbox.Text = string.Empty;
+                    ngaysinh_textbox.Text = string.Empty;
+                    sdt_textbox.Text = string.Empty;
+                    diachi_textbox.Text = string.Empty;
 
-                personalInfoBtn_Click(sender, e);
+                    MessageBox.Show("Chỉnh sửa thông tin thành công!!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    personalInfoBtn_Click(sender, e);
+                }
             }
+        }
+
+        private void phongbanBtn_Click(object sender, EventArgs e)
+        {
+            Noti_label.Text = string.Empty;
+            manvTb.Visible = false;
+            madaTb.Visible = false;
+            thoigianTb.Visible = false;
+            label3.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            UpdateBtn.Visible = false;
+            AddBtn.Visible = false;
+            DeleteBtn.Visible = false;
+            SubmitBtn.Visible = false;
+            label4.Visible = false;
+
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+            ngaysinh_textbox.Visible = false;
+            sdt_textbox.Visible = false;
+            diachi_textbox.Visible = false;
+            editbtn.Visible = false;
+
+            SubmitBtn.Visible = false;
+            AddOkBtn.Visible = false;
+            DeleteOkBtn.Visible = false;
+
+            infoView.Size = new Size(400, 329);
+
+            string query = "SELECT * from U_AD_QLNV.PHONGBAN";
+            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        private void deanBtn_Click(object sender, EventArgs e)
+        {
+            Noti_label.Text = string.Empty;
+            manvTb.Visible = false;
+            madaTb.Visible = false;
+            thoigianTb.Visible = false;
+            label3.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            UpdateBtn.Visible = false;
+            AddBtn.Visible = false;
+            DeleteBtn.Visible = false;
+            SubmitBtn.Visible = false;
+            label4.Visible = false;
+
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+            ngaysinh_textbox.Visible = false;
+            sdt_textbox.Visible = false;
+            diachi_textbox.Visible = false;
+            editbtn.Visible = false;
+
+            SubmitBtn.Visible = false;
+            AddOkBtn.Visible = false;
+            DeleteOkBtn.Visible = false;
+
+            infoView.Size = new Size(400, 329);
+
+            string query = @"SELECT * FROM U_AD_QLNV.DEAN";
+            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        private void log_out_btn_Click(object sender, EventArgs e)
+        {
+            DataProvider.Instance.DisconnectDB();
+            DialogResult = DialogResult.OK;
+            this.Close();
+            Login f = new Login();
+            f.Show();
+        }
+
+        private void infoView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void manvTb_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void madaTb_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void thoigianTb_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
         }
     }
 }
