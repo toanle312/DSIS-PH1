@@ -70,6 +70,7 @@ namespace PH1
                 OracleDataAdapter adapter = new OracleDataAdapter(cmd);
 
                 adapter.Fill(data);
+
             }
             catch
             {
@@ -88,14 +89,22 @@ namespace PH1
 
             connection.Open();
 
+            OracleTransaction transaction;
+
+            transaction = connection.BeginTransaction(IsolationLevel.ReadCommitted);
+
             try
             {
                 OracleCommand cmd = new OracleCommand(query, connection);
+                cmd.Transaction = transaction;
 
                 data = cmd.ExecuteNonQuery();
+                transaction.Commit();
+                
             }
             catch
             {
+                transaction.Rollback();
                 connection.Close();
                 throw;
             }

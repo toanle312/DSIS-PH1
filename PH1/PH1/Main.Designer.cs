@@ -53,6 +53,7 @@
             label1.Size = new Size(75, 31);
             label1.TabIndex = 0;
             label1.Text = "User: ";
+            label1.Click += label1_Click;
             // 
             // username_label
             // 
@@ -64,6 +65,7 @@
             username_label.Size = new Size(122, 33);
             username_label.TabIndex = 1;
             username_label.Text = "username";
+            username_label.Click += username_label_Click;
             // 
             // user_list_btn
             // 
@@ -193,6 +195,7 @@
             control.Name = "control";
             control.Size = new Size(950, 500);
             control.TabIndex = 12;
+            control.Paint += control_Paint;
             // 
             // log_out_btn
             // 

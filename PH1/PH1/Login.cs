@@ -105,7 +105,7 @@ namespace PH1
                 {
                     this.Hide();
 
-                    fNhanVien screen = new fNhanVien();
+                    fNhanVien screen = new fNhanVien(username, "Nhân viên");
                     screen.ShowDialog();
 
                     if (screen.DialogResult == DialogResult.Cancel)
