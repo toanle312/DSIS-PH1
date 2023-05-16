@@ -115,8 +115,7 @@ namespace PH1
                 else if (result == Role.QLTrucTiep)
                 {
                     this.Hide();
-
-                    fQLTrucTiep screen = new fQLTrucTiep();
+                    fQLTrucTiep screen = new fQLTrucTiep(username);
                     screen.ShowDialog();
 
                     if (screen.DialogResult == DialogResult.Cancel)
@@ -129,7 +128,7 @@ namespace PH1
                 {
                     this.Hide();
 
-                    fTruongPhong screen = new fTruongPhong();
+                    fTruongPhong screen = new fTruongPhong(username);
                     screen.ShowDialog();
 
                     if (screen.DialogResult == DialogResult.Cancel)
