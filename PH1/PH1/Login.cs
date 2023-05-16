@@ -73,6 +73,32 @@ namespace PH1
             return result;
         }
 
+        private bool check_string(string username)
+        {
+            bool result = true;
+            if(username == string.Empty)
+            {
+                return false;
+            }
+            else
+            {
+                if(username.ToUpper().Contains("'") ||
+                   username.ToUpper().Contains("OR") ||
+                   username.ToUpper().Contains("SELECT") ||
+                   username.ToUpper().Contains("UPDATE") ||
+                   username.ToUpper().Contains("INSERT") ||
+                   username.ToUpper().Contains("DELETE") ||
+                   username.ToUpper().Contains("DROP") ||
+                   username.ToUpper().Contains("="))
+                {
+                    return false;
+                }    
+            }
+             
+
+            return result;
+        }
+
         private void connect_btn_Click(object sender, EventArgs e)
         {
             string username = username_textbox.Text;
@@ -80,122 +106,128 @@ namespace PH1
 
             var role = new Role();
 
-            string checkLogin = DataProvider.Instance.ConnectDB(username, password);
-
-            if (checkLogin == "Success")
-            {
-                var result = check_Login();
-
-                if (result == Role.Admin)
+            if(check_string(username) && check_string(password)) {
+                string checkLogin = DataProvider.Instance.ConnectDB(username, password);
+            
+                if (checkLogin == "Success")
                 {
-                    this.Hide();
+                    var result = check_Login();
 
-                    Main screen = new Main(username);
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
+                    if (result == Role.Admin)
                     {
-                        this.Close();
-                        Application.Exit();
+                        this.Hide();
+
+                        Main screen = new Main(username);
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.NhanVien)
+                    {
+                        this.Hide();
+
+                        fNhanVien screen = new fNhanVien(username, "Nhân viên");
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.QLTrucTiep)
+                    {
+                        this.Hide();
+                        fQLTrucTiep screen = new fQLTrucTiep(username);
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.TruongPhong)
+                    {
+                        this.Hide();
+
+                        fTruongPhong screen = new fTruongPhong(username);
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.NhanSu)
+                    {
+                        this.Hide();
+
+                        fNhanSu screen = new fNhanSu();
+                        screen.StartPosition = FormStartPosition.CenterScreen;
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.TaiChinh)
+                    {
+                        this.Hide();
+
+                        fTaiChinh screen = new fTaiChinh();
+                        screen.StartPosition = FormStartPosition.CenterScreen;
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.TruongDA)
+                    {
+                        this.Hide();
+
+                        fTruongDA screen = new fTruongDA();
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
+                    }
+                    else if (result == Role.GiamDoc)
+                    {
+                        this.Hide();
+
+                        fGiamDoc screen = new fGiamDoc();
+                        screen.ShowDialog();
+
+                        if (screen.DialogResult == DialogResult.Cancel)
+                        {
+                            this.Close();
+                            Application.Exit();
+                        }
                     }
                 }
-                else if (result == Role.NhanVien)
+                else
                 {
-                    this.Hide();
-
-                    fNhanVien screen = new fNhanVien(username, "Nhân viên");
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
-                }
-                else if (result == Role.QLTrucTiep)
-                {
-                    this.Hide();
-                    fQLTrucTiep screen = new fQLTrucTiep(username);
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
-                }
-                else if (result == Role.TruongPhong)
-                {
-                    this.Hide();
-
-                    fTruongPhong screen = new fTruongPhong(username);
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
-                }
-                else if (result == Role.NhanSu)
-                {
-                    this.Hide();
-
-                    fNhanSu screen = new fNhanSu();
-                    screen.StartPosition = FormStartPosition.CenterScreen;
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
-                }
-                else if (result == Role.TaiChinh)
-                {
-                    this.Hide();
-
-                    fTaiChinh screen = new fTaiChinh();
-                    screen.StartPosition = FormStartPosition.CenterScreen;
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
-                }
-                else if (result == Role.TruongDA)
-                {
-                    this.Hide();
-
-                    fTruongDA screen = new fTruongDA();
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
-                }
-                else if (result == Role.GiamDoc)
-                {
-                    this.Hide();
-
-                    fGiamDoc screen = new fGiamDoc();
-                    screen.ShowDialog();
-
-                    if (screen.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
+                    MessageBox.Show(checkLogin, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show(checkLogin, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
         }
 
         private void cancel_btn_Click(object sender, EventArgs e)

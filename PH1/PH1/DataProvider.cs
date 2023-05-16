@@ -53,7 +53,7 @@ namespace PH1
             catch (OracleException ex)
             {
                 connection = null;
-                return ex.Message;
+                return "Invalid username or password";
             }
         }
 
