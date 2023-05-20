@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             ViewEmpButton = new Button();
             ViewAllocationButton = new Button();
             GroupBox = new GroupBox();
@@ -39,30 +40,39 @@
             EmpIdTextBox = new TextBox();
             EmpIdLabel = new Label();
             DataGridView = new DataGridView();
+            LogOutButton = new Button();
+            EmployeeInterfaceButton = new Button();
+            label1 = new Label();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            label2 = new Label();
+            IDLabel = new Label();
+            RoleLabel = new Label();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             SuspendLayout();
             // 
             // ViewEmpButton
             // 
+            ViewEmpButton.BackColor = Color.Aquamarine;
             ViewEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewEmpButton.Location = new Point(12, 50);
             ViewEmpButton.Name = "ViewEmpButton";
             ViewEmpButton.Size = new Size(150, 40);
             ViewEmpButton.TabIndex = 0;
             ViewEmpButton.Text = "Xem nhân viên";
-            ViewEmpButton.UseVisualStyleBackColor = true;
+            ViewEmpButton.UseVisualStyleBackColor = false;
             ViewEmpButton.Click += ViewEmpButton_Click;
             // 
             // ViewAllocationButton
             // 
+            ViewAllocationButton.BackColor = Color.Aquamarine;
             ViewAllocationButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewAllocationButton.Location = new Point(12, 96);
             ViewAllocationButton.Name = "ViewAllocationButton";
             ViewAllocationButton.Size = new Size(150, 40);
             ViewAllocationButton.TabIndex = 1;
             ViewAllocationButton.Text = "Xem phân công";
-            ViewAllocationButton.UseVisualStyleBackColor = true;
+            ViewAllocationButton.UseVisualStyleBackColor = false;
             ViewAllocationButton.Click += ViewAllocationButton_Click;
             // 
             // GroupBox
@@ -84,13 +94,14 @@
             // 
             // UpdateButton
             // 
+            UpdateButton.BackColor = Color.Pink;
             UpdateButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateButton.Location = new Point(468, 57);
             UpdateButton.Name = "UpdateButton";
             UpdateButton.Size = new Size(146, 30);
             UpdateButton.TabIndex = 3;
             UpdateButton.Text = "Chỉnh sửa";
-            UpdateButton.UseVisualStyleBackColor = true;
+            UpdateButton.UseVisualStyleBackColor = false;
             UpdateButton.Click += UpdateButton_Click;
             // 
             // AllowanceTextBox
@@ -131,39 +142,114 @@
             SalaryLabel.TabIndex = 4;
             SalaryLabel.Text = "Lương";
             // 
-            // IdTextBox
+            // EmpIdTextBox
             // 
             EmpIdTextBox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             EmpIdTextBox.Location = new Point(12, 59);
-            EmpIdTextBox.Name = "IdTextBox";
+            EmpIdTextBox.Name = "EmpIdTextBox";
             EmpIdTextBox.Size = new Size(146, 27);
             EmpIdTextBox.TabIndex = 3;
             // 
-            // IdLabel
+            // EmpIdLabel
             // 
             EmpIdLabel.AutoSize = true;
             EmpIdLabel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             EmpIdLabel.Location = new Point(12, 36);
-            EmpIdLabel.Name = "IdLabel";
+            EmpIdLabel.Name = "EmpIdLabel";
             EmpIdLabel.Size = new Size(97, 20);
             EmpIdLabel.TabIndex = 3;
             EmpIdLabel.Text = "Mã nhân viên";
             // 
             // DataGridView
             // 
+            DataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridView.Location = new Point(12, 142);
             DataGridView.Name = "DataGridView";
             DataGridView.RowTemplate.Height = 25;
             DataGridView.Size = new Size(776, 296);
             DataGridView.TabIndex = 3;
-            DataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // 
+            // LogOutButton
+            // 
+            LogOutButton.BackColor = Color.Salmon;
+            LogOutButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            LogOutButton.Location = new Point(682, 7);
+            LogOutButton.Name = "LogOutButton";
+            LogOutButton.Size = new Size(100, 30);
+            LogOutButton.TabIndex = 4;
+            LogOutButton.Text = "Đăng xuất";
+            LogOutButton.UseVisualStyleBackColor = false;
+            LogOutButton.Click += LogOutButton_Click;
+            // 
+            // EmployeeInterfaceButton
+            // 
+            EmployeeInterfaceButton.BackColor = Color.LightSalmon;
+            EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmployeeInterfaceButton.Location = new Point(484, 8);
+            EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
+            EmployeeInterfaceButton.Size = new Size(192, 30);
+            EmployeeInterfaceButton.TabIndex = 5;
+            EmployeeInterfaceButton.Text = "Giao diện nhân viên";
+            EmployeeInterfaceButton.UseVisualStyleBackColor = false;
+            EmployeeInterfaceButton.Click += EmployeeInterfaceButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 25);
+            label1.TabIndex = 6;
+            label1.Text = "ID:";
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(168, 10);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 25);
+            label2.TabIndex = 10;
+            label2.Text = "Vai trò:";
+            // 
+            // IDLabel
+            // 
+            IDLabel.AutoSize = true;
+            IDLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            IDLabel.Location = new Point(54, 10);
+            IDLabel.Name = "IDLabel";
+            IDLabel.Size = new Size(74, 25);
+            IDLabel.TabIndex = 11;
+            IDLabel.Text = "User ID";
+            // 
+            // RoleLabel
+            // 
+            RoleLabel.AutoSize = true;
+            RoleLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            RoleLabel.Location = new Point(247, 10);
+            RoleLabel.Name = "RoleLabel";
+            RoleLabel.Size = new Size(93, 25);
+            RoleLabel.TabIndex = 12;
+            RoleLabel.Text = "User Role";
             // 
             // fTaiChinh
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(RoleLabel);
+            Controls.Add(IDLabel);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(EmployeeInterfaceButton);
+            Controls.Add(LogOutButton);
             Controls.Add(DataGridView);
             Controls.Add(GroupBox);
             Controls.Add(ViewAllocationButton);
@@ -174,6 +260,7 @@
             GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -189,5 +276,12 @@
         private Label AllowanceLabel;
         private Button UpdateButton;
         private DataGridView DataGridView;
+        private Button LogOutButton;
+        private Button EmployeeInterfaceButton;
+        private Label label1;
+        private ContextMenuStrip contextMenuStrip1;
+        private Label label2;
+        private Label IDLabel;
+        private Label RoleLabel;
     }
 }

@@ -5,9 +5,13 @@ namespace PH1
 {
     public partial class fNhanSu : Form
     {
-        public fNhanSu()
+        private readonly string _username;
+
+        public fNhanSu(string username)
         {
             InitializeComponent();
+
+            _username = username;
         }
 
         private void LoadDepartmentData()
