@@ -12,6 +12,9 @@ namespace PH1
             InitializeComponent();
 
             _username = username;
+
+            IDLabel.Text = _username;
+            RoleLabel.Text = "Nhân sự";
         }
 
         private void LoadDepartmentData()
@@ -176,6 +179,28 @@ namespace PH1
 
             // Update the DataGridView
             LoadEmployeeData();
+        }
+
+        private void EmployeeInterfaceButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+
+            var screen = new fNhanVien(_username, "Nhân sự");
+            screen.ShowDialog();
+
+            DialogResult = DialogResult.OK;
+        }
+
+        private void LogOutButton_Click(object sender, EventArgs e)
+        {
+            DataProvider.Instance.DisconnectDB();
+
+            DialogResult = DialogResult.OK;
+
+            Close();
+
+            var f = new Login();
+            f.Show();
         }
     }
 }

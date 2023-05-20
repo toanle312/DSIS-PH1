@@ -40,13 +40,13 @@
             EmpIdTextBox = new TextBox();
             EmpIdLabel = new Label();
             DataGridView = new DataGridView();
-            LogOutButton = new Button();
-            EmployeeInterfaceButton = new Button();
-            label1 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            label2 = new Label();
-            IDLabel = new Label();
             RoleLabel = new Label();
+            IDLabel = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            EmployeeInterfaceButton = new Button();
+            LogOutButton = new Button();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             SuspendLayout();
@@ -94,7 +94,7 @@
             // 
             // UpdateButton
             // 
-            UpdateButton.BackColor = Color.Pink;
+            UpdateButton.BackColor = Color.Aquamarine;
             UpdateButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateButton.Location = new Point(468, 57);
             UpdateButton.Name = "UpdateButton";
@@ -170,74 +170,74 @@
             DataGridView.Size = new Size(776, 296);
             DataGridView.TabIndex = 3;
             // 
-            // LogOutButton
-            // 
-            LogOutButton.BackColor = Color.Salmon;
-            LogOutButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            LogOutButton.Location = new Point(682, 7);
-            LogOutButton.Name = "LogOutButton";
-            LogOutButton.Size = new Size(100, 30);
-            LogOutButton.TabIndex = 4;
-            LogOutButton.Text = "Đăng xuất";
-            LogOutButton.UseVisualStyleBackColor = false;
-            LogOutButton.Click += LogOutButton_Click;
-            // 
-            // EmployeeInterfaceButton
-            // 
-            EmployeeInterfaceButton.BackColor = Color.LightSalmon;
-            EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            EmployeeInterfaceButton.Location = new Point(484, 8);
-            EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
-            EmployeeInterfaceButton.Size = new Size(192, 30);
-            EmployeeInterfaceButton.TabIndex = 5;
-            EmployeeInterfaceButton.Text = "Giao diện nhân viên";
-            EmployeeInterfaceButton.UseVisualStyleBackColor = false;
-            EmployeeInterfaceButton.Click += EmployeeInterfaceButton_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 10);
-            label1.Name = "label1";
-            label1.Size = new Size(34, 25);
-            label1.TabIndex = 6;
-            label1.Text = "ID:";
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // label2
+            // RoleLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(168, 10);
-            label2.Name = "label2";
-            label2.Size = new Size(67, 25);
-            label2.TabIndex = 10;
-            label2.Text = "Vai trò:";
+            RoleLabel.AutoSize = true;
+            RoleLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            RoleLabel.Location = new Point(448, 6);
+            RoleLabel.Name = "RoleLabel";
+            RoleLabel.Size = new Size(93, 25);
+            RoleLabel.TabIndex = 24;
+            RoleLabel.Text = "User Role";
             // 
             // IDLabel
             // 
             IDLabel.AutoSize = true;
             IDLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            IDLabel.Location = new Point(54, 10);
+            IDLabel.Location = new Point(295, 6);
             IDLabel.Name = "IDLabel";
             IDLabel.Size = new Size(74, 25);
-            IDLabel.TabIndex = 11;
+            IDLabel.TabIndex = 23;
             IDLabel.Text = "User ID";
             // 
-            // RoleLabel
+            // label2
             // 
-            RoleLabel.AutoSize = true;
-            RoleLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            RoleLabel.Location = new Point(247, 10);
-            RoleLabel.Name = "RoleLabel";
-            RoleLabel.Size = new Size(93, 25);
-            RoleLabel.TabIndex = 12;
-            RoleLabel.Text = "User Role";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(375, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 25);
+            label2.TabIndex = 22;
+            label2.Text = "Vai trò:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(257, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 25);
+            label1.TabIndex = 21;
+            label1.Text = "ID:";
+            // 
+            // EmployeeInterfaceButton
+            // 
+            EmployeeInterfaceButton.BackColor = SystemColors.GradientActiveCaption;
+            EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmployeeInterfaceButton.Location = new Point(12, 3);
+            EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
+            EmployeeInterfaceButton.Size = new Size(152, 30);
+            EmployeeInterfaceButton.TabIndex = 20;
+            EmployeeInterfaceButton.Text = "Giao diện nhân viên";
+            EmployeeInterfaceButton.UseVisualStyleBackColor = false;
+            EmployeeInterfaceButton.Click += EmployeeInterfaceButton_Click;
+            // 
+            // LogOutButton
+            // 
+            LogOutButton.BackColor = Color.LightSalmon;
+            LogOutButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            LogOutButton.Location = new Point(636, 3);
+            LogOutButton.Name = "LogOutButton";
+            LogOutButton.Size = new Size(152, 30);
+            LogOutButton.TabIndex = 19;
+            LogOutButton.Text = "Đăng xuất";
+            LogOutButton.UseVisualStyleBackColor = false;
+            LogOutButton.Click += LogOutButton_Click;
             // 
             // fTaiChinh
             // 
@@ -276,12 +276,12 @@
         private Label AllowanceLabel;
         private Button UpdateButton;
         private DataGridView DataGridView;
-        private Button LogOutButton;
-        private Button EmployeeInterfaceButton;
-        private Label label1;
         private ContextMenuStrip contextMenuStrip1;
-        private Label label2;
-        private Label IDLabel;
         private Label RoleLabel;
+        private Label IDLabel;
+        private Label label2;
+        private Label label1;
+        private Button EmployeeInterfaceButton;
+        private Button LogOutButton;
     }
 }
