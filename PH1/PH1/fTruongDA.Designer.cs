@@ -51,9 +51,10 @@
             // b_Nhanvien
             // 
             b_Nhanvien.BackColor = SystemColors.ActiveCaption;
-            b_Nhanvien.Location = new Point(40, 52);
+            b_Nhanvien.Location = new Point(46, 69);
+            b_Nhanvien.Margin = new Padding(3, 4, 3, 4);
             b_Nhanvien.Name = "b_Nhanvien";
-            b_Nhanvien.Size = new Size(115, 46);
+            b_Nhanvien.Size = new Size(131, 61);
             b_Nhanvien.TabIndex = 0;
             b_Nhanvien.Text = "Personal Info";
             b_Nhanvien.UseVisualStyleBackColor = false;
@@ -62,9 +63,10 @@
             // b_Phancong
             // 
             b_Phancong.BackColor = SystemColors.ActiveCaption;
-            b_Phancong.Location = new Point(298, 52);
+            b_Phancong.Location = new Point(341, 69);
+            b_Phancong.Margin = new Padding(3, 4, 3, 4);
             b_Phancong.Name = "b_Phancong";
-            b_Phancong.Size = new Size(115, 46);
+            b_Phancong.Size = new Size(131, 61);
             b_Phancong.TabIndex = 1;
             b_Phancong.Text = "View PHANCONG";
             b_Phancong.UseVisualStyleBackColor = false;
@@ -73,9 +75,10 @@
             // b_Dean
             // 
             b_Dean.BackColor = SystemColors.ActiveCaption;
-            b_Dean.Location = new Point(540, 52);
+            b_Dean.Location = new Point(617, 69);
+            b_Dean.Margin = new Padding(3, 4, 3, 4);
             b_Dean.Name = "b_Dean";
-            b_Dean.Size = new Size(115, 46);
+            b_Dean.Size = new Size(131, 61);
             b_Dean.TabIndex = 2;
             b_Dean.Text = "View DEAN";
             b_Dean.UseVisualStyleBackColor = false;
@@ -84,9 +87,10 @@
             // b_Phongban
             // 
             b_Phongban.BackColor = SystemColors.ActiveCaption;
-            b_Phongban.Location = new Point(419, 52);
+            b_Phongban.Location = new Point(479, 69);
+            b_Phongban.Margin = new Padding(3, 4, 3, 4);
             b_Phongban.Name = "b_Phongban";
-            b_Phongban.Size = new Size(115, 46);
+            b_Phongban.Size = new Size(131, 61);
             b_Phongban.TabIndex = 3;
             b_Phongban.Text = "View PHONGBAN";
             b_Phongban.UseVisualStyleBackColor = false;
@@ -96,19 +100,22 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridView1.Location = new Point(40, 120);
+            dataGridView1.Location = new Point(46, 160);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(736, 288);
+            dataGridView1.Size = new Size(841, 384);
             dataGridView1.TabIndex = 4;
             dataGridView1.MouseDown += dataGridView1_MouseDown;
             // 
             // b_Nhanvien2
             // 
             b_Nhanvien2.BackColor = SystemColors.ActiveCaption;
-            b_Nhanvien2.Location = new Point(161, 52);
+            b_Nhanvien2.Location = new Point(184, 69);
+            b_Nhanvien2.Margin = new Padding(3, 4, 3, 4);
             b_Nhanvien2.Name = "b_Nhanvien2";
-            b_Nhanvien2.Size = new Size(131, 46);
+            b_Nhanvien2.Size = new Size(150, 61);
             b_Nhanvien2.TabIndex = 6;
             b_Nhanvien2.Text = "Update Personal Info";
             b_Nhanvien2.UseVisualStyleBackColor = false;
@@ -116,16 +123,17 @@
             // 
             // contextMenuStrip1
             // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xóaĐềÁnToolStripMenuItem, cậpNhậtĐềÁnToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(122, 52);
+            contextMenuStrip1.Size = new Size(136, 60);
             // 
             // xóaĐềÁnToolStripMenuItem
             // 
             xóaĐềÁnToolStripMenuItem.BackColor = Color.LightCoral;
             xóaĐềÁnToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             xóaĐềÁnToolStripMenuItem.Name = "xóaĐềÁnToolStripMenuItem";
-            xóaĐềÁnToolStripMenuItem.Size = new Size(121, 24);
+            xóaĐềÁnToolStripMenuItem.Size = new Size(135, 28);
             xóaĐềÁnToolStripMenuItem.Text = "Delete";
             xóaĐềÁnToolStripMenuItem.Click += xóaĐềÁnToolStripMenuItem_Click;
             // 
@@ -134,16 +142,17 @@
             cậpNhậtĐềÁnToolStripMenuItem.BackColor = SystemColors.ActiveCaption;
             cậpNhậtĐềÁnToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cậpNhậtĐềÁnToolStripMenuItem.Name = "cậpNhậtĐềÁnToolStripMenuItem";
-            cậpNhậtĐềÁnToolStripMenuItem.Size = new Size(121, 24);
+            cậpNhậtĐềÁnToolStripMenuItem.Size = new Size(135, 28);
             cậpNhậtĐềÁnToolStripMenuItem.Text = "Update";
             cậpNhậtĐềÁnToolStripMenuItem.Click += cậpNhậtĐềÁnToolStripMenuItem_Click;
             // 
             // b_ThemDean
             // 
             b_ThemDean.BackColor = SystemColors.ActiveCaption;
-            b_ThemDean.Location = new Point(661, 52);
+            b_ThemDean.Location = new Point(755, 69);
+            b_ThemDean.Margin = new Padding(3, 4, 3, 4);
             b_ThemDean.Name = "b_ThemDean";
-            b_ThemDean.Size = new Size(115, 46);
+            b_ThemDean.Size = new Size(131, 61);
             b_ThemDean.TabIndex = 7;
             b_ThemDean.Text = "Add new DEAN ";
             b_ThemDean.UseVisualStyleBackColor = false;
@@ -154,9 +163,9 @@
             rolename_label.AutoSize = true;
             rolename_label.BorderStyle = BorderStyle.Fixed3D;
             rolename_label.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            rolename_label.Location = new Point(298, 12);
+            rolename_label.Location = new Point(341, 16);
             rolename_label.Name = "rolename_label";
-            rolename_label.Size = new Size(98, 27);
+            rolename_label.Size = new Size(118, 33);
             rolename_label.TabIndex = 33;
             rolename_label.Text = "rolename";
             // 
@@ -164,10 +173,10 @@
             // 
             role.AutoSize = true;
             role.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            role.ForeColor = Color.Firebrick;
-            role.Location = new Point(231, 12);
+            role.ForeColor = Color.Black;
+            role.Location = new Point(264, 16);
             role.Name = "role";
-            role.Size = new Size(61, 25);
+            role.Size = new Size(73, 31);
             role.TabIndex = 32;
             role.Text = "Role: ";
             // 
@@ -176,9 +185,9 @@
             username_label.AutoSize = true;
             username_label.BorderStyle = BorderStyle.Fixed3D;
             username_label.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            username_label.Location = new Point(109, 12);
+            username_label.Location = new Point(125, 16);
             username_label.Name = "username_label";
-            username_label.Size = new Size(100, 27);
+            username_label.Size = new Size(122, 33);
             username_label.TabIndex = 31;
             username_label.Text = "username";
             // 
@@ -186,10 +195,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(40, 12);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(46, 16);
             label1.Name = "label1";
-            label1.Size = new Size(63, 25);
+            label1.Size = new Size(75, 31);
             label1.TabIndex = 30;
             label1.Text = "User: ";
             // 
@@ -197,10 +206,9 @@
             // 
             b_Thoat.BackColor = Color.LightCoral;
             b_Thoat.Cursor = Cursors.Hand;
-            b_Thoat.Location = new Point(540, 12);
-            b_Thoat.Margin = new Padding(3, 2, 3, 2);
+            b_Thoat.Location = new Point(617, 16);
             b_Thoat.Name = "b_Thoat";
-            b_Thoat.Size = new Size(115, 30);
+            b_Thoat.Size = new Size(131, 40);
             b_Thoat.TabIndex = 34;
             b_Thoat.Text = "Log Out";
             b_Thoat.UseVisualStyleBackColor = false;
@@ -208,9 +216,9 @@
             // 
             // fTruongDA
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(819, 451);
+            ClientSize = new Size(936, 601);
             Controls.Add(b_Thoat);
             Controls.Add(rolename_label);
             Controls.Add(role);
@@ -223,6 +231,7 @@
             Controls.Add(b_Dean);
             Controls.Add(b_Phancong);
             Controls.Add(b_Nhanvien);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "fTruongDA";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fTruongDA";

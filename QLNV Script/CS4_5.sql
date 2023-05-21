@@ -1,0 +1,89 @@
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+-- CS#4
+DROP ROLE ROLE_TAICHINH;
+CREATE ROLE ROLE_TAICHINH;
+
+---- Tạo view xem trên toàn bộ quan hệ PHANCONG
+CREATE OR REPLACE VIEW PHANCONG AS
+SELECT *
+FROM PHANCONG$;
+
+---- Gán quyền trên view PHANCONG cho ROLE_TAICHINH
+GRANT SELECT ON PHANCONG TO ROLE_TAICHINH;
+
+---- Có thể sửa trên thuộc tính LUONG và PHUCAP (thừa hành ban giám đốc).
+GRANT UPDATE(LUONG, PHUCAP) ON NHANVIEN TO ROLE_TAICHINH;
+
+---- Gán vai trò cho các nhân viên tài chính
+CREATE OR REPLACE PROCEDURE USP_GRANT_ROLE_TAICHINH
+AS
+    CURSOR CUR IS SELECT MANV FROM NHANVIEN$ 
+   	WHERE UPPER(MANV) IN (SELECT USERNAME FROM ALL_USERS) 
+   	AND VAITRO = N'Tài chính';
+   
+    strSQL varchar(2000);
+    usr varchar(60);
+BEGIN
+    OPEN CUR;
+    LOOP
+        FETCH CUR INTO usr;
+        EXIT WHEN CUR%NOTFOUND;
+        
+        strSQL := 'GRANT ROLE_TAICHINH TO ' || usr;
+        EXECUTE IMMEDIATE (strSQL);
+        
+    END LOOP;
+END;
+/
+BEGIN
+	USP_GRANT_ROLE_TAICHINH;
+END;
+/
+-- CS#5
+DROP ROLE ROLE_NHANSU;
+CREATE ROLE ROLE_NHANSU;
+
+---- Được quyền thêm, cập nhật trên quan hệ PHONGBAN.
+GRANT INSERT, UPDATE ON PHONGBAN TO ROLE_NHANSU;
+
+---- Không thể xem LUONG và PHUCAP của người khác (vẫn xem được các thông tin khác)
+CREATE OR REPLACE VIEW NHANVIEN_NHANSU 
+AS
+	SELECT MANV, TENNV, PHAI, NGAYSINH, DIACHI, SODT, 
+	DECODE(MANV, USER, LUONG, NULL) LUONG,
+	DECODE(MANV, USER, PHUCAP, NULL) PHUCAP, VAITRO, MANQL, PHG
+FROM NHANVIEN$;
+
+GRANT SELECT ON NHANVIEN_NHANSU TO ROLE_NHANSU;
+
+---- Gán vai trò cho các nhân viên nhân sự
+CREATE OR REPLACE PROCEDURE USP_GRANT_ROLE_NHANSU
+AS
+    CURSOR CUR IS SELECT MANV FROM NHANVIEN$ 
+   	WHERE UPPER(MANV) IN (SELECT USERNAME FROM ALL_USERS) 
+   	AND VAITRO = N'Nhân sự';
+   
+    strSQL varchar(2000);
+    usr varchar(60);
+BEGIN
+    OPEN CUR;
+    LOOP
+        FETCH CUR INTO usr;
+        EXIT WHEN CUR%NOTFOUND;
+        
+        strSQL := 'GRANT ROLE_NHANSU TO ' || usr;
+        EXECUTE IMMEDIATE (strSQL);   
+    END LOOP;
+END;
+/
+BEGIN
+    USP_GRANT_ROLE_NHANSU;
+END;
+/
+---- Thêm, cập nhật dữ liệu trong quan hệ NHANVIEN với giá trị các trường LUONG, PHUCAP 
+---- mang giá trị mặc định là NULL (?)
+
+---- Không được cập nhật trên các trường LUONG, PHUCAP.
+GRANT UPDATE(MANV, TENNV, PHAI, NGAYSINH, DIACHI, SODT, VAITRO, MANQL, PHG)
+ON NHANVIEN_NHANSU TO ROLE_NHANSU;
