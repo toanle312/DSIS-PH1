@@ -76,13 +76,13 @@ namespace PH1
         private bool check_string(string username)
         {
             bool result = true;
-            if(username == string.Empty)
+            if (username == string.Empty)
             {
                 return false;
             }
             else
             {
-                if(username.ToUpper().Contains("'") ||
+                if (username.ToUpper().Contains("'") ||
                    username.ToUpper().Contains("OR") ||
                    username.ToUpper().Contains("SELECT") ||
                    username.ToUpper().Contains("UPDATE") ||
@@ -92,9 +92,8 @@ namespace PH1
                    username.ToUpper().Contains("="))
                 {
                     return false;
-                }    
+                }
             }
-             
 
             return result;
         }
@@ -106,9 +105,10 @@ namespace PH1
 
             var role = new Role();
 
-            if(check_string(username) && check_string(password)) {
+            if (check_string(username) && check_string(password))
+            {
                 string checkLogin = DataProvider.Instance.ConnectDB(username, password);
-            
+
                 if (checkLogin == "Success")
                 {
                     var result = check_Login();
@@ -168,7 +168,7 @@ namespace PH1
                     {
                         this.Hide();
 
-                        fNhanSu screen = new fNhanSu();
+                        fNhanSu screen = new fNhanSu(username);
                         screen.StartPosition = FormStartPosition.CenterScreen;
                         screen.ShowDialog();
 
@@ -182,7 +182,7 @@ namespace PH1
                     {
                         this.Hide();
 
-                        fTaiChinh screen = new fTaiChinh();
+                        fTaiChinh screen = new fTaiChinh(username);
                         screen.StartPosition = FormStartPosition.CenterScreen;
                         screen.ShowDialog();
 
@@ -227,7 +227,7 @@ namespace PH1
             else
             {
                 MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }    
+            }
         }
 
         private void cancel_btn_Click(object sender, EventArgs e)

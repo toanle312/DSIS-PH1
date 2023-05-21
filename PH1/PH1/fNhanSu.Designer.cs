@@ -60,6 +60,12 @@
             EmpNameLabel = new Label();
             EmpIdTextBox = new TextBox();
             EmpIdLabel = new Label();
+            RoleLabel = new Label();
+            IDLabel = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            EmployeeInterfaceButton = new Button();
+            LogOutButton = new Button();
             DeptGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             EmpGroupBox.SuspendLayout();
@@ -86,35 +92,38 @@
             // 
             // ViewDeptButton
             // 
+            ViewDeptButton.BackColor = Color.Aquamarine;
             ViewDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewDeptButton.Location = new Point(462, 17);
             ViewDeptButton.Name = "ViewDeptButton";
             ViewDeptButton.Size = new Size(298, 30);
             ViewDeptButton.TabIndex = 15;
             ViewDeptButton.Text = "Xem danh sách phòng ban";
-            ViewDeptButton.UseVisualStyleBackColor = true;
+            ViewDeptButton.UseVisualStyleBackColor = false;
             ViewDeptButton.Click += ViewDeptButton_Click;
             // 
             // UpdateDeptButton
             // 
+            UpdateDeptButton.BackColor = Color.Aquamarine;
             UpdateDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateDeptButton.Location = new Point(614, 47);
             UpdateDeptButton.Name = "UpdateDeptButton";
             UpdateDeptButton.Size = new Size(146, 30);
             UpdateDeptButton.TabIndex = 14;
             UpdateDeptButton.Text = "Chỉnh sửa";
-            UpdateDeptButton.UseVisualStyleBackColor = true;
+            UpdateDeptButton.UseVisualStyleBackColor = false;
             UpdateDeptButton.Click += UpdateDeptButton_Click;
             // 
             // AddDeptButton
             // 
+            AddDeptButton.BackColor = Color.Aquamarine;
             AddDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             AddDeptButton.Location = new Point(462, 48);
             AddDeptButton.Name = "AddDeptButton";
             AddDeptButton.Size = new Size(146, 30);
             AddDeptButton.TabIndex = 13;
             AddDeptButton.Text = "Thêm";
-            AddDeptButton.UseVisualStyleBackColor = true;
+            AddDeptButton.UseVisualStyleBackColor = false;
             AddDeptButton.Click += AddDeptButton_Click;
             // 
             // DeptLeaderTextBox
@@ -243,24 +252,26 @@
             // 
             // UpdateEmpButton
             // 
+            UpdateEmpButton.BackColor = Color.Chartreuse;
             UpdateEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateEmpButton.Location = new Point(278, 139);
             UpdateEmpButton.Name = "UpdateEmpButton";
             UpdateEmpButton.Size = new Size(266, 30);
             UpdateEmpButton.TabIndex = 33;
             UpdateEmpButton.Text = "Chỉnh sửa nhân viên";
-            UpdateEmpButton.UseVisualStyleBackColor = true;
+            UpdateEmpButton.UseVisualStyleBackColor = false;
             UpdateEmpButton.Click += UpdateEmpButton_Click;
             // 
             // ViewEmpButton
             // 
+            ViewEmpButton.BackColor = Color.Chartreuse;
             ViewEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewEmpButton.Location = new Point(6, 137);
             ViewEmpButton.Name = "ViewEmpButton";
             ViewEmpButton.Size = new Size(266, 30);
             ViewEmpButton.TabIndex = 31;
             ViewEmpButton.Text = "Xem danh sách nhân viên";
-            ViewEmpButton.UseVisualStyleBackColor = true;
+            ViewEmpButton.UseVisualStyleBackColor = false;
             ViewEmpButton.Click += ViewEmpButton_Click;
             // 
             // EmpDeptTextBox
@@ -402,11 +413,81 @@
             EmpIdLabel.TabIndex = 14;
             EmpIdLabel.Text = "Mã nhân viên";
             // 
+            // RoleLabel
+            // 
+            RoleLabel.AutoSize = true;
+            RoleLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            RoleLabel.Location = new Point(448, 7);
+            RoleLabel.Name = "RoleLabel";
+            RoleLabel.Size = new Size(93, 25);
+            RoleLabel.TabIndex = 18;
+            RoleLabel.Text = "User Role";
+            // 
+            // IDLabel
+            // 
+            IDLabel.AutoSize = true;
+            IDLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            IDLabel.Location = new Point(295, 7);
+            IDLabel.Name = "IDLabel";
+            IDLabel.Size = new Size(74, 25);
+            IDLabel.TabIndex = 17;
+            IDLabel.Text = "User ID";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(375, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 25);
+            label2.TabIndex = 16;
+            label2.Text = "Vai trò:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(257, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 25);
+            label1.TabIndex = 15;
+            label1.Text = "ID:";
+            // 
+            // EmployeeInterfaceButton
+            // 
+            EmployeeInterfaceButton.BackColor = SystemColors.GradientActiveCaption;
+            EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmployeeInterfaceButton.Location = new Point(12, 4);
+            EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
+            EmployeeInterfaceButton.Size = new Size(152, 30);
+            EmployeeInterfaceButton.TabIndex = 14;
+            EmployeeInterfaceButton.Text = "Giao diện nhân viên";
+            EmployeeInterfaceButton.UseVisualStyleBackColor = false;
+            EmployeeInterfaceButton.Click += EmployeeInterfaceButton_Click;
+            // 
+            // LogOutButton
+            // 
+            LogOutButton.BackColor = Color.Salmon;
+            LogOutButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            LogOutButton.Location = new Point(636, 4);
+            LogOutButton.Name = "LogOutButton";
+            LogOutButton.Size = new Size(152, 30);
+            LogOutButton.TabIndex = 13;
+            LogOutButton.Text = "Đăng xuất";
+            LogOutButton.UseVisualStyleBackColor = false;
+            LogOutButton.Click += LogOutButton_Click;
+            // 
             // fNhanSu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 567);
+            Controls.Add(RoleLabel);
+            Controls.Add(IDLabel);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(EmployeeInterfaceButton);
+            Controls.Add(LogOutButton);
             Controls.Add(EmpGroupBox);
             Controls.Add(DataGridView);
             Controls.Add(DeptGroupBox);
@@ -418,6 +499,7 @@
             EmpGroupBox.ResumeLayout(false);
             EmpGroupBox.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
 
@@ -456,5 +538,11 @@
         private ComboBox EmpGenderComboBox;
         private RichTextBox EmpAddressRichTextBox;
         private Button ViewDeptButton;
+        private Label RoleLabel;
+        private Label IDLabel;
+        private Label label2;
+        private Label label1;
+        private Button EmployeeInterfaceButton;
+        private Button LogOutButton;
     }
 }

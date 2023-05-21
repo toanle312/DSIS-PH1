@@ -4,9 +4,16 @@ namespace PH1
 {
     public partial class fTaiChinh : Form
     {
-        public fTaiChinh()
+        private readonly string _username;
+
+        public fTaiChinh(string username)
         {
             InitializeComponent();
+
+            _username = username;
+
+            IDLabel.Text = _username;
+            RoleLabel.Text = "Tài chính";
         }
 
         private void ViewEmpButton_Click(object sender, EventArgs e)
@@ -79,6 +86,28 @@ namespace PH1
                 // Display the updated data
                 DataGridView.DataSource = data;
             }
+        }
+
+        private void EmployeeInterfaceButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+
+            var screen = new fNhanVien(_username, "Tài chính");
+            screen.ShowDialog();
+
+            DialogResult = DialogResult.OK;
+        }
+
+        private void LogOutButton_Click(object sender, EventArgs e)
+        {
+            DataProvider.Instance.DisconnectDB();
+
+            DialogResult = DialogResult.OK;
+
+            Close();
+
+            var f = new Login();
+            f.Show();
         }
     }
 }
