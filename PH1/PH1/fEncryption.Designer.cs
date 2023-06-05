@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ViewEmployeeButton = new Button();
+            EncryptButton = new Button();
             DataGridView = new DataGridView();
+            DecryptButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             SuspendLayout();
             // 
-            // ViewEmployeeButton
+            // EncryptButton
             // 
-            ViewEmployeeButton.Location = new Point(12, 12);
-            ViewEmployeeButton.Name = "ViewEmployeeButton";
-            ViewEmployeeButton.Size = new Size(150, 30);
-            ViewEmployeeButton.TabIndex = 0;
-            ViewEmployeeButton.Text = "Xem nhân viên";
-            ViewEmployeeButton.UseVisualStyleBackColor = true;
-            ViewEmployeeButton.Click += ViewEmployeeButton_OnClick;
+            EncryptButton.Location = new Point(12, 12);
+            EncryptButton.Name = "EncryptButton";
+            EncryptButton.Size = new Size(150, 30);
+            EncryptButton.TabIndex = 0;
+            EncryptButton.Text = "Encrypt";
+            EncryptButton.UseVisualStyleBackColor = true;
+            EncryptButton.Click += EncryptButton_OnClick;
             // 
             // DataGridView
             // 
@@ -52,14 +53,25 @@
             DataGridView.Size = new Size(776, 390);
             DataGridView.TabIndex = 1;
             // 
-            // Cryptography
+            // DecryptButton
+            // 
+            DecryptButton.Location = new Point(168, 12);
+            DecryptButton.Name = "DecryptButton";
+            DecryptButton.Size = new Size(150, 30);
+            DecryptButton.TabIndex = 2;
+            DecryptButton.Text = "Decrypt";
+            DecryptButton.UseVisualStyleBackColor = true;
+            DecryptButton.Click += DecryptButton_Click;
+            // 
+            // fEncryption
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(DecryptButton);
             Controls.Add(DataGridView);
-            Controls.Add(ViewEmployeeButton);
-            Name = "Cryptography";
+            Controls.Add(EncryptButton);
+            Name = "fEncryption";
             Text = "Cryptography";
             ((System.ComponentModel.ISupportInitialize)DataGridView).EndInit();
             ResumeLayout(false);
@@ -67,7 +79,8 @@
 
         #endregion
 
-        private Button ViewEmployeeButton;
+        private Button EncryptButton;
         private DataGridView DataGridView;
+        private Button DecryptButton;
     }
 }
