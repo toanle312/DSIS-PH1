@@ -133,5 +133,11 @@ namespace PH1
 
             return data;
         }
+
+        public void SortDataTable(DataTable table, string column, SortOrder order)
+        {
+            table.DefaultView.Sort = $"{column} {(order == SortOrder.Ascending ? "asc" : "desc")}";
+            table = table.DefaultView.ToTable();
+        }
     }
 }

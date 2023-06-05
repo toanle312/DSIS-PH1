@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,7 +38,25 @@ namespace PH1
             feature_label.Text = "Thông tin nhân viên";
             string query = @"SELECT * FROM U_AD_QLNV.NHANVIEN_SESSION";
             var data = DataProvider.Instance.ExcuteQuery(query);
-            user_list_view.DataSource = data;
+
+            var decryptedTable = EmployeeServices.CreateDataTableFrom(data);
+
+            foreach (DataRow row in data.Rows)
+            {
+                if (row["MANV"].ToString() == username_label.Text && row["VAITRO"].ToString() == rolename_label.Text)
+                {
+                    Encryption.DecryptEmployee(row, decryptedTable);
+                }
+                else
+                {
+                    decryptedTable.ImportRow(row);
+                }
+            }
+
+            DataProvider.Instance.SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
+            user_list_view.DataSource = decryptedTable;
+
+            //user_list_view.DataSource = data;
         }
 
         private void phancong_btn_Click(object sender, EventArgs e)

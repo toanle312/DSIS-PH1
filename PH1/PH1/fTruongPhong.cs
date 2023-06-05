@@ -77,9 +77,26 @@ namespace PH1
             AddOkBtn.Visible = false;
             DeleteOkBtn.Visible = false;
             infoView.Size = new Size(960, 100);
-
             string query = "SELECT * from U_AD_QLNV.NHANVIEN_SESSION";
-            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+
+            var data = DataProvider.Instance.ExcuteQuery(query);
+
+            var decryptedTable = EmployeeServices.CreateDataTableFrom(data);
+
+            foreach (DataRow row in data.Rows)
+            {
+                if (row["MANV"].ToString() == username_label.Text && row["VAITRO"].ToString() == rolename_label.Text)
+                {
+                    Encryption.DecryptEmployee(row, decryptedTable);
+                }
+                else
+                {
+                    decryptedTable.ImportRow(row);
+                }
+            }
+
+            DataProvider.Instance.SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
+            infoView.DataSource = decryptedTable;
         }
 
         private void employeeInfoBtn_Click(object sender, EventArgs e)

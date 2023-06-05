@@ -22,7 +22,23 @@ namespace PH1
 
             DataTable data = DataProvider.Instance.ExcuteQuery(query);
 
-            DataGridView.DataSource = data;
+            var decryptedTable = EmployeeServices.CreateDataTableFrom(data);
+
+            foreach (DataRow row in data.Rows)
+            {
+                if (row["MANV"].ToString() == IDLabel.Text && row["VAITRO"].ToString() == RoleLabel.Text)
+                {
+                    Encryption.DecryptEmployee(row, decryptedTable);
+                }
+                else
+                {
+                    decryptedTable.ImportRow(row);
+                }
+            }
+
+            DataProvider.Instance.SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
+
+            DataGridView.DataSource = decryptedTable;
         }
 
         private void ViewAllocationButton_Click(object sender, EventArgs e)
