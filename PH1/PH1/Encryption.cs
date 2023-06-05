@@ -114,18 +114,15 @@ public class Encryption
         return hex == null ? Array.Empty<byte>() : Convert.FromHexString(hex[2..]);
     }
 
-    public static void EncryptSalaryAndAllowance(DataRow employee, DataTable encryptedTable)
+
+    public static void EncryptSalaryAndAllowance(DataRow employeeRow, DataTable encryptedTable)
     {
-        // Lấy thông tin
-        var id = employee["MANV"].ToString();
-        var name = employee["TENNV"].ToString();
-        var salary = employee["LUONG"].ToString();
-        var allowance = employee["PHUCAP"].ToString();
+        var employee = EmployeeServices.GetEmployeeInfo(employeeRow);
 
         // Tạo khóa
-        if (id == null || name == null) return;
+        if (employee.Id == "" || employee.Name == "") return;
 
-        var encryptionKey = GenerateEncryptionKey(id, name);
+        var encryptionKey = GenerateEncryptionKey(employee.Id, employee.Name);
         var hashedKey = Hash(encryptionKey);
         var aes = CreateAES(hashedKey);
 
@@ -133,29 +130,23 @@ public class Encryption
         // Debug.WriteLine($"Hashed key: {ToHex(hashedKey)}");
 
         // Mã hóa trường LUONG và PHUCAP
-        var encryptedSalary = Encrypt(aes, salary);
-        var encryptedAllowance = Encrypt(aes, allowance);
+        var encryptedSalary = Encrypt(aes, employee.Salary);
+        var encryptedAllowance = Encrypt(aes, employee.Allowance);
 
-        DataRow row = encryptedTable.NewRow();
-        row["MANV"] = id;
-        row["TENNV"] = name;
-        row["LUONG"] = ToHex(encryptedSalary);
-        row["PHUCAP"] = ToHex(encryptedAllowance);
-        encryptedTable.Rows.Add(row);
+        var encryptedRow = EmployeeServices.SetEmployeeInfo(employee, encryptedTable);
+        encryptedRow["LUONG"] = ToHex(encryptedSalary);
+        encryptedRow["PHUCAP"] = ToHex(encryptedAllowance);
+        encryptedTable.Rows.Add(encryptedRow);
     }
 
-    public static void DecryptSalaryAndAllowance(DataRow encryptedEmployee, DataTable decryptedTable)
+    public static void DecryptSalaryAndAllowance(DataRow encryptedEmployeeRow, DataTable decryptedTable)
     {
-        // Lấy thông tin
-        var id = encryptedEmployee["MANV"].ToString();
-        var name = encryptedEmployee["TENNV"].ToString();
-        var encryptedSalary = encryptedEmployee["LUONG"].ToString();
-        var encryptedAllowance = encryptedEmployee["PHUCAP"].ToString();
+        var encryptedEmployee = EmployeeServices.GetEmployeeInfo(encryptedEmployeeRow);
 
         // Tạo khóa
-        if (id == null || name == null) return;
+        if (encryptedEmployee.Id == null || encryptedEmployee.Name == null) return;
 
-        var encryptionKey = GenerateEncryptionKey(id, name);
+        var encryptionKey = GenerateEncryptionKey(encryptedEmployee.Id, encryptedEmployee.Name);
         var hashedKey = Hash(encryptionKey);
         var aes = CreateAES(hashedKey);
 
@@ -163,14 +154,12 @@ public class Encryption
         // Debug.WriteLine($"Hashed key: {ToHex(hashedKey)}");
 
         // Giải mã trường LUONG và PHUCAP
-        var decryptedSalary = Decrypt(aes, ToBytes(encryptedSalary));
-        var decryptedAllowance = Decrypt(aes, ToBytes(encryptedAllowance));
+        var decryptedSalary = Decrypt(aes, ToBytes(encryptedEmployee.Salary));
+        var decryptedAllowance = Decrypt(aes, ToBytes(encryptedEmployee.Allowance));
 
-        DataRow row = decryptedTable.NewRow();
-        row["MANV"] = id;
-        row["TENNV"] = name;
-        row["LUONG"] = decryptedSalary;
-        row["PHUCAP"] = decryptedAllowance;
-        decryptedTable.Rows.Add(row);
+        DataRow decryptedRow = EmployeeServices.SetEmployeeInfo(encryptedEmployee, decryptedTable);
+        decryptedRow["LUONG"] = decryptedSalary;
+        decryptedRow["PHUCAP"] = decryptedAllowance;
+        decryptedTable.Rows.Add(decryptedRow);
     }
 }

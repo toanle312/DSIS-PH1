@@ -46,6 +46,7 @@
             // 
             // DataGridView
             // 
+            DataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridView.Location = new Point(12, 48);
             DataGridView.Name = "DataGridView";

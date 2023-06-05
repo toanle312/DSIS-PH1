@@ -4,6 +4,8 @@ namespace PH1
 {
     public partial class fEncryption : Form
     {
+        private bool _decrypted = false;
+
         public fEncryption()
         {
             InitializeComponent();
@@ -21,17 +23,25 @@ namespace PH1
             table = table.DefaultView.ToTable();
         }
 
+        private DataTable CreateDataViewFrom(DataTable sourceTable)
+        {
+            var viewTable = new DataTable();
+
+            foreach (DataColumn column in sourceTable.Columns)
+            {
+                viewTable.Columns.Add(column.ColumnName, typeof(string));
+            }
+
+            return viewTable;
+        }
+
         private void EncryptButton_OnClick(object sender, EventArgs e)
         {
             const string query = "select * from U_AD_QLNV.NHANVIEN$";
             var employeeList = DataProvider.Instance.ExcuteQuery(query);
 
             // Create new DataTable to store encrypted data
-            var encryptedTable = new DataTable();
-            encryptedTable.Columns.Add("MANV", typeof(string));
-            encryptedTable.Columns.Add("TENNV", typeof(string));
-            encryptedTable.Columns.Add("LUONG", typeof(string));
-            encryptedTable.Columns.Add("PHUCAP", typeof(string));
+            var encryptedTable = CreateDataViewFrom(employeeList);
 
             foreach (DataRow row in employeeList.Rows)
             {
@@ -40,6 +50,8 @@ namespace PH1
 
             SortDataTable(encryptedTable, "MANV", SortOrder.Ascending);
             DataGridView.DataSource = encryptedTable;
+
+            _decrypted = false;
         }
 
         private void DecryptButton_Click(object sender, EventArgs e)
@@ -50,12 +62,10 @@ namespace PH1
                 return;
             }
 
+            if (_decrypted) return;
+
             // Create new DataTable to store decrypted data
-            var decryptedTable = new DataTable();
-            decryptedTable.Columns.Add("MANV", typeof(string));
-            decryptedTable.Columns.Add("TENNV", typeof(string));
-            decryptedTable.Columns.Add("LUONG", typeof(string));
-            decryptedTable.Columns.Add("PHUCAP", typeof(string));
+            var decryptedTable = CreateDataViewFrom(encryptedTable);
 
             foreach (DataRow row in encryptedTable.Rows)
             {
@@ -64,6 +74,8 @@ namespace PH1
 
             SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
             DataGridView.DataSource = decryptedTable;
+
+            _decrypted = true;
         }
     }
 }
