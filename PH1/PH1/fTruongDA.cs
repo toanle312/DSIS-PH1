@@ -76,32 +76,17 @@ namespace PH1
             int rowIndex = dataGridView1.SelectedRows[0].Index;
             string mada = dataGridView1.Rows[rowIndex].Cells["MADA"].Value.ToString();
 
-<<<<<<< Updated upstream
             if (MessageBox.Show("Bạn muốn xóa đề án này?", "Massage", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-=======
-            if (MessageBox.Show("Do you want to delete this project?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
->>>>>>> Stashed changes
             {
                 string query = "DELETE U_AD_QLNV.DEAN WHERE MADA = '" + mada + "'";
                 try
                 {
                     DataProvider.Instance.ExcuteNonQuery(query);
-<<<<<<< Updated upstream
                     MessageBox.Show("Xóa đề án thành công!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch
                 {
                     MessageBox.Show("Xóa đề án không thành công!" + query, "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
-=======
-                    MessageBox.Show("The project was deleted successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    string query_load = "SELECT * FROM U_AD_QLNV.DEAN";
-                    dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query_load);
-                }
-                catch
-                {
-                    MessageBox.Show("Deleting project fail!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
->>>>>>> Stashed changes
                 }
             }
         }
