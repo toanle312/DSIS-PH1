@@ -21,8 +21,8 @@ namespace PH1
 
         private void Main_Load(object sender, EventArgs e)
         {
-
         }
+
         private void active_form(Form f)
         {
             control.Controls.Clear();
@@ -58,9 +58,8 @@ namespace PH1
             }
             else
             {
-                MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You don't have permission", "W    arning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void check_privs_btn_Click(object sender, EventArgs e)
@@ -126,7 +125,6 @@ namespace PH1
             {
                 MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void del_role_btn_Click(object sender, EventArgs e)
@@ -153,9 +151,6 @@ namespace PH1
             {
                 MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-
         }
 
         private void grant_role_btn_Click(object sender, EventArgs e)
@@ -183,6 +178,7 @@ namespace PH1
                 MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void log_out_btn_Click(object sender, EventArgs e)
         {
             DataProvider.Instance.DisconnectDB();
@@ -194,7 +190,6 @@ namespace PH1
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void username_label_Click(object sender, EventArgs e)
@@ -203,6 +198,19 @@ namespace PH1
 
         private void control_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void encryptionFormButton_Click(object sender, EventArgs e)
+        {
+            if (check_dba(username_label.Text))
+            {
+                var f = new fEncryption();
+                active_form(f);
+            }
+            else
+            {
+                MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

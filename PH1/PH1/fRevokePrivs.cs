@@ -18,6 +18,7 @@ namespace PH1
         {
             InitializeComponent();
         }
+
         private void Run_SP_RevokeRole_Priv()
         {
             string s_role_priv = role_priv.Text.ToString().Trim().ToUpper();
@@ -29,7 +30,7 @@ namespace PH1
                 try
                 {
                     DataProvider.Instance.ExcuteNonQuery(query);
-                    MessageBox.Show("Revoke successfully!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Revoke successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -37,11 +38,12 @@ namespace PH1
                 }
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (role_priv.Text.Trim().Length == 0 | user_role.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please fill enough information!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please fill enough information!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             Run_SP_RevokeRole_Priv();

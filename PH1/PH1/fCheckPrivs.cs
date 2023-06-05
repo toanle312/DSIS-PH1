@@ -23,7 +23,7 @@ namespace PH1
         {
             if (name_init.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please fill a user name or a role name!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please fill a user name or a role name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             string name = name_init.Text.Trim().ToString().ToUpper();
@@ -39,7 +39,7 @@ namespace PH1
         {
             if (name_init.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please fill a user name!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please fill a user name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             string name = name_init.Text.Trim().ToString().ToUpper();
@@ -53,7 +53,7 @@ namespace PH1
         {
             if (name_init.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please fill a user name or a role name!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please fill a user name or a role name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             string name = name_init.Text.Trim().ToString().ToUpper();
@@ -69,7 +69,7 @@ namespace PH1
         {
             if (name_init.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please fill a user name!", "Massage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please fill a user name!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             string name = name_init.Text.Trim().ToString().ToUpper();
@@ -81,7 +81,6 @@ namespace PH1
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
