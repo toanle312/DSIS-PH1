@@ -46,7 +46,6 @@ namespace PH1
             string query = "SELECT * FROM U_AD_QLNV.PHANCONG";
 
             DataTable data = DataProvider.Instance.ExcuteQuery(query);
-
             DataGridView.DataSource = data;
         }
 
