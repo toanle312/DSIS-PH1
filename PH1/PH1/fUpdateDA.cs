@@ -14,7 +14,6 @@ namespace PH1
     public partial class fUpdateDA : Form
     {
         private string mada = "";
-
         public fUpdateDA(string mada, string tenda, string ngaybd, string phong)
         {
             InitializeComponent();

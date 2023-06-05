@@ -43,16 +43,16 @@
     <Compile Update="fRevokePrivs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fSuaDA.cs">
+    <Compile Update="fUpdateDA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fSuaNhanvien.cs">
+    <Compile Update="fUpdateNhanvien.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fTaiChinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fThemDA.cs">
+    <Compile Update="fAddDA.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fTruongDA.cs">

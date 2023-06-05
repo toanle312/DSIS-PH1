@@ -39,7 +39,6 @@ namespace PH1
             }
             string ngaybd = dateTimePicker_Ngaybd.Text.Split(' ')[0].Replace('/', '-').ToString();
             string phong = comboBox_Phong.Text.Trim().ToString();
-
             string query = string.Format("Insert into U_AD_QLNV.DEAN (MADA,TENDA,NGAYBD,PHONG) values ('{0}', N'{1}', to_date('{2}', 'MM-DD-YYYY'), '{3}')", mada, tenda, ngaybd, phong);
 
             try
