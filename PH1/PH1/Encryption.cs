@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -6,6 +7,9 @@ namespace PH1;
 
 public class Encryption
 {
+    private static int _keySize = 256;
+    private static int _KeyLength = _keySize / 8;
+
     /*?
          * Tạo khóa chính bằng cách đan xen các số trong mã nhân viên và các từ trong họ tên
          *
@@ -49,10 +53,22 @@ public class Encryption
         return hash;
     }
 
+    private static byte[] PadByteArray(byte[] input, int desiredLength)
+    {
+        if (input.Length >= desiredLength)
+            return input[..desiredLength];
+
+        byte[] paddedArray = new byte[desiredLength];
+        Array.Copy(input, paddedArray, input.Length);
+        return paddedArray;
+    }
+
     private static Aes CreateAES(byte[] encryptionKey)
     {
         var aes = Aes.Create();
-        aes.Key = encryptionKey[..32];
+        // Padding key to be 32 bytes
+        aes.KeySize = _keySize;
+        aes.Key = PadByteArray(encryptionKey, _KeyLength);
         aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         return aes;
     }
@@ -78,9 +94,9 @@ public class Encryption
 
         ICryptoTransform decryptor = aes.CreateDecryptor();
 
-        using MemoryStream msDecrypt = new MemoryStream(cipherText);
-        using CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
-        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+        using var msDecrypt = new MemoryStream(cipherText);
+        using var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+        using (var srDecrypt = new StreamReader(csDecrypt))
         {
             plaintext = srDecrypt.ReadToEnd();
         }
@@ -95,8 +111,7 @@ public class Encryption
 
     private static byte[] ToBytes(string? hex)
     {
-        if (hex == null) return new byte[0];
-        return Convert.FromHexString(hex[2..]);
+        return hex == null ? Array.Empty<byte>() : Convert.FromHexString(hex[2..]);
     }
 
     public static void EncryptSalaryAndAllowance(DataRow employee, DataTable encryptedTable)
