@@ -31,6 +31,7 @@
             EncryptButton = new Button();
             DataGridView = new DataGridView();
             DecryptButton = new Button();
+            SaveButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -64,11 +65,22 @@
             DecryptButton.UseVisualStyleBackColor = true;
             DecryptButton.Click += DecryptButton_Click;
             // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(324, 12);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(150, 30);
+            SaveButton.TabIndex = 3;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
+            // 
             // fEncryption
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(SaveButton);
             Controls.Add(DecryptButton);
             Controls.Add(DataGridView);
             Controls.Add(EncryptButton);
@@ -83,5 +95,6 @@
         private Button EncryptButton;
         private DataGridView DataGridView;
         private Button DecryptButton;
+        private Button SaveButton;
     }
 }

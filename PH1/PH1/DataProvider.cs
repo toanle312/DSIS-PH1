@@ -69,7 +69,6 @@ namespace PH1
                 OracleDataAdapter adapter = new OracleDataAdapter(cmd);
 
                 adapter.Fill(data);
-
             }
             catch
             {
@@ -99,7 +98,6 @@ namespace PH1
 
                 data = cmd.ExecuteNonQuery();
                 transaction.Commit();
-                
             }
             catch
             {

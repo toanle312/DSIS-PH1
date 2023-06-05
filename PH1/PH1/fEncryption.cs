@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics;
 
 namespace PH1
 {
@@ -23,29 +24,17 @@ namespace PH1
             table = table.DefaultView.ToTable();
         }
 
-        private DataTable CreateDataViewFrom(DataTable sourceTable)
-        {
-            var viewTable = new DataTable();
-
-            foreach (DataColumn column in sourceTable.Columns)
-            {
-                viewTable.Columns.Add(column.ColumnName, typeof(string));
-            }
-
-            return viewTable;
-        }
-
         private void EncryptButton_OnClick(object sender, EventArgs e)
         {
+            // ! Lấy dữ liệu từ bảng NHANVIEN$ để mã hóa.
             const string query = "select * from U_AD_QLNV.NHANVIEN$";
             var employeeList = DataProvider.Instance.ExcuteQuery(query);
 
-            // Create new DataTable to store encrypted data
-            var encryptedTable = CreateDataViewFrom(employeeList);
+            var encryptedTable = EmployeeServices.CreateDataTableFrom(employeeList);
 
             foreach (DataRow row in employeeList.Rows)
             {
-                Encryption.EncryptSalaryAndAllowance(row, encryptedTable);
+                Encryption.EncryptEmployee(row, encryptedTable);
             }
 
             SortDataTable(encryptedTable, "MANV", SortOrder.Ascending);
@@ -58,24 +47,66 @@ namespace PH1
         {
             if (DataGridView.DataSource is not DataTable encryptedTable)
             {
-                MessageBox.Show("No data to decrypt");
+                MessageBox.Show("No data to decrypt", "Message");
                 return;
             }
 
             if (_decrypted) return;
 
-            // Create new DataTable to store decrypted data
-            var decryptedTable = CreateDataViewFrom(encryptedTable);
+            var decryptedTable = EmployeeServices.CreateDataTableFrom(encryptedTable);
 
             foreach (DataRow row in encryptedTable.Rows)
             {
-                Encryption.DecryptSalaryAndAllowance(row, decryptedTable);
+                Encryption.DecryptEmployee(row, decryptedTable);
             }
 
             SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
             DataGridView.DataSource = decryptedTable;
 
             _decrypted = true;
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (DataGridView.DataSource is not DataTable table)
+            {
+                MessageBox.Show("No data to save", "Message");
+                return;
+            }
+
+            if (_decrypted)
+            {
+                MessageBox.Show("Please encrypt data before saving", "Message");
+                return;
+            }
+
+            string dropQuery = $"delete from U_AD_QLNV.NHANVIEN_ENCRYPTED";
+            DataProvider.Instance.ExcuteNonQuery(dropQuery);
+
+            foreach (DataRow row in table.Rows)
+            {
+                var employee = EmployeeServices.GetEmployeeInfo(row);
+
+                // ! Lưu dữ liệu mã hóa vào bảng NHANVIEN_ENCRYPTED
+                string insertQuery = $"insert into U_AD_QLNV.NHANVIEN_ENCRYPTED values (" +
+                                     $"'{employee.Id}'," +
+                                     $"N'{employee.Name}'," +
+                                     $"N'{employee.Gender}'," +
+                                     $"to_date('{employee.Birthday:dd/MM/yyyy}','DD/MM/YY')," +
+                                     $"N'{employee.Address}'," +
+                                     $"'{employee.PhoneNumber}'," +
+                                     $"'{employee.Salary[2..]}'," +
+                                     $"'{employee.Allowance[2..]}'," +
+                                     $"N'{employee.Role}'," +
+                                     $"'{employee.ManagerId}'," +
+                                     $"'{employee.Department}')";
+
+                Debug.WriteLine(insertQuery);
+
+                DataProvider.Instance.ExcuteNonQuery(insertQuery);
+            }
+
+            MessageBox.Show("Saved", "Message");
         }
     }
 }

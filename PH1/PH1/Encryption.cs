@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -66,7 +65,6 @@ public class Encryption
     private static Aes CreateAES(byte[] encryptionKey)
     {
         var aes = Aes.Create();
-        // Padding key to be 32 bytes
         aes.KeySize = _keySize;
         aes.Key = PadByteArray(encryptionKey, _KeyLength);
         aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -114,8 +112,7 @@ public class Encryption
         return hex == null ? Array.Empty<byte>() : Convert.FromHexString(hex[2..]);
     }
 
-
-    public static void EncryptSalaryAndAllowance(DataRow employeeRow, DataTable encryptedTable)
+    public static void EncryptEmployee(DataRow employeeRow, DataTable encryptedTable)
     {
         var employee = EmployeeServices.GetEmployeeInfo(employeeRow);
 
@@ -139,12 +136,12 @@ public class Encryption
         encryptedTable.Rows.Add(encryptedRow);
     }
 
-    public static void DecryptSalaryAndAllowance(DataRow encryptedEmployeeRow, DataTable decryptedTable)
+    public static void DecryptEmployee(DataRow encryptedEmployeeRow, DataTable decryptedTable)
     {
         var encryptedEmployee = EmployeeServices.GetEmployeeInfo(encryptedEmployeeRow);
 
         // Tạo khóa
-        if (encryptedEmployee.Id == null || encryptedEmployee.Name == null) return;
+        if (encryptedEmployee.Id == "" || encryptedEmployee.Name == "") return;
 
         var encryptionKey = GenerateEncryptionKey(encryptedEmployee.Id, encryptedEmployee.Name);
         var hashedKey = Hash(encryptionKey);
