@@ -27,7 +27,7 @@ namespace PH1
         private void EncryptButton_OnClick(object sender, EventArgs e)
         {
             // ! Lấy dữ liệu từ bảng NHANVIEN$ để mã hóa.
-            const string query = "select * from U_AD_QLNV.NHANVIEN$";
+            const string query = "select * from U_AD_QLNV.NHANVIEN_PLAINTEXT";
             var employeeList = DataProvider.Instance.ExcuteQuery(query);
 
             var encryptedTable = EmployeeServices.CreateDataTableFrom(employeeList);
@@ -80,7 +80,7 @@ namespace PH1
                 return;
             }
 
-            string dropQuery = $"delete from U_AD_QLNV.NHANVIEN_ENCRYPTED";
+            string dropQuery = $"delete from U_AD_QLNV.NHANVIEN$";
             DataProvider.Instance.ExcuteNonQuery(dropQuery);
 
             foreach (DataRow row in table.Rows)
@@ -88,7 +88,7 @@ namespace PH1
                 var employee = EmployeeServices.GetEmployeeInfo(row);
 
                 // ! Lưu dữ liệu mã hóa vào bảng NHANVIEN_ENCRYPTED
-                string insertQuery = $"insert into U_AD_QLNV.NHANVIEN_ENCRYPTED values (" +
+                string insertQuery = $"insert into U_AD_QLNV.NHANVIEN$ values (" +
                                      $"'{employee.Id}'," +
                                      $"N'{employee.Name}'," +
                                      $"N'{employee.Gender}'," +
