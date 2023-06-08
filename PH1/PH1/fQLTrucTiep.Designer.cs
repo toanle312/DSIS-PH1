@@ -223,9 +223,9 @@ namespace PH1
             rolename_label.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             rolename_label.Location = new Point(299, 18);
             rolename_label.Name = "rolename_label";
-            rolename_label.Size = new Size(193, 33);
+            rolename_label.Size = new Size(143, 33);
             rolename_label.TabIndex = 40;
-            rolename_label.Text = "Quản lí trực tiếp";
+            rolename_label.Text = "QL trực tiếp";
             // 
             // role
             // 

@@ -86,9 +86,21 @@ namespace PH1
                 string salary = SalaryTextBox.Text;
                 string allowance = AllowanceTextBox.Text;
 
+
                 // Update the salary and allowance of the employee
                 string query = $"UPDATE U_AD_QLNV.NHANVIEN SET LUONG='{salary}', PHUCAP='{allowance}' WHERE MANV='{id}'";
+                DataProvider.Instance.ExcuteScalar(query);
 
+                // Encrypt after update and update encrypt data again
+                query = $"SELECT * FROM U_AD_QLNV.NHANVIEN WHERE MANV='{id}'";
+                var employeeInfor = DataProvider.Instance.ExcuteQuery(query);
+                var encryptedTable = EmployeeServices.CreateDataTableFrom(employeeInfor);
+
+                // Encrypt employee infor and save into encrypted table
+                Encryption.EncryptEmployee(employeeInfor.Rows[0], encryptedTable);
+
+                // Take data from encrypted table and update again
+                query = $"UPDATE U_AD_QLNV.NHANVIEN SET LUONG='{encryptedTable.Rows[0]["LUONG"].ToString()[2..]}', PHUCAP='{encryptedTable.Rows[0]["PHUCAP"].ToString()[2..]}' WHERE MANV='{id}'";
                 DataProvider.Instance.ExcuteScalar(query);
 
                 MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

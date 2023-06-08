@@ -151,8 +151,12 @@ public class Encryption
         // Debug.WriteLine($"Hashed key: {ToHex(hashedKey)}");
 
         // Giải mã trường LUONG và PHUCAP
-        var decryptedSalary = Decrypt(aes, ToBytes(encryptedEmployee.Salary.Contains("0x") ? encryptedEmployee.Salary : "0x"+encryptedEmployee.Salary));
+        var decryptedSalary = Decrypt(aes, ToBytes(encryptedEmployee.Salary.Contains("0x") ? encryptedEmployee.Salary : "0x" + encryptedEmployee.Salary));
         var decryptedAllowance = Decrypt(aes, ToBytes(encryptedEmployee.Allowance.Contains("0x") ? encryptedEmployee.Allowance : "0x" + encryptedEmployee.Allowance));
+
+        //var decryptedSalary = Decrypt(aes, ToBytes(encryptedEmployee.Salary));
+        //var decryptedAllowance = Decrypt(aes, ToBytes(encryptedEmployee.Allowance));
+
 
         DataRow decryptedRow = EmployeeServices.SetEmployeeInfo(encryptedEmployee, decryptedTable);
         decryptedRow["LUONG"] = decryptedSalary;

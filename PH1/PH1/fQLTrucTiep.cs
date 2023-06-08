@@ -47,7 +47,25 @@ namespace PH1
             label5.Text = string.Empty;
 
             string query = "SELECT * from U_AD_QLNV.NHANVIEN_SESSION";
-            infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
+
+            var data = DataProvider.Instance.ExcuteQuery(query);
+
+            var decryptedTable = EmployeeServices.CreateDataTableFrom(data);
+
+            foreach (DataRow row in data.Rows)
+            {
+                if (row["MANV"].ToString() == username_label.Text && row["VAITRO"].ToString() == rolename_label.Text)
+                {
+                    Encryption.DecryptEmployee(row, decryptedTable);
+                }
+                else
+                {
+                    decryptedTable.ImportRow(row);
+                }
+            }
+
+            DataProvider.Instance.SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
+            infoView.DataSource = decryptedTable;
         }
 
         private void employeeInfo_Click(object sender, EventArgs e)

@@ -32,7 +32,25 @@ namespace PH1
         private void b_Nhanvien_Click(object sender, EventArgs e)
         {
             string query = "SELECT * FROM U_AD_QLNV.NHANVIEN_SESSION";
-            dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
+
+            var data = DataProvider.Instance.ExcuteQuery(query);
+
+            var decryptedTable = EmployeeServices.CreateDataTableFrom(data);
+
+            foreach (DataRow row in data.Rows)
+            {
+                if (row["MANV"].ToString() == username_label.Text && row["VAITRO"].ToString() == rolename_label.Text)
+                {
+                    Encryption.DecryptEmployee(row, decryptedTable);
+                }
+                else
+                {
+                    decryptedTable.ImportRow(row);
+                }
+            }
+
+            DataProvider.Instance.SortDataTable(decryptedTable, "MANV", SortOrder.Ascending);
+            dataGridView1.DataSource = decryptedTable;
         }
 
         private void b_Phancong_Click(object sender, EventArgs e)

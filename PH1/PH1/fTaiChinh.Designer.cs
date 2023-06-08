@@ -236,7 +236,7 @@
             EmployeeInterfaceButton.Location = new Point(14, 4);
             EmployeeInterfaceButton.Margin = new Padding(3, 4, 3, 4);
             EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
-            EmployeeInterfaceButton.Size = new Size(174, 40);
+            EmployeeInterfaceButton.Size = new Size(171, 64);
             EmployeeInterfaceButton.TabIndex = 20;
             EmployeeInterfaceButton.Text = "Giao diện nhân viên";
             EmployeeInterfaceButton.UseVisualStyleBackColor = false;
