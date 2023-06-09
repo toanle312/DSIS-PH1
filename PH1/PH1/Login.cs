@@ -196,7 +196,7 @@ namespace PH1
                     {
                         this.Hide();
 
-                        fTruongDA screen = new fTruongDA(username, "Trưởng Đề án");
+                        fTruongDA screen = new fTruongDA(username, "Trưởng đề án");
                         screen.ShowDialog();
 
                         if (screen.DialogResult == DialogResult.Cancel)

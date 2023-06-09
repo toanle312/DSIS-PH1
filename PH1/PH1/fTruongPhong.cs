@@ -33,25 +33,14 @@ namespace PH1
             AddOkBtn.Visible = false;
             DeleteOkBtn.Visible = false;
 
-            label8.Visible = false;
-            label7.Visible = false;
-            label6.Visible = false;
-            label5.Visible = false;
-            ngaysinh_textbox.Visible = false;
-            sdt_textbox.Visible = false;
-            diachi_textbox.Visible = false;
-            editbtn.Visible = false;
-
             username_label.Text = username;
 
-            Noti_label.Text = string.Empty;
             infoView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             infoView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void personalInfoBtn_Click(object sender, EventArgs e)
         {
-            Noti_label.Text = string.Empty;
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -64,14 +53,7 @@ namespace PH1
             SubmitBtn.Visible = false;
             label4.Visible = false;
 
-            label8.Visible = true;
-            label7.Visible = true;
-            label6.Visible = true;
-            label5.Visible = true;
-            ngaysinh_textbox.Visible = true;
-            sdt_textbox.Visible = true;
-            diachi_textbox.Visible = true;
-            editbtn.Visible = true;
+
 
             SubmitBtn.Visible = false;
             AddOkBtn.Visible = false;
@@ -101,7 +83,7 @@ namespace PH1
 
         private void employeeInfoBtn_Click(object sender, EventArgs e)
         {
-            Noti_label.Text = string.Empty;
+
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -114,19 +96,12 @@ namespace PH1
             SubmitBtn.Visible = false;
             label4.Visible = false;
 
-            label8.Visible = false;
-            label7.Visible = false;
-            label6.Visible = false;
-            label5.Visible = false;
-            ngaysinh_textbox.Visible = false;
-            sdt_textbox.Visible = false;
-            diachi_textbox.Visible = false;
-            editbtn.Visible = false;
+
 
             SubmitBtn.Visible = false;
             AddOkBtn.Visible = false;
             DeleteOkBtn.Visible = false;
-            infoView.Size = new Size(960, 329);
+            infoView.Size = new Size(997, 456);
 
             string query = "SELECT * from U_AD_QLNV.TRUONGPHONG_THONGTIN_VIEW";
             infoView.DataSource = DataProvider.Instance.ExcuteQuery(query);
@@ -134,20 +109,11 @@ namespace PH1
 
         private void phancongbtn_Click(object sender, EventArgs e)
         {
-            Noti_label.Text = string.Empty;
             UpdateBtn.Visible = true;
             AddBtn.Visible = true;
             DeleteBtn.Visible = true;
             label4.Text = "";
 
-            label8.Visible = false;
-            label7.Visible = false;
-            label6.Visible = false;
-            label5.Visible = false;
-            ngaysinh_textbox.Visible = false;
-            sdt_textbox.Visible = false;
-            diachi_textbox.Visible = false;
-            editbtn.Visible = false;
 
             infoView.Size = new Size(400, 329);
 
@@ -405,54 +371,53 @@ namespace PH1
             phancongbtn_Click(sender, e);
         }
 
-        private void edtiInfoBtn_Click(object sender, EventArgs e)
-        {
-            string pattern = @"^[1-9]\d*$";
-            bool isMatch = Regex.IsMatch(sdt_textbox.Text, pattern);
-            if (!isMatch)
-            {
-                Noti_label.Text = "Số điện thoại không hợp lệ, mời nhập lại!!";
-            }
-            else
-            {
-                if (ngaysinh_textbox.Text == String.Empty || diachi_textbox.Text == String.Empty || sdt_textbox.Text == String.Empty)
-                {
-                    Noti_label.Text = "Hãy điền đầy đủ thông tin!!";
-                }
-                else
-                {
-                    var date = ngaysinh_textbox.Text;
-                    var dob = date.Split(' ')[0];
-                    dob = dob.Replace('/', '-');
+        //private void edtiInfoBtn_Click(object sender, EventArgs e)
+        //{
+        //    string pattern = @"^[1-9]\d*$";
+        //    bool isMatch = Regex.IsMatch(sdt_textbox.Text, pattern);
+        //    if (!isMatch)
+        //    {
+        //        Noti_label.Text = "Số điện thoại không hợp lệ, mời nhập lại!!";
+        //    }
+        //    else
+        //    {
+        //        if (ngaysinh_textbox.Text == String.Empty || diachi_textbox.Text == String.Empty || sdt_textbox.Text == String.Empty)
+        //        {
+        //            Noti_label.Text = "Hãy điền đầy đủ thông tin!!";
+        //        }
+        //        else
+        //        {
+        //            var date = ngaysinh_textbox.Text;
+        //            var dob = date.Split(' ')[0];
+        //            dob = dob.Replace('/', '-');
 
-                    string query = @"BEGIN
-                                    UPDATE 
-                                        U_AD_QLNV.NHANVIEN 
-                                     SET
-                                        DIACHI = '{0}', 
-                                        SODT = '{1}',
-                                        NGAYSINH = TO_DATE('{2}','MM-DD-YYYY')
-                                     WHERE MANV = SYS_CONTEXT('USERENV', 'SESSION_USER');
-                                     COMMIT;
-                                 END;";
+        //            string query = @"BEGIN
+        //                            UPDATE 
+        //                                U_AD_QLNV.NHANVIEN 
+        //                             SET
+        //                                DIACHI = '{0}', 
+        //                                SODT = '{1}',
+        //                                NGAYSINH = TO_DATE('{2}','MM-DD-YYYY')
+        //                             WHERE MANV = SYS_CONTEXT('USERENV', 'SESSION_USER');
+        //                             COMMIT;
+        //                         END;";
 
-                    query = String.Format(query, diachi_textbox.Text, sdt_textbox.Text, dob.ToString());
-                    DataProvider.Instance.ExcuteNonQuery(query);
+        //            query = String.Format(query, diachi_textbox.Text, sdt_textbox.Text, dob.ToString());
+        //            DataProvider.Instance.ExcuteNonQuery(query);
 
-                    ngaysinh_textbox.Text = string.Empty;
-                    sdt_textbox.Text = string.Empty;
-                    diachi_textbox.Text = string.Empty;
+        //            ngaysinh_textbox.Text = string.Empty;
+        //            sdt_textbox.Text = string.Empty;
+        //            diachi_textbox.Text = string.Empty;
 
-                    MessageBox.Show("Chỉnh sửa thông tin thành công!!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            MessageBox.Show("Chỉnh sửa thông tin thành công!!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    personalInfoBtn_Click(sender, e);
-                }
-            }
-        }
+        //            personalInfoBtn_Click(sender, e);
+        //        }
+        //    }
+        //}
 
         private void phongbanBtn_Click(object sender, EventArgs e)
         {
-            Noti_label.Text = string.Empty;
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -464,15 +429,6 @@ namespace PH1
             DeleteBtn.Visible = false;
             SubmitBtn.Visible = false;
             label4.Visible = false;
-
-            label8.Visible = false;
-            label7.Visible = false;
-            label6.Visible = false;
-            label5.Visible = false;
-            ngaysinh_textbox.Visible = false;
-            sdt_textbox.Visible = false;
-            diachi_textbox.Visible = false;
-            editbtn.Visible = false;
 
             SubmitBtn.Visible = false;
             AddOkBtn.Visible = false;
@@ -486,7 +442,7 @@ namespace PH1
 
         private void deanBtn_Click(object sender, EventArgs e)
         {
-            Noti_label.Text = string.Empty;
+
             manvTb.Visible = false;
             madaTb.Visible = false;
             thoigianTb.Visible = false;
@@ -498,15 +454,6 @@ namespace PH1
             DeleteBtn.Visible = false;
             SubmitBtn.Visible = false;
             label4.Visible = false;
-
-            label8.Visible = false;
-            label7.Visible = false;
-            label6.Visible = false;
-            label5.Visible = false;
-            ngaysinh_textbox.Visible = false;
-            sdt_textbox.Visible = false;
-            diachi_textbox.Visible = false;
-            editbtn.Visible = false;
 
             SubmitBtn.Visible = false;
             AddOkBtn.Visible = false;
@@ -558,6 +505,25 @@ namespace PH1
 
         private void label4_Click(object sender, EventArgs e)
         {
+        }
+
+        private void EmployeeInterfaceButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+
+            var screen = new fNhanVien(username_label.Text, "Trưởng phòng");
+            var result = screen.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+            {
+                var newScreen = new fTruongPhong(username_label.Text);
+                DialogResult = newScreen.ShowDialog();
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+
+            }
         }
     }
 }

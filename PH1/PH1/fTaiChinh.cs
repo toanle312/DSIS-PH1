@@ -119,10 +119,19 @@ namespace PH1
         {
             Hide();
 
-            var screen = new fNhanVien(_username, "Tài chính");
-            screen.ShowDialog();
+            var screen = new fNhanVien(_username, "Nhân sự");
+            var result = screen.ShowDialog();
 
-            DialogResult = DialogResult.OK;
+            if (result == DialogResult.Cancel)
+            {
+                var newScreen = new fTaiChinh(_username);
+                DialogResult = newScreen.ShowDialog();
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+
+            }
         }
 
         private void LogOutButton_Click(object sender, EventArgs e)

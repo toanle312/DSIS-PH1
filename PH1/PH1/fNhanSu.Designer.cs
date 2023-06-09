@@ -95,6 +95,7 @@
             // ViewDeptButton
             // 
             ViewDeptButton.BackColor = Color.Aquamarine;
+            ViewDeptButton.Cursor = Cursors.Hand;
             ViewDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewDeptButton.Location = new Point(528, 23);
             ViewDeptButton.Margin = new Padding(3, 4, 3, 4);
@@ -108,6 +109,7 @@
             // UpdateDeptButton
             // 
             UpdateDeptButton.BackColor = Color.Aquamarine;
+            UpdateDeptButton.Cursor = Cursors.Hand;
             UpdateDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateDeptButton.Location = new Point(702, 63);
             UpdateDeptButton.Margin = new Padding(3, 4, 3, 4);
@@ -121,6 +123,7 @@
             // AddDeptButton
             // 
             AddDeptButton.BackColor = Color.Aquamarine;
+            AddDeptButton.Cursor = Cursors.Hand;
             AddDeptButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             AddDeptButton.Location = new Point(528, 64);
             AddDeptButton.Margin = new Padding(3, 4, 3, 4);
@@ -268,6 +271,7 @@
             // UpdateEmpButton
             // 
             UpdateEmpButton.BackColor = Color.Chartreuse;
+            UpdateEmpButton.Cursor = Cursors.Hand;
             UpdateEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateEmpButton.Location = new Point(318, 185);
             UpdateEmpButton.Margin = new Padding(3, 4, 3, 4);
@@ -281,6 +285,7 @@
             // ViewEmpButton
             // 
             ViewEmpButton.BackColor = Color.Chartreuse;
+            ViewEmpButton.Cursor = Cursors.Hand;
             ViewEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewEmpButton.Location = new Point(7, 183);
             ViewEmpButton.Margin = new Padding(3, 4, 3, 4);
@@ -481,11 +486,12 @@
             // EmployeeInterfaceButton
             // 
             EmployeeInterfaceButton.BackColor = SystemColors.GradientActiveCaption;
+            EmployeeInterfaceButton.Cursor = Cursors.Hand;
             EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             EmployeeInterfaceButton.Location = new Point(14, 5);
             EmployeeInterfaceButton.Margin = new Padding(3, 4, 3, 4);
             EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
-            EmployeeInterfaceButton.Size = new Size(174, 40);
+            EmployeeInterfaceButton.Size = new Size(202, 40);
             EmployeeInterfaceButton.TabIndex = 14;
             EmployeeInterfaceButton.Text = "Giao diện nhân viên";
             EmployeeInterfaceButton.UseVisualStyleBackColor = false;
@@ -494,6 +500,7 @@
             // LogOutButton
             // 
             LogOutButton.BackColor = Color.Salmon;
+            LogOutButton.Cursor = Cursors.Hand;
             LogOutButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             LogOutButton.Location = new Point(727, 5);
             LogOutButton.Margin = new Padding(3, 4, 3, 4);
@@ -520,6 +527,7 @@
             Controls.Add(DeptGroupBox);
             Margin = new Padding(3, 4, 3, 4);
             Name = "fNhanSu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fNhanSu";
             DeptGroupBox.ResumeLayout(false);
             DeptGroupBox.PerformLayout();

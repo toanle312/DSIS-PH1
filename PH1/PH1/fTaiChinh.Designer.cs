@@ -54,11 +54,12 @@
             // ViewEmpButton
             // 
             ViewEmpButton.BackColor = Color.Aquamarine;
+            ViewEmpButton.Cursor = Cursors.Hand;
             ViewEmpButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            ViewEmpButton.Location = new Point(14, 67);
+            ViewEmpButton.Location = new Point(16, 67);
             ViewEmpButton.Margin = new Padding(3, 4, 3, 4);
             ViewEmpButton.Name = "ViewEmpButton";
-            ViewEmpButton.Size = new Size(171, 53);
+            ViewEmpButton.Size = new Size(189, 53);
             ViewEmpButton.TabIndex = 0;
             ViewEmpButton.Text = "Xem nhân viên";
             ViewEmpButton.UseVisualStyleBackColor = false;
@@ -67,11 +68,12 @@
             // ViewAllocationButton
             // 
             ViewAllocationButton.BackColor = Color.Aquamarine;
+            ViewAllocationButton.Cursor = Cursors.Hand;
             ViewAllocationButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             ViewAllocationButton.Location = new Point(14, 128);
             ViewAllocationButton.Margin = new Padding(3, 4, 3, 4);
             ViewAllocationButton.Name = "ViewAllocationButton";
-            ViewAllocationButton.Size = new Size(171, 53);
+            ViewAllocationButton.Size = new Size(190, 53);
             ViewAllocationButton.TabIndex = 1;
             ViewAllocationButton.Text = "Xem phân công";
             ViewAllocationButton.UseVisualStyleBackColor = false;
@@ -87,11 +89,11 @@
             GroupBox.Controls.Add(EmpIdTextBox);
             GroupBox.Controls.Add(EmpIdLabel);
             GroupBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            GroupBox.Location = new Point(192, 51);
+            GroupBox.Location = new Point(210, 51);
             GroupBox.Margin = new Padding(3, 4, 3, 4);
             GroupBox.Name = "GroupBox";
             GroupBox.Padding = new Padding(3, 4, 3, 4);
-            GroupBox.Size = new Size(709, 131);
+            GroupBox.Size = new Size(691, 131);
             GroupBox.TabIndex = 2;
             GroupBox.TabStop = false;
             GroupBox.Text = "Chỉnh sửa lương và phụ cấp";
@@ -99,11 +101,12 @@
             // UpdateButton
             // 
             UpdateButton.BackColor = Color.Aquamarine;
+            UpdateButton.Cursor = Cursors.Hand;
             UpdateButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             UpdateButton.Location = new Point(535, 76);
             UpdateButton.Margin = new Padding(3, 4, 3, 4);
             UpdateButton.Name = "UpdateButton";
-            UpdateButton.Size = new Size(167, 40);
+            UpdateButton.Size = new Size(150, 40);
             UpdateButton.TabIndex = 3;
             UpdateButton.Text = "Chỉnh sửa";
             UpdateButton.UseVisualStyleBackColor = false;
@@ -232,11 +235,12 @@
             // EmployeeInterfaceButton
             // 
             EmployeeInterfaceButton.BackColor = SystemColors.GradientActiveCaption;
+            EmployeeInterfaceButton.Cursor = Cursors.Hand;
             EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            EmployeeInterfaceButton.Location = new Point(14, 4);
+            EmployeeInterfaceButton.Location = new Point(15, 4);
             EmployeeInterfaceButton.Margin = new Padding(3, 4, 3, 4);
             EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
-            EmployeeInterfaceButton.Size = new Size(171, 64);
+            EmployeeInterfaceButton.Size = new Size(190, 55);
             EmployeeInterfaceButton.TabIndex = 20;
             EmployeeInterfaceButton.Text = "Giao diện nhân viên";
             EmployeeInterfaceButton.UseVisualStyleBackColor = false;
@@ -244,7 +248,8 @@
             // 
             // LogOutButton
             // 
-            LogOutButton.BackColor = Color.LightSalmon;
+            LogOutButton.BackColor = Color.Salmon;
+            LogOutButton.Cursor = Cursors.Hand;
             LogOutButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             LogOutButton.Location = new Point(727, 4);
             LogOutButton.Margin = new Padding(3, 4, 3, 4);
@@ -272,6 +277,7 @@
             Controls.Add(ViewEmpButton);
             Margin = new Padding(3, 4, 3, 4);
             Name = "fTaiChinh";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fTaiChinh";
             GroupBox.ResumeLayout(false);
             GroupBox.PerformLayout();

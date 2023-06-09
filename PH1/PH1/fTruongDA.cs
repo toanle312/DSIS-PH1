@@ -147,5 +147,28 @@ namespace PH1
             dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
         }
 
+        private void EmployeeInterfaceButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+
+            var screen = new fNhanVien(username_label.Text, "Nhân sự");
+            var result = screen.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+            {
+                var newScreen = new fTruongDA(username_label.Text, "Trưởng đề án");
+                DialogResult = newScreen.ShowDialog();
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+
+            }
+        }
+
+        private void fTruongDA_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

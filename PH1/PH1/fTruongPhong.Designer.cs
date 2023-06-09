@@ -30,7 +30,6 @@ namespace PH1
         /// </summary>
         private void InitializeComponent()
         {
-            personalInfoBtn = new Button();
             employee_info_btn = new Button();
             phancongbtn = new Button();
             infoView = new DataGridView();
@@ -47,58 +46,38 @@ namespace PH1
             label4 = new Label();
             AddOkBtn = new Button();
             DeleteOkBtn = new Button();
-            ngaysinh_textbox = new DateTimePicker();
-            sdt_textbox = new TextBox();
-            label5 = new Label();
-            diachi_textbox = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            editbtn = new Button();
-            Noti_label = new Label();
-            phongbanBtn = new Button();
-            deanBtn = new Button();
             log_out_btn = new Button();
             rolename_label = new Label();
             role = new Label();
             username_label = new Label();
             label9 = new Label();
+            EmployeeInterfaceButton = new Button();
             ((System.ComponentModel.ISupportInitialize)infoView).BeginInit();
             SuspendLayout();
             // 
-            // personalInfoBtn
-            // 
-            personalInfoBtn.BackColor = SystemColors.ActiveCaption;
-            personalInfoBtn.Cursor = Cursors.Hand;
-            personalInfoBtn.Location = new Point(12, 87);
-            personalInfoBtn.Name = "personalInfoBtn";
-            personalInfoBtn.Size = new Size(121, 41);
-            personalInfoBtn.TabIndex = 6;
-            personalInfoBtn.Text = "Personal info";
-            personalInfoBtn.UseVisualStyleBackColor = false;
-            personalInfoBtn.Click += personalInfoBtn_Click;
-            // 
             // employee_info_btn
             // 
-            employee_info_btn.BackColor = SystemColors.ActiveCaption;
+            employee_info_btn.BackColor = Color.Aquamarine;
             employee_info_btn.Cursor = Cursors.Hand;
-            employee_info_btn.Location = new Point(139, 87);
+            employee_info_btn.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            employee_info_btn.Location = new Point(405, 76);
             employee_info_btn.Name = "employee_info_btn";
-            employee_info_btn.Size = new Size(121, 41);
+            employee_info_btn.Size = new Size(259, 52);
             employee_info_btn.TabIndex = 8;
-            employee_info_btn.Text = "Employee info";
+            employee_info_btn.Text = "Thông tin các nhân viên";
             employee_info_btn.UseVisualStyleBackColor = false;
             employee_info_btn.Click += employeeInfoBtn_Click;
             // 
             // phancongbtn
             // 
-            phancongbtn.BackColor = SystemColors.ActiveCaption;
+            phancongbtn.BackColor = Color.Aquamarine;
             phancongbtn.Cursor = Cursors.Hand;
-            phancongbtn.Location = new Point(266, 87);
+            phancongbtn.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            phancongbtn.Location = new Point(223, 76);
             phancongbtn.Name = "phancongbtn";
-            phancongbtn.Size = new Size(121, 41);
+            phancongbtn.Size = new Size(176, 52);
             phancongbtn.TabIndex = 9;
-            phancongbtn.Text = "Phân công";
+            phancongbtn.Text = "Bảng phân công";
             phancongbtn.UseVisualStyleBackColor = false;
             phancongbtn.Click += phancongbtn_Click;
             // 
@@ -110,7 +89,7 @@ namespace PH1
             infoView.Name = "infoView";
             infoView.RowHeadersWidth = 51;
             infoView.RowTemplate.Height = 29;
-            infoView.Size = new Size(960, 329);
+            infoView.Size = new Size(997, 456);
             infoView.TabIndex = 10;
             infoView.CellContentClick += infoView_CellContentClick;
             // 
@@ -118,7 +97,7 @@ namespace PH1
             // 
             UpdateBtn.BackColor = Color.LightSkyBlue;
             UpdateBtn.Cursor = Cursors.Hand;
-            UpdateBtn.Location = new Point(459, 145);
+            UpdateBtn.Location = new Point(484, 176);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new Size(101, 41);
             UpdateBtn.TabIndex = 11;
@@ -130,7 +109,7 @@ namespace PH1
             // 
             AddBtn.BackColor = Color.FromArgb(192, 255, 192);
             AddBtn.Cursor = Cursors.Hand;
-            AddBtn.Location = new Point(586, 145);
+            AddBtn.Location = new Point(611, 176);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(80, 41);
             AddBtn.TabIndex = 12;
@@ -142,7 +121,7 @@ namespace PH1
             // 
             DeleteBtn.BackColor = Color.FromArgb(255, 192, 128);
             DeleteBtn.Cursor = Cursors.Hand;
-            DeleteBtn.Location = new Point(696, 145);
+            DeleteBtn.Location = new Point(721, 176);
             DeleteBtn.Name = "DeleteBtn";
             DeleteBtn.Size = new Size(101, 41);
             DeleteBtn.TabIndex = 13;
@@ -152,7 +131,7 @@ namespace PH1
             // 
             // manvTb
             // 
-            manvTb.Location = new Point(462, 234);
+            manvTb.Location = new Point(487, 265);
             manvTb.Name = "manvTb";
             manvTb.Size = new Size(125, 27);
             manvTb.TabIndex = 14;
@@ -160,7 +139,7 @@ namespace PH1
             // 
             // madaTb
             // 
-            madaTb.Location = new Point(462, 303);
+            madaTb.Location = new Point(487, 334);
             madaTb.Name = "madaTb";
             madaTb.Size = new Size(125, 27);
             madaTb.TabIndex = 15;
@@ -169,7 +148,7 @@ namespace PH1
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(462, 211);
+            label1.Location = new Point(487, 242);
             label1.Name = "label1";
             label1.Size = new Size(97, 20);
             label1.TabIndex = 16;
@@ -179,7 +158,7 @@ namespace PH1
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(462, 280);
+            label2.Location = new Point(487, 311);
             label2.Name = "label2";
             label2.Size = new Size(71, 20);
             label2.TabIndex = 17;
@@ -189,7 +168,7 @@ namespace PH1
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(462, 347);
+            label3.Location = new Point(487, 378);
             label3.Name = "label3";
             label3.Size = new Size(71, 20);
             label3.TabIndex = 19;
@@ -198,7 +177,7 @@ namespace PH1
             // 
             // thoigianTb
             // 
-            thoigianTb.Location = new Point(462, 370);
+            thoigianTb.Location = new Point(487, 401);
             thoigianTb.Name = "thoigianTb";
             thoigianTb.Size = new Size(125, 27);
             thoigianTb.TabIndex = 18;
@@ -208,7 +187,7 @@ namespace PH1
             // 
             SubmitBtn.BackColor = Color.LightSkyBlue;
             SubmitBtn.Cursor = Cursors.Hand;
-            SubmitBtn.Location = new Point(462, 446);
+            SubmitBtn.Location = new Point(487, 477);
             SubmitBtn.Name = "SubmitBtn";
             SubmitBtn.Size = new Size(55, 41);
             SubmitBtn.TabIndex = 20;
@@ -219,7 +198,7 @@ namespace PH1
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(462, 423);
+            label4.Location = new Point(487, 454);
             label4.Name = "label4";
             label4.Size = new Size(50, 20);
             label4.TabIndex = 21;
@@ -230,7 +209,7 @@ namespace PH1
             // 
             AddOkBtn.BackColor = Color.LightSkyBlue;
             AddOkBtn.Cursor = Cursors.Hand;
-            AddOkBtn.Location = new Point(518, 446);
+            AddOkBtn.Location = new Point(548, 477);
             AddOkBtn.Name = "AddOkBtn";
             AddOkBtn.Size = new Size(55, 41);
             AddOkBtn.TabIndex = 22;
@@ -242,7 +221,7 @@ namespace PH1
             // 
             DeleteOkBtn.BackColor = Color.LightSkyBlue;
             DeleteOkBtn.Cursor = Cursors.Hand;
-            DeleteOkBtn.Location = new Point(570, 446);
+            DeleteOkBtn.Location = new Point(609, 477);
             DeleteOkBtn.Name = "DeleteOkBtn";
             DeleteOkBtn.Size = new Size(55, 41);
             DeleteOkBtn.TabIndex = 23;
@@ -250,120 +229,16 @@ namespace PH1
             DeleteOkBtn.UseVisualStyleBackColor = false;
             DeleteOkBtn.Click += DeleteOkBtn_Click;
             // 
-            // ngaysinh_textbox
-            // 
-            ngaysinh_textbox.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            ngaysinh_textbox.Location = new Point(22, 371);
-            ngaysinh_textbox.Name = "ngaysinh_textbox";
-            ngaysinh_textbox.Size = new Size(210, 32);
-            ngaysinh_textbox.TabIndex = 24;
-            // 
-            // sdt_textbox
-            // 
-            sdt_textbox.Location = new Point(259, 376);
-            sdt_textbox.Name = "sdt_textbox";
-            sdt_textbox.Size = new Size(158, 27);
-            sdt_textbox.TabIndex = 31;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(259, 348);
-            label5.Name = "label5";
-            label5.Size = new Size(97, 20);
-            label5.TabIndex = 30;
-            label5.Text = "Số điện thoại";
-            // 
-            // diachi_textbox
-            // 
-            diachi_textbox.Location = new Point(22, 442);
-            diachi_textbox.Name = "diachi_textbox";
-            diachi_textbox.Size = new Size(320, 27);
-            diachi_textbox.TabIndex = 29;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(22, 419);
-            label6.Name = "label6";
-            label6.Size = new Size(55, 20);
-            label6.TabIndex = 28;
-            label6.Text = "Địa chỉ";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(22, 348);
-            label7.Name = "label7";
-            label7.Size = new Size(74, 20);
-            label7.TabIndex = 27;
-            label7.Text = "Ngày sinh";
-            // 
-            // label8
-            // 
-            label8.AutoEllipsis = true;
-            label8.AutoSize = true;
-            label8.Font = new Font("Arial", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(22, 299);
-            label8.Name = "label8";
-            label8.Size = new Size(330, 28);
-            label8.TabIndex = 26;
-            label8.Text = "Chỉnh sửa thông tin cá nhân";
-            // 
-            // editbtn
-            // 
-            editbtn.BackColor = Color.FromArgb(128, 255, 255);
-            editbtn.Cursor = Cursors.Hand;
-            editbtn.Location = new Point(22, 510);
-            editbtn.Name = "editbtn";
-            editbtn.Size = new Size(121, 41);
-            editbtn.TabIndex = 25;
-            editbtn.Text = "Edit info";
-            editbtn.UseVisualStyleBackColor = false;
-            editbtn.Click += edtiInfoBtn_Click;
-            // 
-            // Noti_label
-            // 
-            Noti_label.AutoSize = true;
-            Noti_label.Location = new Point(22, 487);
-            Noti_label.Name = "Noti_label";
-            Noti_label.Size = new Size(38, 20);
-            Noti_label.TabIndex = 32;
-            Noti_label.Text = "Noti";
-            // 
-            // phongbanBtn
-            // 
-            phongbanBtn.BackColor = SystemColors.ActiveCaption;
-            phongbanBtn.Cursor = Cursors.Hand;
-            phongbanBtn.Location = new Point(393, 87);
-            phongbanBtn.Name = "phongbanBtn";
-            phongbanBtn.Size = new Size(121, 41);
-            phongbanBtn.TabIndex = 33;
-            phongbanBtn.Text = "Phòng ban";
-            phongbanBtn.UseVisualStyleBackColor = false;
-            phongbanBtn.Click += phongbanBtn_Click;
-            // 
-            // deanBtn
-            // 
-            deanBtn.BackColor = SystemColors.ActiveCaption;
-            deanBtn.Cursor = Cursors.Hand;
-            deanBtn.Location = new Point(520, 87);
-            deanBtn.Name = "deanBtn";
-            deanBtn.Size = new Size(121, 41);
-            deanBtn.TabIndex = 36;
-            deanBtn.Text = "Đề án";
-            deanBtn.UseVisualStyleBackColor = false;
-            deanBtn.Click += deanBtn_Click;
-            // 
             // log_out_btn
             // 
-            log_out_btn.BackColor = Color.LightCoral;
+            log_out_btn.BackColor = Color.Salmon;
             log_out_btn.Cursor = Cursors.Hand;
-            log_out_btn.Location = new Point(547, 24);
+            log_out_btn.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            log_out_btn.Location = new Point(844, 12);
             log_out_btn.Name = "log_out_btn";
-            log_out_btn.Size = new Size(94, 40);
+            log_out_btn.Size = new Size(165, 50);
             log_out_btn.TabIndex = 37;
-            log_out_btn.Text = "Log Out";
+            log_out_btn.Text = "Đăng xuất";
             log_out_btn.UseVisualStyleBackColor = false;
             log_out_btn.Click += log_out_btn_Click;
             // 
@@ -409,27 +284,30 @@ namespace PH1
             label9.TabIndex = 41;
             label9.Text = "User: ";
             // 
+            // EmployeeInterfaceButton
+            // 
+            EmployeeInterfaceButton.BackColor = SystemColors.GradientActiveCaption;
+            EmployeeInterfaceButton.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            EmployeeInterfaceButton.Location = new Point(14, 76);
+            EmployeeInterfaceButton.Margin = new Padding(3, 4, 3, 4);
+            EmployeeInterfaceButton.Name = "EmployeeInterfaceButton";
+            EmployeeInterfaceButton.Size = new Size(202, 51);
+            EmployeeInterfaceButton.TabIndex = 45;
+            EmployeeInterfaceButton.Text = "Giao diện nhân viên";
+            EmployeeInterfaceButton.UseVisualStyleBackColor = false;
+            EmployeeInterfaceButton.Click += EmployeeInterfaceButton_Click;
+            // 
             // fTruongPhong
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1021, 613);
+            Controls.Add(EmployeeInterfaceButton);
             Controls.Add(rolename_label);
             Controls.Add(role);
             Controls.Add(username_label);
             Controls.Add(label9);
             Controls.Add(log_out_btn);
-            Controls.Add(deanBtn);
-            Controls.Add(phongbanBtn);
-            Controls.Add(Noti_label);
-            Controls.Add(ngaysinh_textbox);
-            Controls.Add(sdt_textbox);
-            Controls.Add(label5);
-            Controls.Add(diachi_textbox);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(label8);
-            Controls.Add(editbtn);
             Controls.Add(DeleteOkBtn);
             Controls.Add(AddOkBtn);
             Controls.Add(label4);
@@ -446,7 +324,7 @@ namespace PH1
             Controls.Add(infoView);
             Controls.Add(phancongbtn);
             Controls.Add(employee_info_btn);
-            Controls.Add(personalInfoBtn);
+            Cursor = Cursors.Hand;
             Name = "fTruongPhong";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fTruongPhong";
@@ -456,8 +334,6 @@ namespace PH1
         }
 
         #endregion
-
-        private Button personalInfoBtn;
         private Button employee_info_btn;
         private Button phancongbtn;
         private DataGridView infoView;
@@ -474,21 +350,11 @@ namespace PH1
         private Label label4;
         private Button AddOkBtn;
         private Button DeleteOkBtn;
-        private DateTimePicker ngaysinh_textbox;
-        private TextBox sdt_textbox;
-        private Label label5;
-        private TextBox diachi_textbox;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Button editbtn;
-        private Label Noti_label;
-        private Button phongbanBtn;
-        private Button deanBtn;
         private Button log_out_btn;
         private Label rolename_label;
         private Label role;
         private Label username_label;
         private Label label9;
+        private Button EmployeeInterfaceButton;
     }
 }
