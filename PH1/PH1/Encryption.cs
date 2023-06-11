@@ -6,21 +6,22 @@ namespace PH1;
 
 public class Encryption
 {
+    private static string _salt = "Lâm Bích Phước Quân";
     private static int _keySize = 256;
     private static int _KeyLength = _keySize / 8;
 
     /*?
-         * Tạo khóa chính bằng cách đan xen các số trong mã nhân viên và các từ trong họ tên
+         * Tạo khóa chính bằng cách đan xen các số trong mã nhân viên và các từ trong họ tên của nhóm
          *
          * Ví dụ:
          * Id: NV001, Name: Công Tằng Tôn Nữ Đỗ Thị Thu Hương
          * Master key: Công0Tằng0Tôn1Nữ0Đỗ0Thị1Thu0Hương0
          */
 
-    private static string GenerateEncryptionKey(string id, string name)
+    private static string GenerateEncryptionKey(string id)
     {
         var numbers = id[2..].ToCharArray();
-        var words = name.Split(' ');
+        var words = _salt.Split(' ');
         var masterKey = new StringBuilder();
 
         // Đan xen mã nhân viên và các từ trong họ tên
@@ -119,7 +120,7 @@ public class Encryption
         // Tạo khóa
         if (employee.Id == "" || employee.Name == "") return;
 
-        var encryptionKey = GenerateEncryptionKey(employee.Id, employee.Name);
+        var encryptionKey = GenerateEncryptionKey(employee.Id);
         var hashedKey = Hash(encryptionKey);
         var aes = CreateAES(hashedKey);
 
@@ -143,7 +144,7 @@ public class Encryption
         // Tạo khóa
         if (encryptedEmployee.Id == "" || encryptedEmployee.Name == "") return;
 
-        var encryptionKey = GenerateEncryptionKey(encryptedEmployee.Id, encryptedEmployee.Name);
+        var encryptionKey = GenerateEncryptionKey(encryptedEmployee.Id);
         var hashedKey = Hash(encryptionKey);
         var aes = CreateAES(hashedKey);
 
