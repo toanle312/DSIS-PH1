@@ -89,7 +89,7 @@ namespace PH1
             string query = "SELECT * FROM U_AD_QLNV.NHANVIEN_SESSION";
             var inforData = DataProvider.Instance.ExcuteQuery(query);
 
-            user_list_view.DataSource = inforData;
+            nhanvien_btn_Click(sender, e);
 
             var ngaysinh = inforData.Rows[0]["NGAYSINH"].ToString();
             var diachi = inforData.Rows[0]["DIACHI"].ToString();

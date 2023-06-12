@@ -27,7 +27,7 @@ namespace PH1
         private void EncryptButton_OnClick(object sender, EventArgs e)
         {
             // ! Lấy dữ liệu từ bảng NHANVIEN$ để mã hóa.
-            const string query = "select * from U_AD_QLNV.NHANVIEN_PLAINTEXT";
+            const string query = "select * from U_AD_QLNV.NHANVIEN$";
             var employeeList = DataProvider.Instance.ExcuteQuery(query);
 
             var encryptedTable = EmployeeServices.CreateDataTableFrom(employeeList);
@@ -80,26 +80,18 @@ namespace PH1
                 return;
             }
 
-            string dropQuery = $"delete from U_AD_QLNV.NHANVIEN$";
-            DataProvider.Instance.ExcuteNonQuery(dropQuery);
+            //string dropQuery = $"delete from U_AD_QLNV.NHANVIEN$ casca";
+            //DataProvider.Instance.ExcuteNonQuery(dropQuery);
 
             foreach (DataRow row in table.Rows)
             {
                 var employee = EmployeeServices.GetEmployeeInfo(row);
 
                 // ! Lưu dữ liệu mã hóa vào bảng NHANVIEN_ENCRYPTED
-                string insertQuery = $"insert into U_AD_QLNV.NHANVIEN$ values (" +
-                                     $"'{employee.Id}'," +
-                                     $"N'{employee.Name}'," +
-                                     $"N'{employee.Gender}'," +
-                                     $"to_date('{employee.Birthday:dd/MM/yyyy}','DD/MM/YY')," +
-                                     $"N'{employee.Address}'," +
-                                     $"'{employee.PhoneNumber}'," +
-                                     $"'{employee.Salary[2..]}'," +
-                                     $"'{employee.Allowance[2..]}'," +
-                                     $"N'{employee.Role}'," +
-                                     $"'{employee.ManagerId}'," +
-                                     $"'{employee.Department}')";
+                string insertQuery = $"update U_AD_QLNV.NHANVIEN$ " +
+                                     $"set LUONG = '{employee.Salary[2..]}'," +
+                                     $"    PHUCAP = '{employee.Allowance[2..]}' " +
+                                     $"where MANV = '{employee.Id}'";
 
                 Debug.WriteLine(insertQuery);
 
