@@ -43,15 +43,16 @@
             control = new Panel();
             log_out_btn = new Button();
             encryptionFormButton = new Button();
+            AuditBtn = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(10, 7);
+            label1.Location = new Point(11, 9);
             label1.Name = "label1";
-            label1.Size = new Size(63, 25);
+            label1.Size = new Size(75, 31);
             label1.TabIndex = 0;
             label1.Text = "User: ";
             label1.Click += label1_Click;
@@ -61,9 +62,9 @@
             username_label.AutoSize = true;
             username_label.BorderStyle = BorderStyle.Fixed3D;
             username_label.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            username_label.Location = new Point(81, 7);
+            username_label.Location = new Point(93, 9);
             username_label.Name = "username_label";
-            username_label.Size = new Size(100, 27);
+            username_label.Size = new Size(122, 33);
             username_label.TabIndex = 1;
             username_label.Text = "username";
             username_label.Click += username_label_Click;
@@ -72,10 +73,9 @@
             // 
             user_list_btn.BackColor = SystemColors.ActiveCaption;
             user_list_btn.Cursor = Cursors.Hand;
-            user_list_btn.Location = new Point(10, 43);
-            user_list_btn.Margin = new Padding(3, 2, 3, 2);
+            user_list_btn.Location = new Point(11, 57);
             user_list_btn.Name = "user_list_btn";
-            user_list_btn.Size = new Size(115, 31);
+            user_list_btn.Size = new Size(131, 41);
             user_list_btn.TabIndex = 2;
             user_list_btn.Text = "Users List";
             user_list_btn.UseVisualStyleBackColor = false;
@@ -85,10 +85,9 @@
             // 
             check_privs_btn.BackColor = SystemColors.ActiveCaption;
             check_privs_btn.Cursor = Cursors.Hand;
-            check_privs_btn.Location = new Point(130, 43);
-            check_privs_btn.Margin = new Padding(3, 2, 3, 2);
+            check_privs_btn.Location = new Point(149, 57);
             check_privs_btn.Name = "check_privs_btn";
-            check_privs_btn.Size = new Size(115, 31);
+            check_privs_btn.Size = new Size(131, 41);
             check_privs_btn.TabIndex = 3;
             check_privs_btn.Text = "Check Privileges";
             check_privs_btn.UseVisualStyleBackColor = false;
@@ -98,10 +97,9 @@
             // 
             add_user_btn.BackColor = SystemColors.ActiveCaption;
             add_user_btn.Cursor = Cursors.Hand;
-            add_user_btn.Location = new Point(250, 43);
-            add_user_btn.Margin = new Padding(3, 2, 3, 2);
+            add_user_btn.Location = new Point(286, 57);
             add_user_btn.Name = "add_user_btn";
-            add_user_btn.Size = new Size(115, 31);
+            add_user_btn.Size = new Size(131, 41);
             add_user_btn.TabIndex = 4;
             add_user_btn.Text = "Add User";
             add_user_btn.UseVisualStyleBackColor = false;
@@ -111,10 +109,9 @@
             // 
             add_role_btn.BackColor = SystemColors.ActiveCaption;
             add_role_btn.Cursor = Cursors.Hand;
-            add_role_btn.Location = new Point(610, 43);
-            add_role_btn.Margin = new Padding(3, 2, 3, 2);
+            add_role_btn.Location = new Point(697, 57);
             add_role_btn.Name = "add_role_btn";
-            add_role_btn.Size = new Size(115, 31);
+            add_role_btn.Size = new Size(131, 41);
             add_role_btn.TabIndex = 7;
             add_role_btn.Text = "Add Role";
             add_role_btn.UseVisualStyleBackColor = false;
@@ -124,10 +121,9 @@
             // 
             edit_user_btn.BackColor = SystemColors.ActiveCaption;
             edit_user_btn.Cursor = Cursors.Hand;
-            edit_user_btn.Location = new Point(490, 43);
-            edit_user_btn.Margin = new Padding(3, 2, 3, 2);
+            edit_user_btn.Location = new Point(560, 57);
             edit_user_btn.Name = "edit_user_btn";
-            edit_user_btn.Size = new Size(115, 31);
+            edit_user_btn.Size = new Size(131, 41);
             edit_user_btn.TabIndex = 6;
             edit_user_btn.Text = "Edit User";
             edit_user_btn.UseVisualStyleBackColor = false;
@@ -137,10 +133,9 @@
             // 
             del_user_btn.BackColor = SystemColors.ActiveCaption;
             del_user_btn.Cursor = Cursors.Hand;
-            del_user_btn.Location = new Point(370, 43);
-            del_user_btn.Margin = new Padding(3, 2, 3, 2);
+            del_user_btn.Location = new Point(423, 57);
             del_user_btn.Name = "del_user_btn";
-            del_user_btn.Size = new Size(115, 31);
+            del_user_btn.Size = new Size(131, 41);
             del_user_btn.TabIndex = 5;
             del_user_btn.Text = "Delete User";
             del_user_btn.UseVisualStyleBackColor = false;
@@ -150,10 +145,9 @@
             // 
             del_role_btn.BackColor = SystemColors.ActiveCaption;
             del_role_btn.Cursor = Cursors.Hand;
-            del_role_btn.Location = new Point(730, 43);
-            del_role_btn.Margin = new Padding(3, 2, 3, 2);
+            del_role_btn.Location = new Point(834, 57);
             del_role_btn.Name = "del_role_btn";
-            del_role_btn.Size = new Size(115, 31);
+            del_role_btn.Size = new Size(131, 41);
             del_role_btn.TabIndex = 8;
             del_role_btn.Text = "Delete Role";
             del_role_btn.UseVisualStyleBackColor = false;
@@ -163,10 +157,9 @@
             // 
             revoke_privs_btn.BackColor = SystemColors.ActiveCaption;
             revoke_privs_btn.Cursor = Cursors.Hand;
-            revoke_privs_btn.Location = new Point(267, 78);
-            revoke_privs_btn.Margin = new Padding(3, 2, 3, 2);
+            revoke_privs_btn.Location = new Point(305, 104);
             revoke_privs_btn.Name = "revoke_privs_btn";
-            revoke_privs_btn.Size = new Size(128, 31);
+            revoke_privs_btn.Size = new Size(146, 41);
             revoke_privs_btn.TabIndex = 11;
             revoke_privs_btn.Text = "Revoke Privileges";
             revoke_privs_btn.UseVisualStyleBackColor = false;
@@ -176,10 +169,9 @@
             // 
             grant_role_btn.BackColor = SystemColors.ActiveCaption;
             grant_role_btn.Cursor = Cursors.Hand;
-            grant_role_btn.Location = new Point(130, 78);
-            grant_role_btn.Margin = new Padding(3, 2, 3, 2);
+            grant_role_btn.Location = new Point(149, 104);
             grant_role_btn.Name = "grant_role_btn";
-            grant_role_btn.Size = new Size(131, 31);
+            grant_role_btn.Size = new Size(150, 41);
             grant_role_btn.TabIndex = 10;
             grant_role_btn.Text = "Grant Role To User";
             grant_role_btn.UseVisualStyleBackColor = false;
@@ -189,10 +181,9 @@
             // 
             grant_privs_btn.BackColor = SystemColors.ActiveCaption;
             grant_privs_btn.Cursor = Cursors.Hand;
-            grant_privs_btn.Location = new Point(10, 78);
-            grant_privs_btn.Margin = new Padding(3, 2, 3, 2);
+            grant_privs_btn.Location = new Point(11, 104);
             grant_privs_btn.Name = "grant_privs_btn";
-            grant_privs_btn.Size = new Size(115, 31);
+            grant_privs_btn.Size = new Size(131, 41);
             grant_privs_btn.TabIndex = 9;
             grant_privs_btn.Text = "Grant Privileges";
             grant_privs_btn.UseVisualStyleBackColor = false;
@@ -201,10 +192,10 @@
             // control
             // 
             control.BorderStyle = BorderStyle.FixedSingle;
-            control.Location = new Point(17, 130);
-            control.Margin = new Padding(9, 8, 9, 8);
+            control.Location = new Point(19, 173);
+            control.Margin = new Padding(10, 11, 10, 11);
             control.Name = "control";
-            control.Size = new Size(832, 376);
+            control.Size = new Size(951, 501);
             control.TabIndex = 12;
             control.Paint += control_Paint;
             // 
@@ -212,10 +203,9 @@
             // 
             log_out_btn.BackColor = Color.LightCoral;
             log_out_btn.Cursor = Cursors.Hand;
-            log_out_btn.Location = new Point(208, 6);
-            log_out_btn.Margin = new Padding(3, 2, 3, 2);
+            log_out_btn.Location = new Point(238, 8);
             log_out_btn.Name = "log_out_btn";
-            log_out_btn.Size = new Size(82, 30);
+            log_out_btn.Size = new Size(94, 40);
             log_out_btn.TabIndex = 13;
             log_out_btn.Text = "Log Out";
             log_out_btn.UseVisualStyleBackColor = false;
@@ -225,21 +215,33 @@
             // 
             encryptionFormButton.BackColor = SystemColors.ActiveCaption;
             encryptionFormButton.Cursor = Cursors.Hand;
-            encryptionFormButton.Location = new Point(401, 78);
-            encryptionFormButton.Margin = new Padding(3, 2, 3, 2);
+            encryptionFormButton.Location = new Point(458, 104);
             encryptionFormButton.Name = "encryptionFormButton";
-            encryptionFormButton.Size = new Size(128, 31);
+            encryptionFormButton.Size = new Size(146, 41);
             encryptionFormButton.TabIndex = 14;
             encryptionFormButton.Text = "Encryption";
             encryptionFormButton.UseVisualStyleBackColor = false;
             encryptionFormButton.Click += encryptionFormButton_Click;
             // 
+            // AuditBtn
+            // 
+            AuditBtn.BackColor = SystemColors.ActiveCaption;
+            AuditBtn.Cursor = Cursors.Hand;
+            AuditBtn.Location = new Point(610, 104);
+            AuditBtn.Name = "AuditBtn";
+            AuditBtn.Size = new Size(131, 41);
+            AuditBtn.TabIndex = 15;
+            AuditBtn.Text = "Audit";
+            AuditBtn.UseVisualStyleBackColor = false;
+            AuditBtn.Click += button1_Click;
+            // 
             // Main
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(864, 520);
+            ClientSize = new Size(987, 693);
+            Controls.Add(AuditBtn);
             Controls.Add(encryptionFormButton);
             Controls.Add(log_out_btn);
             Controls.Add(control);
@@ -255,7 +257,6 @@
             Controls.Add(user_list_btn);
             Controls.Add(username_label);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main";
@@ -281,5 +282,6 @@
         private Panel control;
         private Button log_out_btn;
         private Button encryptionFormButton;
+        private Button AuditBtn;
     }
 }

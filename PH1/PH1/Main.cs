@@ -212,5 +212,18 @@ namespace PH1
                 MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (check_dba(username_label.Text))
+            {
+                var f = new fAudit();
+                active_form(f);
+            }
+            else
+            {
+                MessageBox.Show("You don't have permission", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

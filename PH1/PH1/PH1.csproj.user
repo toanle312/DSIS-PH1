@@ -10,6 +10,9 @@
     <Compile Update="fAddUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="fAudit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="fCheckPrivs.cs">
       <SubType>Form</SubType>
     </Compile>
