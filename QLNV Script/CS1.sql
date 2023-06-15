@@ -97,7 +97,7 @@ BEGIN
         FETCH CUR INTO usr;
         EXIT WHEN CUR%NOTFOUND;
         
-        strSQL := 'REVOKE ALL ON NHANVIEN$ FROM ' || usr;
+        strSQL := 'REVOKE ALL ON NHANVIEN FROM ' || usr;
         EXECUTE IMMEDIATE (strSQL);
         
         strSQL := 'GRANT SELECT ON NHANVIEN TO ' || usr;
