@@ -425,6 +425,15 @@ SET DEFINE OFF;
 Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV001','DA001',48);
 Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV002','DA002',72);
 Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV003','DA003',96);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV001','DA002',48);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV001','DA003',48);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV009','DA001',48);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV009','DA002',35);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV092','DA001',35);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV096','DA001',35);
+Insert into U_AD_QLNV.PHANCONG$ (MANV,MADA,THOIGIAN) values ('NV101','DA001',35);
+
+
 REM INSERTING into U_AD_QLNV.PHONGBAN
 SET DEFINE OFF;
 Insert into U_AD_QLNV.PHONGBAN (MAPB,TENPB,TRGPHG) values ('PB001',N'Phòng ban 1','NV001');
@@ -435,6 +444,7 @@ Insert into U_AD_QLNV.PHONGBAN (MAPB,TENPB,TRGPHG) values ('PB005',N'Phòng ban 
 Insert into U_AD_QLNV.PHONGBAN (MAPB,TENPB,TRGPHG) values ('PB006',N'Phòng ban 6','NV006');
 Insert into U_AD_QLNV.PHONGBAN (MAPB,TENPB,TRGPHG) values ('PB007',N'Phòng ban 7','NV007');
 Insert into U_AD_QLNV.PHONGBAN (MAPB,TENPB,TRGPHG) values ('PB008',N'Phòng ban 8','NV008');
+
 --------------------------------------------------------
 --  DDL for Index SYS_C009111
 --------------------------------------------------------
