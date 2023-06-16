@@ -17,6 +17,7 @@ namespace PH1
             InitializeComponent();
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            comboBox1.SelectedIndex = 2;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,9 +30,15 @@ namespace PH1
                 dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
             }
             // bang nhan vien
-            else
+            else if (comboBox1.SelectedIndex == 1)
             {
                 string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_NAME='NHANVIEN$'";
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
+            }
+            else
+            {
+                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL";
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
             }

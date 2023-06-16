@@ -37,7 +37,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Phân công", "Nhân viên" });
+            comboBox1.Items.AddRange(new object[] { "Phân công", "Nhân viên", "Tất cả" });
             comboBox1.Location = new Point(190, 20);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(101, 28);

@@ -33,7 +33,8 @@ policy_name => 'LUONG_PHUCAP_NHANVIEN',
 audit_column => 'LUONG,PHUCAP',
 audit_condition => q'[SYS_CONTEXT('USERENV', 'SESSION_USER') != MANV]',
 statement_types => 'SELECT',
-audit_trail => DBMS_FGA.DB + DBMS_FGA.EXTENDED);
+audit_trail => DBMS_FGA.DB + DBMS_FGA.EXTENDED
+);
 END;
 /
 
@@ -41,6 +42,7 @@ END;
 --c/Một người không thuộc vai trò “Tài chính” nhưng đã cập nhật thành công trên trường LUONG và PHUCAP
 
 -- tạo context tên TESTS ĐỂ lưu vai trò của user đang đăng nhập
+DROP CONTEXT TESTS;
 create context TESTS using U_AD_QLNV.CONTEXT_PACKAGE;
 /
 -- tạo package có tên CONTEXT_PACKAGE, chứa thủ tục SET_CONTEXT để lấy vaitro
@@ -107,20 +109,20 @@ BEGIN
 END;
 /
 
+-- test ý c
+--alter session set "_ORACLE_SCRIPT"=true;
+--DROP USER TESTaudit;
+--CREATE USER TESTaudit IDENTIFIED BY 1;
+--/
+--GRANT CREATE SESSION TO TESTaudit;
+--GRANT SELECT ON NHANVIEN$ TO TESTaudit;
+-- /
+--CONNECT TESTaudit/1;
+-- UPDATE U_AD_QLNV.NHANVIEN$
+-- SET LUONG=2000
+-- WHERE MANV='NV001';
+-- /
 
-alter session set "_ORACLE_SCRIPT"=true;
-DROP USER TESTaudit;
-CREATE USER TESTaudit IDENTIFIED BY 1;
-/
-GRANT CREATE SESSION TO TESTaudit;
-GRANT SELECT ON NHANVIEN$ TO TESTaudit;
-GRANT UPDATE ON NHANVIEN$ to TESTaudit;
-/
-CONNECT TESTaudit/1
-UPDATE U_AD_QLNV.NHANVIEN$
-SET LUONG=2000
-WHERE MANV='NV001';
-/
-
+--d/ Xem nhật ký hệ thống
 -- Xem bảng audit
 SELECT * FROM DBA_FGA_AUDIT_TRAIL;
