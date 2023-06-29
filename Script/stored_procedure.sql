@@ -12,7 +12,7 @@ BEGIN
     execute immediate(statement);
 
 END CREATE_ROLE_SP;
-
+/
 -- Create user
 create or replace NONEDITIONABLE PROCEDURE CREATE_USER_SP(
 in_username VARCHAR2,
@@ -28,7 +28,7 @@ BEGIN
     execute immediate(statement);
 
 END CREATE_USER_SP;
-
+/
 -- Delete role
 create or replace NONEDITIONABLE PROCEDURE DELETE_ROLE_SP(
 in_rolename VARCHAR2
@@ -43,7 +43,7 @@ BEGIN
     execute immediate(statement);
 
 END DELETE_ROLE_SP;
-
+/
 -- Delete user
 create or replace NONEDITIONABLE PROCEDURE DELETE_USER_SP(
 in_username VARCHAR2
@@ -58,7 +58,7 @@ BEGIN
     execute immediate(statement);
 
 END DELETE_USER_SP;
-
+/
 -- Edit user
 create or replace NONEDITIONABLE PROCEDURE EDIT_USER_SP(
 in_username VARCHAR2,
@@ -74,7 +74,7 @@ BEGIN
     execute immediate(statement);
 
 END EDIT_USER_SP;
-
+/
 -- Check user role if exist
 create or replace NONEDITIONABLE FUNCTION CHECK_USER_ROLE_EXIST(
 in_name VARCHAR2
@@ -103,7 +103,7 @@ BEGIN
         end if;
     end if;
 END CHECK_USER_ROLE_EXIST;
-
+/
 -- Phan quyen cho user va role tren obj
 CREATE OR REPLACE PROCEDURE usp_GrantObjPrivs(
 	privs VARCHAR2, -- seperated by comma
@@ -129,9 +129,9 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE (sql_string);
 	EXECUTE IMMEDIATE (sql_string);
 END;
-
+/
 SELECT * FROM USER_ERRORS WHERE NAME = UPPER('usp_GrantObjPrivs');
-
+/
 -- Phan role cho user
 CREATE OR REPLACE PROCEDURE usp_GrantRole(
 	rol VARCHAR2,
@@ -149,9 +149,9 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE (sql_string);
 	EXECUTE IMMEDIATE (sql_string);
 END;
-
+/
 SELECT * FROM USER_ERRORS WHERE NAME = UPPER('usp_GrantRole');
-
+/
 -- Phan quyen select cho cot
 CREATE OR REPLACE PROCEDURE usp_GrantSelectOnCol(
 	schema_name VARCHAR2,
@@ -180,9 +180,9 @@ BEGIN
 
 	usp_GrantObjPrivs ('SELECT', grantee, obj, grantee, with_grant);
 END;
-
+/
 SELECT * FROM USER_ERRORS WHERE NAME = UPPER('usp_GrantSelectOnCol');
-
+/
 -- Phan quyen update cho cot
 CREATE OR REPLACE PROCEDURE usp_GrantUpdateOnCol(
 	obj VARCHAR2,
@@ -203,6 +203,6 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE (sql_string);
 	EXECUTE IMMEDIATE (sql_string);
 END;
-
+/
 SELECT * FROM USER_ERRORS WHERE NAME = UPPER('usp_GrantUpdateOnCol');
 

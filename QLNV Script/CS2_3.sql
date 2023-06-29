@@ -13,7 +13,7 @@ SELECT PC.MANV,PC.MADA, PC.THOIGIAN
 FROM PHANCONG$ PC JOIN NHANVIEN$ NV ON PC.MANV=NV.MANV
 WHERE NV.MANQL = SYS_CONTEXT ('userenv', 'session_user') or NV.MANV = SYS_CONTEXT ('userenv', 'session_user')
 
-
+/
 -- Tạo role quản lí trực tiếp và cấp quyền cho role này
 alter session set "_ORACLE_SCRIPT"=TRUE;
 /
