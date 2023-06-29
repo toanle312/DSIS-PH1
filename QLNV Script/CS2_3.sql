@@ -1,30 +1,24 @@
-
 --view cho quản lí xem thông tin nhân viên mình quản lí
 CREATE OR REPLACE VIEW QUANLI_THONGTIN_VIEW AS 
 SELECT NV2.MANV, NV2.TENNV, NV2.PHAI, NV2.NGAYSINH, NV2.DIACHI, NV2.SODT, NV2.VAITRO, NV2.MANQL, NV2.PHG
 FROM NHANVIEN$ NV1 JOIN NHANVIEN$ NV2
 ON NV2.MANQL=NV1.MANV
 WHERE NV1.MANV = SYS_CONTEXT ('userenv', 'session_user');
-
-
+/
 --view cho quản lí xem thông tin phân công của mình và các nhân viên mình quản lí     
 CREATE OR REPLACE VIEW QUANLI_PHANCONG_VIEW AS
 SELECT PC.MANV,PC.MADA, PC.THOIGIAN
 FROM PHANCONG$ PC JOIN NHANVIEN$ NV ON PC.MANV=NV.MANV
 WHERE NV.MANQL = SYS_CONTEXT ('userenv', 'session_user') or NV.MANV = SYS_CONTEXT ('userenv', 'session_user')
-
 /
 -- Tạo role quản lí trực tiếp và cấp quyền cho role này
 alter session set "_ORACLE_SCRIPT"=TRUE;
 /
 DROP ROLE ROLE_QLTRUCTIEP;
 CREATE ROLE ROLE_QLTRUCTIEP;
-
+/
 GRANT SELECT ON QUANLI_THONGTIN_VIEW TO ROLE_QLTRUCTIEP;
 GRANT SELECT ON QUANLI_PHANCONG_VIEW TO ROLE_QLTRUCTIEP;
-
-
-
 -- Cấp role ROLE_NHANVIEN và role ROLE_QLTRUCTIEP cho tất cả quản lí trực tiếp
 /
 CREATE OR REPLACE PROCEDURE GRANT_ROLE_NHANVIEN_QLTRUCTIEP
@@ -49,10 +43,6 @@ END;
 /
 EXEC GRANT_ROLE_NHANVIEN_QLTRUCTIEP;
 /
-
-
----------------------------------
-/
 --VIEW cho trưởng phòng xem thông tin các thành viên trong phòng ban của bản thân
 CREATE OR REPLACE VIEW TRUONGPHONG_THONGTIN_VIEW AS
 SELECT NV2.MANV, NV2.TENNV, NV2.PHAI, NV2.NGAYSINH, NV2.DIACHI, NV2.SODT, NV2.VAITRO, NV2.MANQL, NV2.PHG
@@ -60,15 +50,11 @@ FROM NHANVIEN$ NV1 JOIN NHANVIEN$ NV2
 ON NV2.PHG=NV1.PHG
 WHERE NV1.MANV = SYS_CONTEXT ('userenv', 'session_user');
 /
-
-
 --VIEW cho trưởng phòng xem bảng phân công
 CREATE OR REPLACE VIEW TRUONGPHONG_PHANCONG_VIEW AS
 SELECT PC.MANV,PC.MADA, PC.THOIGIAN
 FROM PHANCONG$ PC JOIN NHANVIEN$ NV ON PC.MANV=NV.MANV
 WHERE NV.MANV = SYS_CONTEXT ('userenv', 'session_user') OR NV.MANQL = SYS_CONTEXT ('userenv', 'session_user');
-
-
 /
 -- Hàm kiểm tra xem nhân viên được thêm vào có thuộc phòng của trưởng phòng đó hay không
 create or replace  FUNCTION CHECK_INSERT_PC_VALID(
@@ -108,9 +94,7 @@ BEGIN
     COMMIT;
 END;
 /
-
--- Procedure DELETE PHANCON
-/
+-- Procedure DELETE PHANCONG
 CREATE OR REPLACE PROCEDURE DELETE_PHANCONG
 (
     MANV_IN  VARCHAR2,
