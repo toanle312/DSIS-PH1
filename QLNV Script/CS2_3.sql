@@ -54,7 +54,13 @@ WHERE NV1.MANV = SYS_CONTEXT ('userenv', 'session_user');
 CREATE OR REPLACE VIEW TRUONGPHONG_PHANCONG_VIEW AS
 SELECT PC.MANV,PC.MADA, PC.THOIGIAN
 FROM PHANCONG$ PC JOIN NHANVIEN$ NV ON PC.MANV=NV.MANV
+<<<<<<< Updated upstream
 WHERE NV.MANV = SYS_CONTEXT ('userenv', 'session_user') OR NV.MANQL = SYS_CONTEXT ('userenv', 'session_user');
+=======
+WHERE NV.MANV = SYS_CONTEXT ('userenv', 'session_user') OR NV.PHG =(SELECT MAPHG FROM NHANVIEN WHERE MANV = SYS_CONTEXT ('userenv', 'session_user'));
+
+
+>>>>>>> Stashed changes
 /
 -- Hàm kiểm tra xem nhân viên được thêm vào có thuộc phòng của trưởng phòng đó hay không
 create or replace  FUNCTION CHECK_INSERT_PC_VALID(
