@@ -25,20 +25,20 @@ namespace PH1
             // bang phan cong
             if (comboBox1.SelectedIndex == 0)
             {
-                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_NAME='PHANCONG$'";
+                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_NAME='PHANCONG$' ORDER BY TIMESTAMP DESC";
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
             }
             // bang nhan vien
             else if (comboBox1.SelectedIndex == 1)
             {
-                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_NAME='NHANVIEN$'";
+                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_NAME='NHANVIEN$' ORDER BY TIMESTAMP DESC";
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
             }
             else
             {
-                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL";
+                string query = "SELECT SESSION_ID, TIMESTAMP, DB_USER, OS_USER, USERHOST, OBJECT_SCHEMA, OBJECT_NAME, POLICY_NAME, SQL_TEXT, STATEMENT_TYPE, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRAIL ORDER BY TIMESTAMP DESC";
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = DataProvider.Instance.ExcuteQuery(query);
             }
