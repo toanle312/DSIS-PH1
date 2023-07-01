@@ -119,7 +119,7 @@ namespace PH1
         {
             Hide();
 
-            var screen = new fNhanVien(_username, "Nhân sự");
+            var screen = new fNhanVien(_username, "Tài chính");
             var result = screen.ShowDialog();
 
             if (result == DialogResult.Cancel)
