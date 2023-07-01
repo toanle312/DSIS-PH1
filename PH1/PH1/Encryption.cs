@@ -14,8 +14,8 @@ public class Encryption
          * Tạo khóa chính bằng cách đan xen các số trong mã nhân viên và các từ trong họ tên của nhóm
          *
          * Ví dụ:
-         * Id: NV001, Name: Công Tằng Tôn Nữ Đỗ Thị Thu Hương
-         * Master key: Công0Tằng0Tôn1Nữ0Đỗ0Thị1Thu0Hương0
+         * Id: NV001, Salt: Lâm Bích Phước Quân
+         * Master key: Lâm0Bích0Phước1Quân
          */
 
     private static string GenerateEncryptionKey(string id)

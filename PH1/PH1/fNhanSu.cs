@@ -84,19 +84,17 @@ namespace PH1
                 return;
             }
 
-            // Build the query
-            string query;
-            if (DeptNameTextBox.Text == "")
+            // Build and execute the query
+            if (DeptLeaderTextBox.Text != "")
             {
-                query = $"UPDATE U_AD_QLNV.PHONGBAN SET TRGPHG = '{DeptLeaderTextBox.Text}' WHERE MAPB = '{DeptIdTextBox.Text}'";
+                string query = $"UPDATE U_AD_QLNV.PHONGBAN SET TRGPHG = '{DeptLeaderTextBox.Text}' WHERE MAPB = '{DeptIdTextBox.Text}'";
+                DataProvider.Instance.ExcuteNonQuery(query);
             }
-            else
+            if (DeptNameTextBox.Text != "")
             {
-                query = $"UPDATE U_AD_QLNV.PHONGBAN SET TENPB = '{DeptNameTextBox.Text}' WHERE MAPB = '{DeptIdTextBox.Text}'";
+                string query = $"UPDATE U_AD_QLNV.PHONGBAN SET TENPB = '{DeptNameTextBox.Text}' WHERE MAPB = '{DeptIdTextBox.Text}'";
+                DataProvider.Instance.ExcuteNonQuery(query);
             }
-
-            // Execute the query
-            DataProvider.Instance.ExcuteNonQuery(query);
 
             // Notify the user
             MessageBox.Show("Cập nhật phòng ban thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
